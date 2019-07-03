@@ -56,7 +56,7 @@
                     <div class="col-lg-12">
                         <div class="card bg-dark text-light">
                             <div class="card-body">
-                                <h4 class="box-title">TURNAMEN</h4>
+                                <h3 class="box-title">TURNAMEN</h3>
                                 <div class="row">
                                     <div class="col-12 col-lg-4 col-xl-4">
                                         <div class="card thumbnail">
