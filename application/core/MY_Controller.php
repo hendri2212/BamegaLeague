@@ -1,9 +1,16 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class MY_Controller extends CI_Controller {
-	function pages($content, $data = NULL){
-        $data['content'] = $this->load->view($content, $data, TRUE);
+<?php
+    defined('BASEPATH') OR exit('No direct script access allowed');
 
-        $this->load->view('dashboard', $data);
+    class MY_Controller extends CI_Controller {
+
+        public function page($content, $data = NULL)
+        {
+            $this->load->view('templates/header');
+            $data['content'] = $this->load->view($content, $data, TRUE);
+            $this->load->view('content', $data);
+            $this->load->view('templates/footer');
+        }
     }
-}
+ 
+?>

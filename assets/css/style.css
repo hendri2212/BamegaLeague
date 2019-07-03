@@ -18,6 +18,36 @@ Googel Fonts  */
 /* Googel Fonts End  
 
 */
+/* custom */
+.thumbnail{
+  overflow: hidden;
+}
+.caption{
+  position:absolute;
+    top:0;
+    right:0;
+    background:rgba(90, 90, 90, 0.75);
+    width:100%;
+    height:100%;
+    padding:2%;
+    display: none;
+    text-align: left;
+    color:#fff !important;
+    z-index:2;
+}
+.list{
+  position: absolute;
+  top: 0;
+  right: 0; 
+  background-color:rgba(255, 255, 255, 0.808);
+  width: 100%;
+  height: 100%;
+  display: none;
+  z-index: 2;
+  color:#fff !important;
+  cursor: pointer;
+}
+
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700");
 .bg-flat-color-1 {
   background: #00c292; }
