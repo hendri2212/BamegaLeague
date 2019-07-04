@@ -3,7 +3,7 @@
                     <div class="col-lg-2 col-md-6">
                         <div class="card bg-dark thumbnail">
                             <div class="card-body">
-                                <img src="<?= base_url('images/pubg-mobile.png') ?>" alt="pubg-mobile">
+                                <img  src="<?= base_url('images/pubg-mobile.png') ?>" alt="pubg-mobile">
                                 <div class="list"></div>
                             </div>
                         </div>
@@ -61,31 +61,23 @@
                                     <div class="col-12 col-lg-4 col-xl-4">
                                         <div class="card thumbnail">
                                             <a href="<?=base_url('content/detail')?>">
-                                            <img src="https://i.imgur.com/MUBS4Gh.png" class="img-fluid">
+                                            <img src="<?=base_url('images/dummy.png')?>" class="img-fluid">
+                                            <div class="caption">Caption</div>  
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-4 col-xl-4">
+                                        <div class="card thumbnail">
+                                            <a href="<?=base_url('content/detail')?>">
+                                            <img src="<?=base_url('images/dummy.png')?>" class="img-fluid">
                                             <div class="caption">Caption</div>
                                             </a>
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-xl-4">
                                         <div class="card thumbnail">
-                                            <a href="#">
-                                            <img src="https://i.imgur.com/MUBS4Gh.png" class="img-fluid">
-                                            <div class="caption">Caption</div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-4 col-xl-4">
-                                        <div class="card thumbnail">
-                                            <a href="#">
-                                            <img src="https://i.imgur.com/MUBS4Gh.png" class="img-fluid">
-                                            <div class="caption">Caption</div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-4 col-xl-4">
-                                        <div class="card thumbnail">
-                                            <a href="#">
-                                            <img src="https://i.imgur.com/MUBS4Gh.png" class="img-fluid">
+                                            <a href="<?=base_url('content/detail')?>">
+                                            <img src="<?=base_url('images/dummy.png')?>" class="img-fluid">
                                             <div class="caption">Caption</div>
                                             </a>
                                         </div>
