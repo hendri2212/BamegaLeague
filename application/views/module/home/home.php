@@ -1,48 +1,16 @@
 <!-- Widgets  -->
-<div class="row mb-4">
-    <div class="col-lg-2 col-md-6">
-        <div class="btn btn-dark">
-            <div class="card-body" style="height: 135px;">
-                <img src="<?= base_url('images/pubg-mobile.png') ?>" alt="pubg-mobile">
+<div class="row mb-3">
+    <div class="col-lg-12">
+        <div class="d-flex flex-row justify-content-center">
+            <div class="btn btn-dark p-2 m-2" id="img">
+                <img src="<?= base_url('images/pubg-mobile.png') ?>" alt="pubg-mobile" class="img-fluid">
+            </div>
+            <div class="btn btn-dark p-2 m-2" id="img">
+                <img src="<?= base_url('images/mobile-legends.png') ?>" alt="pubg-mobile" class="img-fluid">
             </div>
         </div>
     </div>
-    <div class="col-lg-2 col-md-6">
-        <div class="btn btn-dark">
-            <div class="card-body" style="height: 135px;">
-                <img src="<?= base_url('images/pubg-mobile.png') ?>" alt="pubg-mobile">
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-2 col-md-6">
-        <div class="btn btn-dark">
-            <div class="card-body" style="height: 135px;">
-                <img src="<?= base_url('images/pubg-mobile.png') ?>" alt="pubg-mobile">
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-2 col-md-6">
-        <div class="btn btn-dark">
-            <div class="card-body" style="height: 135px;">
-                <img src="<?= base_url('images/pubg-mobile.png') ?>" alt="pubg-mobile">
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-2 col-md-6">
-        <div class="btn btn-dark">
-            <div class="card-body" style="height: 135px;">
-                <img src="<?= base_url('images/pubg-mobile.png') ?>" alt="pubg-mobile">
-                <div class="list"></div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-2 col-md-6">
-        <div class="btn btn-dark">
-            <div class="card-body" style="height: 135px;">
-                <img src="<?= base_url('images/pubg-mobile.png') ?>" alt="pubg-mobile">
-            </div>
-        </div>
-    </div>
+
 </div>  
 
 <!-- /Widgets -->
@@ -53,7 +21,7 @@
             <div class="card-body">
                 <h3 class="box-title">TURNAMEN</h3>
                 <div class="row">
-                    <div class="col-12 col-lg-4 col-xl-4">
+                    <div class="col-12 col-md-6 col-lg-4 col-xl-4">
                         <div class="card thumbnail">
                             <a href="<?=base_url('content/detail')?>">
                             <img src="<?=base_url('images/dummy.png')?>" class="img-fluid">
@@ -61,7 +29,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-4 col-xl-4">
+                    <div class="col-12 col-md-6 col-lg-4 col-xl-4">
                         <div class="card thumbnail">
                             <a href="<?=base_url('content/detail')?>">
                             <img src="<?=base_url('images/dummy.png')?>" class="img-fluid">
@@ -69,7 +37,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-4 col-xl-4">
+                    <div class="col-12 col-md-6 col-lg-4 col-xl-4">
                         <div class="card thumbnail">
                             <a href="<?=base_url('content/detail')?>">
                             <img src="<?=base_url('images/dummy.png')?>" class="img-fluid">
@@ -88,131 +56,47 @@
 <!-- Orders -->
 <div class="orders">
     <div class="row">
-        <div class="col-xl-8">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="box-title">Orders </h4>
-                </div>
-                <div class="card-body--">
-                    <div class="table-stats order-table ov-h">
-                        <table class="table ">
-                            <thead>
-                                <tr>
-                                    <th class="serial">#</th>
-                                    <th class="avatar">Avatar</th>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Product</th>
-                                    <th>Quantity</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="serial">1.</td>
-                                    <td class="avatar">
-                                        <div class="round-img">
-                                            <a href="#"><img class="rounded-circle" src="images/avatar/1.jpg" alt=""></a>
-                                        </div>
-                                    </td>
-                                    <td> #5469 </td>
-                                    <td>  <span class="name">Louis Stanley</span> </td>
-                                    <td> <span class="product">iMax</span> </td>
-                                    <td><span class="count">231</span></td>
-                                    <td>
-                                        <span class="badge badge-complete">Complete</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="serial">2.</td>
-                                    <td class="avatar">
-                                        <div class="round-img">
-                                            <a href="#"><img class="rounded-circle" src="images/avatar/2.jpg" alt=""></a>
-                                        </div>
-                                    </td>
-                                    <td> #5468 </td>
-                                    <td>  <span class="name">Gregory Dixon</span> </td>
-                                    <td> <span class="product">iPad</span> </td>
-                                    <td><span class="count">250</span></td>
-                                    <td>
-                                        <span class="badge badge-complete">Complete</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="serial">3.</td>
-                                    <td class="avatar">
-                                        <div class="round-img">
-                                            <a href="#"><img class="rounded-circle" src="images/avatar/3.jpg" alt=""></a>
-                                        </div>
-                                    </td>
-                                    <td> #5467 </td>
-                                    <td>  <span class="name">Catherine Dixon</span> </td>
-                                    <td> <span class="product">SSD</span> </td>
-                                    <td><span class="count">250</span></td>
-                                    <td>
-                                        <span class="badge badge-complete">Complete</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="serial">4.</td>
-                                    <td class="avatar">
-                                        <div class="round-img">
-                                            <a href="#"><img class="rounded-circle" src="images/avatar/4.jpg" alt=""></a>
-                                        </div>
-                                    </td>
-                                    <td> #5466 </td>
-                                    <td>  <span class="name">Mary Silva</span> </td>
-                                    <td> <span class="product">Magic Mouse</span> </td>
-                                    <td><span class="count">250</span></td>
-                                    <td>
-                                        <span class="badge badge-pending">Pending</span>
-                                    </td>
-                                </tr>
-                                <tr class=" pb-0">
-                                    <td class="serial">5.</td>
-                                    <td class="avatar pb-0">
-                                        <div class="round-img">
-                                            <a href="#"><img class="rounded-circle" src="images/avatar/6.jpg" alt=""></a>
-                                        </div>
-                                    </td>
-                                    <td> #5465 </td>
-                                    <td>  <span class="name">Johnny Stephens</span> </td>
-                                    <td> <span class="product">Monitor</span> </td>
-                                    <td><span class="count">250</span></td>
-                                    <td>
-                                        <span class="badge badge-complete">Complete</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div> <!-- /.table-stats -->
-                </div>
-            </div> <!-- /.card -->
-        </div>  <!-- /.col-lg-8 -->
-
-        <div class="col-xl-4">
-            <div class="row">
-                <div class="col-lg-6 col-xl-12">
-                    <div class="card br-0">
-                        <div class="card-body">
-                            <div class="chart-container ov-h">
-                                <div id="flotPie1" class="float-chart"></div>
-                            </div>
-                        </div>
-                    </div><!-- /.card -->
-                </div>
-
-                <div class="col-lg-6 col-xl-12">
-                    <div class="card bg-flat-color-3">
-                        <div class="card-body">
-                            <h4 class="card-title m-0  white-color ">August 2018</h4>
-                        </div>
-                        <div class="card-body">
-                            <div id="flotLine5" class="flot-line"></div>
-                        </div>
-                    </div>
-                </div>
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-striped table-sm table-hover table-dark">
+                    <thead class="bg-mblack">
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Turnamen</th>
+                        <th scope="col">Queue</th>
+                        <th scope="col">Prize</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>@mdo</td>
+                            <td><span class="btn btn-sm bg-success text-white">Selesai</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                            <td>@mdo</td>
+                            <td><span class="btn btn-sm bg-warning text-white">Upcoming</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>@mdo</td>
+                            <td>Larry the Bird</td>
+                            <td>@mdo</td>
+                            <td>@mdo</td>
+                            <td><span class="btn btn-sm bg-danger text-white">Ongoing</span></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-        </div> <!-- /.col-md-4 -->
+        </div>
     </div>
 </div>

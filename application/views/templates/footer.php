@@ -1,5 +1,6 @@
-    
-        <div class="clearfix"></div>
+</div>
+</div>
+<div class="clearfix"></div>
     <!-- /#right-panel -->
 
     <!-- Scripts -->
@@ -22,18 +23,11 @@
             }
         ); 
     </script>
-
     <script>
-        $("[rel='tooltip']").tooltip();    
- 
-        $('.thumbnail').hover(
-            function(){
-                $(this).find('.list').fadeIn(250); //.fadeIn(250)
-            },
-            function(){
-                $(this).find('.list').fadeOut(250); //.fadeOut(205)
-            }
-        ); 
+        $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+        });
     </script>
 
     <!--  Chart js -->

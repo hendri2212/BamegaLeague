@@ -13,32 +13,25 @@
         </div>
        
         <div class="col-lg-4">
-            <div class="row">
-                <div class="col-4">
-                    <div class="trophy bg-dark">
-                        <i class="fas fa-trophy trophy-icon" style="color: #ffd700;"></i>
-                        <img src="<?=base_url('images/admin.jpg')?>" alt="" class="img-fluid" style="height: 100%;">
-                    </div>
+            <div class="d-flex flex-row">
+                <div class="trophy bg-dark m-1">
+                    <i class="fas fa-trophy trophy-icon" style="color: #ffd700;"></i>
+                    <img src="<?=base_url('images/admin.jpg')?>" alt="1st place" class="img-fluid" style="height: 100%;">
                 </div>
-                <div class="col-4">
-                    <div class="trophy bg-dark">
-                        <i class="fas fa-trophy trophy-icon" style="color: #dedede;"></i>
-                        <img src="<?=base_url('images/admin.jpg')?>" alt="" class="img-fluid" style="height: 100%;">
-                    </div>
+                <div class="trophy bg-dark m-1">
+                    <i class="fas fa-trophy trophy-icon" style="color: #dedede;"></i>
+                    <img src="<?=base_url('images/admin.jpg')?>" alt="1st place" class="img-fluid" style="height: 100%;">
                 </div>
-                <div class="col-4">
-                    <div class="trophy bg-dark">
-                        <i class="fas fa-trophy trophy-icon" style="color:#cd7f32 ;"></i>
-                        <img src="<?=base_url('images/admin.jpg')?>" alt="" class="img-fluid" style="height: 100%;">
-                    </div>
-                </div>
+                <div class="trophy bg-dark m-1">
+                    <i class="fas fa-trophy trophy-icon" style="color: #e36700;"></i>
+                    <img src="<?=base_url('images/admin.jpg')?>" alt="1st place" class="img-fluid" style="height: 100%;">
+                </div>  
             </div>
-            <div class="card bg-dark" style="height: 250px;">
+            <div class="card bg-dark mt-lg-4" style="height: 220px;">
                 <div class="card-header" style="background: rgb(29, 29, 29);">
                     <strong>PRIZE POOL</strong>
                 </div> 
             </div>
-           
         </div>
 
         <div class="col-12 col-lg-4">
