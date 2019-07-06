@@ -15,18 +15,21 @@
         <div class="col-lg-4">
             <div class="row">
                 <div class="col-4">
-                    <div class="thropy bg-dark">
-                        <i class="fas fa-trophy" style="color: #ffbf00;"></i>
+                    <div class="trophy bg-dark">
+                        <i class="fas fa-trophy trophy-icon" style="color: #ffd700;"></i>
+                        <img src="<?=base_url('images/admin.jpg')?>" alt="" class="img-fluid" style="height: 100%;">
                     </div>
                 </div>
                 <div class="col-4">
-                    <div class="thropy bg-dark">
-                        <i class="fas fa-trophy"></i>
+                    <div class="trophy bg-dark">
+                        <i class="fas fa-trophy trophy-icon" style="color: #dedede;"></i>
+                        <img src="<?=base_url('images/admin.jpg')?>" alt="" class="img-fluid" style="height: 100%;">
                     </div>
                 </div>
                 <div class="col-4">
-                    <div class="thropy bg-dark">
-                        <i class="fas fa-trophy" style="color:#bf9b30;"></i>
+                    <div class="trophy bg-dark">
+                        <i class="fas fa-trophy trophy-icon" style="color:#cd7f32 ;"></i>
+                        <img src="<?=base_url('images/admin.jpg')?>" alt="" class="img-fluid" style="height: 100%;">
                     </div>
                 </div>
             </div>

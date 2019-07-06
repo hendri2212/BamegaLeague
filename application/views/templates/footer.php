@@ -1,7 +1,5 @@
     
         <div class="clearfix"></div>
- 
-    
     <!-- /#right-panel -->
 
     <!-- Scripts -->
@@ -25,7 +23,7 @@
         ); 
     </script>
 
-<script>
+    <script>
         $("[rel='tooltip']").tooltip();    
  
         $('.thumbnail').hover(

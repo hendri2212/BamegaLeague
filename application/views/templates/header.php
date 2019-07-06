@@ -42,8 +42,8 @@
 <!-- Sidebar -->
 <div class="nav-bar" id="sidebar-wrapper" style="padding-top: 62px;">
     <a href="<?=base_url()?>" class="btn btn-dark btn-block"><i class="fas fa-desktop" style="color:#ffcc00; font-size: 28px;"></i></a>
+    <a href="<?=base_url('content/communities')?>" class="btn btn-dark btn-block"><i class="fas fa-users" style="color:#ffcc00; font-size: 28px;"></i></a>
     <a href="<?=base_url()?>" class="btn btn-dark btn-block"><i class="fas fa-gamepad" style="color:#ffcc00; font-size: 28px;"></i></a>
-
 </div> 
 <!-- /#sidebar-wrapper -->
 

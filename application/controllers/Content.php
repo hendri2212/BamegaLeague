@@ -13,4 +13,7 @@ class Content extends MY_Controller {
 		$this->page('module/detail/detail');
 	}
 	
+	public function communities(){
+		$this->page('module/communities/communities');
+	}
 }
