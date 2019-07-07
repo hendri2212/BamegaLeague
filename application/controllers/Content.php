@@ -8,6 +8,10 @@ class Content extends MY_Controller {
 		// $this->pages('module/home/home', $data);
 		$this->page('module/home/home');
 	}
+	
+	public function login(){
+		$this->page('module/login/login');
+	}
 
 	public function detail(){
 		$this->page('module/detail/detail');
