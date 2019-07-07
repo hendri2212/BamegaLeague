@@ -7,7 +7,7 @@
                     <a href="#" class="btn btn-warning"><i class="fas fa-search"></i></a>                 
                 </form>
             </div>
-            <div class="p-2"><a href="" class="btn border-warning text-warning"><b>Buat Komunitas</b></a></div>
+            <div class="p-2"><a href="" class="btn border-warning text-warning"><b>Daftarkan Team</b></a></div>
         </div>
     </div>
     <div class="col-lg-4">

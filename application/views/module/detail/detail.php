@@ -13,7 +13,7 @@
         </div>
        
         <div class="col-lg-4">
-            <div class="d-flex flex-row">
+            <div class="d-flex flex-row justify-content-center">
                 <div class="trophy bg-dark m-1">
                     <i class="fas fa-trophy trophy-icon" style="color: #ffd700;"></i>
                     <img src="<?=base_url('images/admin.jpg')?>" alt="1st place" class="img-fluid" style="height: 100%;">
