@@ -4,13 +4,11 @@
 
     class MY_Controller extends CI_Controller {
 
-        public function page($content, $data = NULL)
-        {
+        public function page($content, $data = NULL) {
             $this->load->view('templates/header');
             $data['content'] = $this->load->view($content, $data, TRUE);
             $this->load->view('content', $data);
             $this->load->view('templates/footer');
         }
     }
- 
 ?>
