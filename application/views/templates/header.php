@@ -10,6 +10,6 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css')?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/all.min.css')?>">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script>
+    
 </head>
 

@@ -1,14 +1,18 @@
 <div class="order text-light">
     <div class="row">
+    <?php foreach($this->model->data_turnamen_byid($id) as $row) {?>
         <div class="col-lg-4">
             <div class="card bg-dark">
-                <img src="<?=base_url('images/dummy.png')?>" class="img-fluid">                
+                <img src="<?=base_url("images/$row->gambar_turnamen")?>" class="img-fluid">                
             </div>
 
             <div class="card bg-dark" style="height: 400px;">
                 <div class="card-header" style="background: rgb(29, 29, 29);">
                     <strong>DETAIL TURNAMEN</strong>
                 </div> 
+                <div class="card-body">
+                    <p><?=$row->deskripsi?></p>
+                </div>
             </div>
         </div>
        
@@ -41,6 +45,6 @@
                 </div> 
             </div>
         </div>
-        
+    <?php }?>
     </div>
 </div>

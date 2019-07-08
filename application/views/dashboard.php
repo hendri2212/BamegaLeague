@@ -4,6 +4,16 @@
         <div class="list-group list-group-flush">
             <a href="<?=base_url() ?>" class="list-group-item list-group-item-action bg-dark text-warning text-center"><i class="fas fa-desktop"></i></a>
             <a href="<?=base_url('content/communities') ?>" class="list-group-item list-group-item-action bg-dark text-warning text-center"><i class="fas fa-users"></i></a>
+            <div class="btn-group dropright">
+                <button type="button" class="list-group-item list-group-item-action bg-dark text-warning text-center dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user-edit"></i>
+                </button>
+                <div class="dropdown-menu bg-dark btn-dark" style="margin-left: 5rem;">
+                    <a href="<?=base_url('content/game') ?>" class="dropdown-item text-warning bg-dark">Game</a>
+                    <a href="<?=base_url('content/team') ?>" class="dropdown-item text-warning bg-dark">Team</a>
+                    <a href="<?=base_url('content/turnamen') ?>" class="dropdown-item text-warning bg-dark">Turnamen</a>
+                </div>
+            </div>
         </div>
     </div>
     <div id="page-content-wrapper">
@@ -16,7 +26,7 @@
                 <img src="<?=base_url('images/logo.png')?>" alt="logo" class="img-fluid" style="height: 5vh;">
             </a>
         </nav>
-        <div class="content p-lg-5 bg-mblack">
+        <div class="content pl-lg-5 pr-lg-5 pt-lg-4 bg-mblack">
             <?php
                 echo $content;
             ?>
