@@ -26,7 +26,7 @@
                 <img src="<?=base_url('images/logo.png')?>" alt="logo" class="img-fluid" style="height: 5vh;">
             </a>
         </nav>
-        <div class="content pl-lg-5 pr-lg-5 pt-lg-4 bg-mblack">
+        <div class="content pl-md-5 pr-md-3 pt-md-5 bg-mblack">
             <?php
                 echo $content;
             ?>
