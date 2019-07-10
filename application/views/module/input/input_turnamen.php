@@ -1,5 +1,5 @@
-<div class="d-flex flex-column">
-    <div class="card bg-dark text-light">
+<div class="d-flex flex-column justify-content-center">
+    <div class="card bg-dark text-light mb-3" id="form">
         <div class="card-body">
             <form action="">
                 <div class="form-group">

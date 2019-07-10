@@ -1,5 +1,5 @@
-<div class="d-flex flex-column">
-    <div class="card bg-dark text-light">
+<div class="d-flex flex-column justify-content-center p-3">
+    <div class="card bg-dark text-light mb-3" id="form">
         <div class="card-body">
             <form action="">
                 <div class="form-group">
@@ -24,7 +24,7 @@
                         <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                     </div>
                 </div>
-                <button type="submit" name="submit" class="btn btn-dark border-warning text-warning">Submit</button>
+                <button type="submit" name="submit" class="btn btn-dark btn-block border-warning text-warning">Submit</button>
             </form>
         </div>
     </div>
