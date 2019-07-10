@@ -1,7 +1,11 @@
-<!-- Widgets  -->
 <div class="row mb-3">
     <div class="col-lg-12">
         <div class="d-flex flex-row justify-content-center">
+            <?php foreach ($dataGame as $game) { ?>
+                <div class="btn btn-dark p-2 m-2" id="img">
+                    <img src="<?= base_url('images/'.$game->gambar_game) ?>" alt="pubg-mobile" class="img-fluid">
+                </div>
+            <?php } ?>
             <div class="btn btn-dark p-2 m-2" id="img">
                 <img src="<?= base_url('images/pubg-mobile.png') ?>" alt="pubg-mobile" class="img-fluid">
             </div>
@@ -10,11 +14,7 @@
             </div>
         </div>
     </div>
-
 </div>  
-
-<!-- /Widgets -->
-<!--  Traffic  -->
 <div class="row">
     <div class="col-lg-12">
         <div class="card bg-dark text-light">
@@ -35,11 +35,8 @@
             </div>
         </div>          
     </div>
-</div> <!-- /.row -->
-
-<!--  /Traffic -->
-<div class="clearfix"></div>
-<!-- Orders -->
+</div>
+<!-- <div class="clearfix"></div> -->
 <div class="orders">
     <div class="row">
         <div class="col-12">

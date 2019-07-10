@@ -2,11 +2,9 @@
 
 class Content extends MY_Controller {
 
-	public function index(){
-		// $data['jum_record'] = $this->model->record();
-		// $data['jum_record_k'] = $this->model->record_k();
-		// $this->pages('module/home/home', $data);
-		$this->page('module/home/home');
+	public function index() {
+		$data['dataGame'] = $this->model->dataGame();
+		$this->page('module/home/home', $data);
 	}
 	
 	public function login(){
