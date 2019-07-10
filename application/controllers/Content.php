@@ -2,11 +2,36 @@
 
 class Content extends MY_Controller {
 
+	public function __construct(){
+		parent::__construct();
+        $this->load->library('pagination');
+		$this->load->model('Model'); // Load model ke controller ini
+	}
+
+	// ----------------
+	// Data Game
+	// ----------------
 	public function index() {
 		$data['dataGame'] = $this->model->dataGame();
 		$this->page('module/home/home', $data);
 	}
+
+	public function game() {
+		$data['dataAllGame'] = $this->model->dataAllGame();
+		$this->page('module/game/game', $data);
+	}
+
+	public function enableGame($id_game) {
+		$data = $this->model->enableGame($id_game);
+	}
+
+	public function disableGame($id_game) {
+		$data = $this->model->disableGame($id_game);
+	}
 	
+	// ----------------
+	// Login
+	// ----------------
 	public function login(){
 		$this->page('module/login/login');
 	}
@@ -18,10 +43,6 @@ class Content extends MY_Controller {
 	
 	public function communities(){
 		$this->page('module/communities/communities');
-	}
-
-	public function game(){
-		$this->page('module/input/input_game');
 	}
 	
 	public function turnamen(){

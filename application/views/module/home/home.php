@@ -1,17 +1,12 @@
 <div class="row mb-3">
     <div class="col-lg-12">
-        <div class="d-flex flex-row justify-content-center">
+        <!-- <div class="d-flex flex-row justify-content-center"> -->
+        <div class="d-flex flex-row">
             <?php foreach ($dataGame as $game) { ?>
                 <div class="btn btn-dark p-2 m-2" id="img">
                     <img src="<?= base_url('images/'.$game->gambar_game) ?>" alt="pubg-mobile" class="img-fluid">
                 </div>
             <?php } ?>
-            <div class="btn btn-dark p-2 m-2" id="img">
-                <img src="<?= base_url('images/pubg-mobile.png') ?>" alt="pubg-mobile" class="img-fluid">
-            </div>
-            <div class="btn btn-dark p-2 m-2" id="img">
-                <img src="<?= base_url('images/mobile-legends.png') ?>" alt="mobile-legends" class="img-fluid">
-            </div>
         </div>
     </div>
 </div>  

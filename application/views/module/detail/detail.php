@@ -3,7 +3,7 @@
     <?php foreach($this->model->data_turnamen_byid($id) as $row) {?>
         <div class="col-lg-4">
             <div class="card bg-dark">
-                <img src="<?=base_url("images/$row->gambar_turnamen")?>" class="img-fluid">                
+                <img src="<?=base_url("images/$row->gambar_prize_pool")?>" class="img-fluid">                
             </div>
 
             <div class="card bg-dark" style="height: 400px;">
