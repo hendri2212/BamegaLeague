@@ -21,6 +21,10 @@ class Content extends MY_Controller {
 		$this->page('module/game/game', $data);
 	}
 
+	public function inputGame() {
+		$this->page('module/game/inputGame');
+	}
+
 	public function enableGame($id_game) {
 		$data = $this->model->enableGame($id_game);
 	}
@@ -29,6 +33,21 @@ class Content extends MY_Controller {
 		$data = $this->model->disableGame($id_game);
 	}
 	
+	public function team() {
+		$this->page('module/team/team');
+	}
+
+	public function inputTeam() {
+		$this->page('module/team/inputTeam');
+	}
+
+	public function turnamen() {
+		$this->page('module/turnamen/turnamen');
+	}
+
+	public function inputTurnamen() {
+		$this->page('module/turnamen/inputTurnamen');
+	}
 	// ----------------
 	// Login
 	// ----------------
@@ -43,14 +62,6 @@ class Content extends MY_Controller {
 	
 	public function communities(){
 		$this->page('module/communities/communities');
-	}
-	
-	public function turnamen(){
-		$this->page('module/input/input_turnamen');
-	}
-	
-	public function team(){
-		$this->page('module/input/input_team');
 	}
 
 	public function data_turnamen(){
