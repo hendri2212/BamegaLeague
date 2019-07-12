@@ -22,6 +22,10 @@ class Content extends MY_Controller {
 		$this->page('module/game/game', $data);
 	}
 
+	public function inputGame() {
+		$this->page('module/game/inputGame');
+	}
+
 	public function enableGame($id_game) {
 		$data = $this->model->enableGame($id_game);
 	}
@@ -42,6 +46,21 @@ class Content extends MY_Controller {
 		$this->page('module/input/input_turnamen');
 	}
 	
+	public function team() {
+		$this->page('module/team/team');
+	}
+
+	public function inputTeam() {
+		$this->page('module/team/inputTeam');
+	}
+
+	public function turnamen() {
+		$this->page('module/turnamen/turnamen');
+	}
+
+	public function inputTurnamen() {
+		$this->page('module/turnamen/inputTurnamen');
+	}
 	// ----------------
 	// Login
 	// ----------------
