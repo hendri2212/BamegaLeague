@@ -13,7 +13,7 @@ class Content extends MY_Controller {
 	// ----------------
 	public function index() {
 		$data['dataGame']		= $this->model->dataGame();
-		$data['dataTurnamen']	= $this->model->dataTurnamen();
+		$data['AllTurnamenAktif']= $this->model->AllTurnamenAktif();
 		$this->page('module/home/home', $data);
 	}
 
@@ -24,6 +24,65 @@ class Content extends MY_Controller {
 
 	public function inputGame() {
 		$this->page('module/game/inputGame');
+	}
+
+	public function editGame($id_game) {
+		$data['editGame'] = $this->model->editGame($id_game);
+		$this->page('module/game/editGame', $data);
+	}
+
+	public function updateGame($id_game) {
+		$config['upload_path']   = './assets/gambar/game/';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
+		$config['encrypt_name']  = TRUE; //Enkripsi nama yang terupload
+		$config['max_size']		= '1000000';
+		$config['max_width']	= '1024000';
+		$config['max_height']	= '768000';
+
+		$this->load->library('upload', $config);
+		$this->upload->do_upload('gambar_game');
+		$gbr = $this->upload->data();
+
+		$gambar = $gbr['file_name'];
+
+		// if (empty($gambar)) {
+		// 	$this->model->updateGame($id_game);
+		// } else {
+			$cek = $this->model->changeGambar($id_game);
+
+			$remove_image = "./assets/gambar/game/".$cek->gambar_game;
+			unlink($remove_image);
+			
+			$this->model->updateGame($id_game, $gambar);
+		// }
+	}
+
+	public function group($id_game) {
+		$data['dataGame']			= $this->model->dataGame();
+		// $data['AllTurnamenAktif']	= $this->model->AllTurnamenAktif();
+		$data['AllTurnamenDetail']	= $this->model->AllTurnamenDetail($id_game);
+		$this->page('module/home/home', $data);
+	}
+
+	public function saveGame() {
+		$config['upload_path']   = './assets/gambar/game/';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
+		$config['encrypt_name']  = TRUE; //Enkripsi nama yang terupload
+		$config['max_size']		= '1000000';
+		$config['max_width']	= '1024000';
+		$config['max_height']	= '768000';
+
+		$this->load->library('upload', $config);
+		$this->upload->do_upload('gambar_game');
+		$gbr = $this->upload->data();
+
+		$gambar = $gbr['file_name'];
+
+		if (empty($gambar)) {
+			$this->model->saveGame();
+		} else {
+			$this->model->saveGame($gambar);
+		}
 	}
 
 	public function enableGame($id_game) {
@@ -37,15 +96,14 @@ class Content extends MY_Controller {
 	// ----------------
 	// Data Turnamen
 	// ----------------
-	public function turnamenByID($id_game) {
-		$data['dataAllGame'] = $this->model->turnamenByID($id_game);
-		// $this->page('module/game/game', $data);
-	}
-	
 	public function turnamen() {
-		$this->page('module/input/input_turnamen');
+		$data['dataAllTurnamen']= $this->model->dataAllTurnamen();
+		$this->page('module/turnamen/turnamen', $data);
 	}
-	
+
+	// ----------------
+	// Data Team
+	// ----------------
 	public function team() {
 		$this->page('module/team/team');
 	}
@@ -54,13 +112,10 @@ class Content extends MY_Controller {
 		$this->page('module/team/inputTeam');
 	}
 
-	public function turnamen() {
-		$this->page('module/turnamen/turnamen');
-	}
-
 	public function inputTurnamen() {
 		$this->page('module/turnamen/inputTurnamen');
 	}
+
 	// ----------------
 	// Login
 	// ----------------
@@ -68,18 +123,21 @@ class Content extends MY_Controller {
 		$this->page('module/login/login');
 	}
 
-	public function detail($id){
-		$data['id']=$id;
-		$this->page('module/detail/detail',$data);
-	}
+	// public function detail($id){
+	// 	$data['id']=$id;
+	// 	$this->page('module/detail/detail',$data);
+	// }
 	
+	// ----------------
+	// Data Komunitas
+	// ----------------
 	public function communities(){
 		$this->page('module/communities/communities');
 	}
 	
-	public function team(){
-		$this->page('module/input/input_team');
-	}
+	// public function team(){
+	// 	$this->page('module/input/input_team');
+	// }
 
 	// public function data_turnamen(){
 	// 	$data = $this->model->data_turnamen();
