@@ -45,23 +45,22 @@ class Content extends MY_Controller {
 
 		$gambar = $gbr['file_name'];
 
-		// if (empty($gambar)) {
-		// 	$this->model->updateGame($id_game);
-		// } else {
+		if (empty($gambar)) {
+			$this->model->updateGame($id_game);
+		} else {
 			$cek = $this->model->changeGambar($id_game);
 
 			$remove_image = "./assets/gambar/game/".$cek->gambar_game;
 			unlink($remove_image);
 			
 			$this->model->updateGame($id_game, $gambar);
-		// }
+		}
 	}
 
 	public function group($id_game) {
 		$data['dataGame']			= $this->model->dataGame();
-		// $data['AllTurnamenAktif']	= $this->model->AllTurnamenAktif();
 		$data['AllTurnamenDetail']	= $this->model->AllTurnamenDetail($id_game);
-		$this->page('module/home/home', $data);
+		$this->page('module/group/group', $data);
 	}
 
 	public function saveGame() {

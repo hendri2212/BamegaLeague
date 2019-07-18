@@ -16,7 +16,7 @@
             <div class="card-body">
                 <h3 class="box-title">ALL TURNAMEN</h3>
                 <div class="row">
-                    <?php foreach($AllTurnamenAktif as $row) {?>
+                    <?php foreach($AllTurnamenDetail as $row) {?>
                         <div class="col-12 col-md-6 col-lg-4 col-xl-4">
                             <div class="card thumbnail">
                                 <a href="<?= base_url("content/detail/$row->id_turnamen")?>">
@@ -31,7 +31,6 @@
         </div>          
     </div>
 </div>
-    
 <!-- <div class="orders">
     <div class="row">
         <div class="col-12">
