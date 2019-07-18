@@ -1,6 +1,6 @@
 <div class="order text-light">
     <div class="row">
-    <?php foreach($this->model->turnamenByID($id_game) as $row) {?>
+    <?php foreach($detailOneTurnamen as $row) {?>
         <div class="col-lg-4">
             <div class="card bg-dark">
                 <img src="<?=base_url("images/$row->gambar_prize_pool")?>" class="img-fluid">                

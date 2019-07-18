@@ -100,6 +100,11 @@ class Content extends MY_Controller {
 		$this->page('module/turnamen/turnamen', $data);
 	}
 
+	public function detailOneTurnamen($id_turnamen) {
+		$data['detailOneTurnamen']= $this->model->detailOneTurnamen($id_turnamen);
+		$this->page('module/detail/detail',$data);
+	}
+
 	// ----------------
 	// Data Team
 	// ----------------
@@ -130,11 +135,6 @@ class Content extends MY_Controller {
 		$this->session->sess_destroy();
 		redirect (base_url('./'));
 	}
-
-	// public function detail($id){
-	// 	$data['id']=$id;
-	// 	$this->page('module/detail/detail',$data);
-	// }
 	
 	// ----------------
 	// Data Komunitas

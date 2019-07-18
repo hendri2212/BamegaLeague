@@ -85,6 +85,10 @@ class Model extends CI_Model {
 		return $this->db->get_where("data_turnamen", array('status_turnamen' => '1'))->result();
 	}
 
+	public function detailOneTurnamen($id_turnamen) {
+		return $this->db->get_where("data_turnamen", array('id_turnamen' => $id_turnamen))->result();
+	}
+
 	// ----------------
 	// Data Login
 	// ----------------
