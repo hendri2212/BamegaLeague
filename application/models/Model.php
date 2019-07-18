@@ -84,5 +84,29 @@ class Model extends CI_Model {
 	public function group() {
 		return $this->db->get_where("data_turnamen", array('status_turnamen' => '1'))->result();
 	}
+
+	// ----------------
+	// Data Login
+	// ----------------
+	public function cekLogin() {
+		$data = array(
+			'username' => $this->input->post('username'),
+			'password' => md5($this->input->post('password'))
+		);
+		$akses	= $this->db->get_where("data_login", $data)->row();
+		$cek	= $this->db->get_where("data_login", $data)->num_rows();
+		
+		if($cek > 0) {
+			$data_session = array(
+				'nama_lengkap'	=> $akses->nama_lengkap,
+				'level'			=> $akses->level,
+				'status'		=> "success"
+			);
+			$this->session->set_userdata($data_session);
+			redirect(base_url("content/"));
+		} else {
+			echo "<script>alert('Username atau Password yang Anda masukkan SALAH'); window.location.href='./'</script>";
+		}
+	}
 }
 ?>

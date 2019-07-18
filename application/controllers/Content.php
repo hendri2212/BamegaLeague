@@ -122,6 +122,15 @@ class Content extends MY_Controller {
 		$this->page('module/login/login');
 	}
 
+	public function cekLogin(){
+		$this->model->cekLogin();
+	}
+
+	public function logOut(){
+		$this->session->sess_destroy();
+		redirect (base_url('./'));
+	}
+
 	// public function detail($id){
 	// 	$data['id']=$id;
 	// 	$this->page('module/detail/detail',$data);
@@ -133,18 +142,4 @@ class Content extends MY_Controller {
 	public function communities(){
 		$this->page('module/communities/communities');
 	}
-	
-	// public function team(){
-	// 	$this->page('module/input/input_team');
-	// }
-
-	// public function data_turnamen(){
-	// 	$data = $this->model->data_turnamen();
-	// 	echo $data;
-	// }
-
-	// public function data_turnamen_byid(){
-	// 	$data = $this->model->data_turnamen_byid();
-	// 	echo $data;
-	// }
 }

@@ -4,7 +4,7 @@
             <span>LOGIN ADMINISTRATOR</span>
         </div>
         <div class="card-body">
-            <form class="form-signin" action="?module=login" method="POST">
+            <?php echo form_open("content/cekLogin"); ?>
                 <div class="form-group">
                     <label>Username</label>
                     <input type="text" class="form-control" placeholder="Username" name="username"/>
@@ -14,7 +14,7 @@
                     <input type="password" class="form-control" placeholder="Password" name="password"/>
                 </div>
                 <button class="btn btn-danger btn-block" type="submit" name="submit">Login</button>
-            </form>
+            <?php echo form_close(); ?>
         </div>
     </div>
 </div>
