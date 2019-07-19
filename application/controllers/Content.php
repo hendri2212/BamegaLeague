@@ -83,6 +83,12 @@ class Content extends MY_Controller {
 			$this->model->saveGame($gambar);
 		}
 	}
+	public function deleteGame($id_game){
+		$cek = $this->model->changeGambar($id_game);
+		$remove_image = "./assets/gambar/game/".$cek->gambar_game;
+		unlink($remove_image);
+		$this->model->deleteGame($id_game);
+	}
 
 	public function enableGame($id_game) {
 		$data = $this->model->enableGame($id_game);
@@ -156,6 +162,13 @@ class Content extends MY_Controller {
 		}
 	}
 
+	public function deleteTurnamen($id_turnamen){
+		$cek = $this->model->changeGambarTurnamen($id_turnamen);
+		$remove_image = "./assets/gambar/turnamen/".$cek->gambar_prize_pool;
+		unlink($remove_image);
+		$this->model->deleteTurnamen($id_turnamen);
+	}
+
 	// ----------------
 	// Data Team
 	// ----------------
@@ -217,7 +230,12 @@ class Content extends MY_Controller {
 		}
 	}
 
-
+	public function deleteTeam($id_team){
+		$cek = $this->model->changeGambarTeam($id_team);
+		$remove_image = "./assets/gambar/team/".$cek->logo_team;
+		unlink($remove_image);
+		$this->model->deleteTeam($id_team);
+	}
 	// ----------------
 	// Login
 	// ----------------
