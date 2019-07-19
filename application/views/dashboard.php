@@ -28,9 +28,9 @@
                             <a href="<?= base_url('content/turnamen') ?>" class="dropdown-item text-warning bg-dark">Turnamen</a>
                         </div>
                     </div>
-                    <a href="<?= base_url('content/logOut') ?>">Logout</a>
+                    <a href="<?= base_url('content/logOut') ?>" class="list-group-item list-group-item-action bg-dark text-warning text-center">Logout</a>
                     <?php } else { ?>
-                        <a href="<?= base_url('content/login') ?>">Login</a>
+                        <a href="<?= base_url('content/login') ?>" class="list-group-item list-group-item-action bg-dark text-warning text-center">Login</a>
                     <?php } ?>
             </div>
         </div>
@@ -45,7 +45,7 @@
                 </a>
             </nav>
             <!-- <div class="content pl-md-5 pr-md-3 pt-md-5 bg-mblack"> -->
-            <div class="content pl-md-5 pr-md-3 bg-mblack">
+            <div class="content pl-lg-5 pr-md-3 bg-mblack">
                 <?php
                     echo $content;
                 ?>
