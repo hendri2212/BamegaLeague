@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="<?= base_url().'assets/css/cs-skin-elastic.css' ?>">
     <link rel="stylesheet" href="<?= base_url().'assets/css/all.min.css' ?>">
 </head>
-<body>
+<body class="bg-mblack">
     <div class="d-flex" id="wrapper">
         <div class="bg-dark" id="sidebar-wrapper">
             <div class="list-group list-group-flush">
