@@ -31,7 +31,7 @@
                             <td><?= $AllTurnamen->gambar_prize_pool ?></td>
                             <td>
                                 <div class="btn-group btn-group-toggle">
-                                    <a href="<?= base_url('content/editGame/'.$AllTurnamen->id_game) ?>" class="btn btn-sm bg-info text-white">Edit</a>
+                                    <a href="<?= base_url('content/editTurnamen/'.$AllTurnamen->id_turnamen) ?>" class="btn btn-sm bg-info text-white">Edit</a>
                                     <label class="btn btn-sm btn-danger">Delete</label>
                                 </div>
                                 <?php if ($AllTurnamen->status_turnamen == 0): ?>

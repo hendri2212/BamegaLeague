@@ -99,26 +99,124 @@ class Content extends MY_Controller {
 		$data['dataAllTurnamen']= $this->model->dataAllTurnamen();
 		$this->page('module/turnamen/turnamen', $data);
 	}
-
+	public function inputTurnamen() {
+		$this->page('module/turnamen/inputTurnamen');
+	}
 	public function detailOneTurnamen($id_turnamen) {
 		$data['detailOneTurnamen']= $this->model->detailOneTurnamen($id_turnamen);
 		$this->page('module/detail/detail',$data);
+	}
+	public function saveTurnamen() {
+		$config['upload_path']   = './assets/gambar/turnamen/';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
+		$config['encrypt_name']  = TRUE; //Enkripsi nama yang terupload
+		$config['max_size']		= '1000000';
+		$config['max_width']	= '1024000';
+		$config['max_height']	= '768000';
+
+		$this->load->library('upload', $config);
+		$this->upload->do_upload('gambar_prize_pool');
+		$gbr = $this->upload->data();
+
+		$gambar = $gbr['file_name'];
+
+		if (empty($gambar)) {
+			$this->model->saveTurnamen();
+		} else {
+			$this->model->saveTurnamen($gambar);
+		}
+	}
+	public function editTurnamen($id_turnamen) {
+		$data['editTurnamen'] = $this->model->editTurnamen($id_turnamen);
+		$this->page('module/turnamen/editTurnamen', $data);
+	}
+	public function updateTurnamen($id_turnamen) {
+		$config['upload_path']   = './assets/gambar/turnamen/';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
+		$config['encrypt_name']  = TRUE; //Enkripsi nama yang terupload
+		$config['max_size']		= '1000000';
+		$config['max_width']	= '1024000';
+		$config['max_height']	= '768000';
+
+		$this->load->library('upload', $config);
+		$this->upload->do_upload('gambar_prize_pool');
+		$gbr = $this->upload->data();
+
+		$gambar = $gbr['file_name'];
+
+		if (empty($gambar)) {
+			$this->model->updateturnamen($id_turnamen);
+		} else {
+			$cek = $this->model->changeGambarTurnamen($id_turnamen);
+
+			$remove_image = "./assets/gambar/turnamen/".$cek->gambar_prize_pool;
+			unlink($remove_image);
+			
+			$this->model->updateTurnamen($id_turnamen, $gambar);
+		}
 	}
 
 	// ----------------
 	// Data Team
 	// ----------------
 	public function team() {
-		$this->page('module/team/team');
+		$data['dataAllTeam'] = $this->model->dataAllTeam();
+		$this->page('module/team/team', $data);
 	}
 
 	public function inputTeam() {
 		$this->page('module/team/inputTeam');
 	}
+	public function saveTeam() {
+		$config['upload_path']   = './assets/gambar/team/';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
+		$config['encrypt_name']  = TRUE; //Enkripsi nama yang terupload
+		$config['max_size']		= '1000000';
+		$config['max_width']	= '1024000';
+		$config['max_height']	= '768000';
 
-	public function inputTurnamen() {
-		$this->page('module/turnamen/inputTurnamen');
+		$this->load->library('upload', $config);
+		$this->upload->do_upload('logo_team');
+		$gbr = $this->upload->data();
+
+		$gambar = $gbr['file_name'];
+
+		if (empty($gambar)) {
+			$this->model->saveTeam();
+		} else {
+			$this->model->saveTeam($gambar);
+		}
 	}
+	public function editTeam($id_team) {
+		$data['editTeam'] = $this->model->editTeam($id_team);
+		$this->page('module/team/editTeam', $data);
+	}
+	public function updateTeam($id_team) {
+		$config['upload_path']   = './assets/gambar/team/';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
+		$config['encrypt_name']  = TRUE; //Enkripsi nama yang terupload
+		$config['max_size']		= '1000000';
+		$config['max_width']	= '1024000';
+		$config['max_height']	= '768000';
+
+		$this->load->library('upload', $config);
+		$this->upload->do_upload('logo_team');
+		$gbr = $this->upload->data();
+
+		$gambar = $gbr['file_name'];
+
+		if (empty($gambar)) {
+			$this->model->updateteam($id_team);
+		} else {
+			$cek = $this->model->changeGambarTeam($id_team);
+
+			$remove_image = "./assets/gambar/team/".$cek->logo_team;
+			unlink($remove_image);
+			
+			$this->model->updateTeam($id_team, $gambar);
+		}
+	}
+
 
 	// ----------------
 	// Login

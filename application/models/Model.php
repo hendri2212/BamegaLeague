@@ -67,7 +67,7 @@ class Model extends CI_Model {
 	// Data Turnamen
 	// ----------------
     public function dataAllTurnamen() {
-		$this->db->select('data_turnamen.id_game, nama_game, tanggal_turnamen, deskripsi, gambar_prize_pool, status_turnamen');
+		$this->db->select('data_turnamen.id_game, id_turnamen, nama_game, tanggal_turnamen, deskripsi, gambar_prize_pool, status_turnamen');
 		$this->db->from('data_game');
 		$this->db->join('data_turnamen', 'data_game.id_game = data_turnamen.id_game');
 		return $this->db->get()->result();
@@ -88,7 +88,70 @@ class Model extends CI_Model {
 	public function detailOneTurnamen($id_turnamen) {
 		return $this->db->get_where("data_turnamen", array('id_turnamen' => $id_turnamen))->result();
 	}
+	public function saveTurnamen($gambar) {
+		$data = array(
+			"id_game"			=> $this->input->post('id_game'),
+			"tanggal_turnamen"	=> $this->input->post('tanggal_turnamen'),
+			"gambar_prize_pool"	=> $gambar,
+			"deskripsi"			=> $this->input->post('deskripsi')
+		);
+		$this->db->insert('data_turnamen', $data);
+		redirect('content/turnamen');
+	}
+	public function editTurnamen($id_turnamen) {
+        return $this->db->get_where("data_turnamen", array('id_turnamen' => $id_turnamen))->row();
+    }
+	public function updateTurnamen($id_turnamen, $gambar) {
+		$data = array(
+			"tanggal_turnamen"		=> $this->input->post('tanggal_turnamen'),
+			"gambar_prize_pool"	=> $gambar,
+			"deskripsi"=> $this->input->post('deskripsi')
+		);
+		$this->db->where('id_turnamen', $id_turnamen);
+		$this->db->update('data_turnamen', $data);
+		redirect('content/turnamen');
+	}
+	public function changeGambarTurnamen($id_turnamen) {
+		$this->db->select("gambar_prize_pool");
+		return $this->db->get_where("data_turnamen", array("id_turnamen" => $id_turnamen))->row();
+	}
 
+	// ----------------
+	// Data Team
+	// ----------------
+	public function dataAllTeam() {
+		$this->db->select('data_team.id_game, id_team, nama_team, logo_team, deskripsi_team, tanggal_daftar');
+		$this->db->from('data_game');
+		$this->db->join('data_team', 'data_game.id_game = data_team.id_game');
+		return $this->db->get()->result();
+	}
+	public function saveTeam($gambar) {
+		$data = array(
+			"id_game"			=> $this->input->post('id_game'),
+			"nama_team"			=> $this->input->post('nama_team'),
+			"deskripsi_team"	=> $this->input->post('deskripsi_team'),
+			"logo_team"			=> $gambar
+		);
+		$this->db->insert('data_team', $data);
+		redirect('content/team');
+	}
+	public function editTeam($id_team) {
+		return $this->db->get_where("data_team", array('id_team' => $id_team))->row();
+	}
+	public function updateTeam($id_team, $gambar) {
+		$data = array(
+			"nama_team"			=> $this->input->post('nama_team'),
+			"deskripsi_team"	=> $this->input->post('deskripsi_team'),
+			"logo_team"			=> $gambar
+		);
+		$this->db->where('id_team', $id_team);
+		$this->db->update('data_team', $data);
+		redirect('content/team');
+	}
+	public function changeGambarTeam($id_team) {
+		$this->db->select("logo_team");
+		return $this->db->get_where("data_team", array("id_team" => $id_team))->row();
+	}
 	// ----------------
 	// Data Login
 	// ----------------

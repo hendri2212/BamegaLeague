@@ -1,12 +1,13 @@
 <h3 class="pb-3 text-light border-bottom border-warning col-12">Input Data Turnamen</h3>
 <div class="card bg-dark text-light">
     <div class="card-body">
-        <?php echo form_open("content/saveGame", array('enctype'=>'multipart/form-data')); ?>
+        <?php echo form_open("content/saveTurnamen", array('enctype'=>'multipart/form-data')); ?>
             <div class="form-group row">
                 <label class="col-lg-1">Nama Game</label>
                 <div class="col-lg-11">
                     <select name="id_game" class="form-control">
-                        <option value="">1</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
                     </select>
                 </div>
             </div>
