@@ -26,6 +26,7 @@
                             <a href="<?= base_url('content/game') ?>" class="dropdown-item text-warning bg-dark">Game</a>
                             <a href="<?= base_url('content/team') ?>" class="dropdown-item text-warning bg-dark">Team</a>
                             <a href="<?= base_url('content/turnamen') ?>" class="dropdown-item text-warning bg-dark">Turnamen</a>
+                            <a href="<?= base_url('content/pemain') ?>" class="dropdown-item text-warning bg-dark">Pemain</a>
                         </div>
                     </div>
                     <a href="<?= base_url('content/logOut') ?>" class="list-group-item list-group-item-action bg-dark text-warning text-center">Logout</a>

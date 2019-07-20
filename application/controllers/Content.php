@@ -265,6 +265,83 @@ class Content extends MY_Controller {
 	// Data Komunitas
 	// ----------------
 	public function communities(){
-		$this->page('module/communities/communities');
+		$data['dataAllCommunities'] = $this->model->dataAllCommunities();
+		$this->page('module/communities/communities', $data);
+	}
+
+	public function detailCommunities($id_pemain) {
+		$data['detailCommunities'] = $this->model->detailCommunities($id_pemain);
+		$this->page('module/communities/detailCommunities', $data);
+	}
+
+	// ----------------
+	// Data Pemain
+	// ----------------
+	public function pemain(){
+		$data['dataAllCommunities'] = $this->model->dataAllCommunities();
+		$this->page('module/pemain/pemain', $data);
+	}
+
+	public function inputPemain() {
+		$this->page('module/pemain/inputPemain');
+	}
+
+	public function savePemain() {
+		$config['upload_path']   = './assets/gambar/pemain/';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
+		$config['encrypt_name']  = TRUE; //Enkripsi nama yang terupload
+		$config['max_size']		= '1000000';
+		$config['max_width']	= '1024000';
+		$config['max_height']	= '768000';
+
+		$this->load->library('upload', $config);
+		$this->upload->do_upload('foto_pemain');
+		$gbr = $this->upload->data();
+
+		$gambar = $gbr['file_name'];
+
+		if (empty($gambar)) {
+			$this->model->savePemain();
+		} else {
+			$this->model->savePemain($gambar);
+		}
+	}
+
+	public function editPemain($id_pemain) {
+		$data['editPemain'] = $this->model->editPemain($id_pemain);
+		$this->page('module/pemain/editPemain', $data);
+	}
+
+	public function updatePemain($id_pemain) {
+		$config['upload_path']   = './assets/gambar/pemain/';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
+		$config['encrypt_name']  = TRUE; //Enkripsi nama yang terupload
+		$config['max_size']		= '1000000';
+		$config['max_width']	= '1024000';
+		$config['max_height']	= '768000';
+
+		$this->load->library('upload', $config);
+		$this->upload->do_upload('foto_pemain');
+		$gbr = $this->upload->data();
+
+		$gambar = $gbr['file_name'];
+
+		if (empty($gambar)) {
+			$this->model->updatePemain($id_pemain);
+		} else {
+			$cek = $this->model->changeGambarPemain($id_pemain);
+
+			$remove_image = "./assets/gambar/pemain/".$cek->foto_pemain;
+			unlink($remove_image);
+			
+			$this->model->updatePemain($id_pemain, $gambar);
+		}
+	}
+
+	public function deletePemain($id_pemain){
+		$cek = $this->model->changeGambarPemain($id_pemain);
+		$remove_image = "./assets/gambar/pemain/".$cek->foto_pemain;
+		unlink($remove_image);
+		$this->model->deletePemain($id_pemain);
 	}
 }

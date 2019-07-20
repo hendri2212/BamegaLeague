@@ -202,5 +202,62 @@ class Model extends CI_Model {
 			echo "<script>alert('Username atau Password yang Anda masukkan SALAH'); window.location.href='./'</script>";
 		}
 	}
+	// ----------------
+	// Data Komunitas
+	// ----------------
+	public function dataAllCommunities() {
+		$this->db->select('data_pemain.id_team, id_pemain, kode_pemain, nama_pemain, foto_pemain, no_handphone, alamat');
+		$this->db->from('data_team');
+		$this->db->join('data_pemain', 'data_team.id_team = data_pemain.id_team');
+		return $this->db->get()->result();
+	}
+
+	public function detailCommunities($id_pemain) {
+        return $this->db->get_where("data_pemain", array('id_pemain' => $id_pemain))->row();
+	}
+	// ----------------
+	// Data Pemain
+	// ----------------
+	public function savePemain($gambar) {
+		$data = array(
+			"id_team"		=> $this->input->post('id_team'),
+			"kode_pemain"	=> $this->input->post('kode_pemain'),
+			"nama_pemain"	=> $this->input->post('nama_pemain'),
+			"no_handphone"	=> $this->input->post('no_handphone'),
+			"alamat"		=> $this->input->post('alamat'),
+			"foto_pemain"	=> $gambar
+		);
+		$this->db->insert('data_pemain', $data);
+		redirect('content/pemain');
+	}
+
+	public function editPemain($id_pemain) {
+		return $this->db->get_where("data_pemain", array('id_pemain' => $id_pemain))->row();
+	}
+
+	public function updatePemain($id_pemain, $gambar) {
+		$data = array(
+			"id_team"		=> $this->input->post('id_team'),
+			"kode_pemain"	=> $this->input->post('kode_pemain'),
+			"nama_pemain"	=> $this->input->post('nama_pemain'),
+			"no_handphone"	=> $this->input->post('no_handphone'),
+			"alamat"		=> $this->input->post('alamat'),
+			"foto_pemain"	=> $gambar
+		);
+		$this->db->where('id_pemain', $id_pemain);
+		$this->db->update('data_pemain', $data);
+		redirect('content/pemain');
+	}
+
+	public function changeGambarPemain($id_pemain) {
+		$this->db->select("foto_pemain");
+		return $this->db->get_where("data_pemain", array("id_pemain" => $id_pemain))->row();
+	}
+
+	public function deletePemain($id_pemain) {
+		$this->db->where('id_pemain', $id_pemain);
+		$this->db->delete('data_pemain');
+		redirect('content/pemain');
+	}
 }
 ?>
