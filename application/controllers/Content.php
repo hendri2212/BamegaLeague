@@ -313,9 +313,9 @@ class Content extends MY_Controller {
 	}
 
 	public function updatePemain($id_pemain) {
-		$config['upload_path']   = './assets/gambar/pemain/';
-		$config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
-		$config['encrypt_name']  = TRUE; //Enkripsi nama yang terupload
+		$config['upload_path']  = './assets/gambar/pemain/';
+		$config['allowed_types']= 'gif|jpg|png|jpeg|bmp';
+		$config['encrypt_name'] = TRUE; //Enkripsi nama yang terupload
 		$config['max_size']		= '1000000';
 		$config['max_width']	= '1024000';
 		$config['max_height']	= '768000';

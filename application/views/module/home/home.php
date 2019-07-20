@@ -1,7 +1,7 @@
 <div class="row mb-3">
     <div class="col-lg-12">
         <!-- <div class="d-flex flex-row justify-content-center"> -->
-        <div class="d-flex flex-row justify-content-center">
+        <div class="d-flex flex-row">
             <?php foreach ($dataGame as $game) { ?>
                 <div class="btn btn-dark p-2 m-2" id="img">
                     <a href="<?= base_url("content/group/$game->id_game") ?>"><img src="<?= base_url('./assets/gambar/game/'.$game->gambar_game) ?>" alt="<?= $game->nama_game ?>" class="img-fluid"></a>

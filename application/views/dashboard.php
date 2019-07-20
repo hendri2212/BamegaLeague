@@ -18,17 +18,17 @@
                 <a href="<?= base_url() ?>" class="list-group-item list-group-item-action bg-dark text-warning text-center"><i class="fas fa-desktop"></i></a>
                 <a href="<?= base_url('content/communities') ?>" class="list-group-item list-group-item-action bg-dark text-warning text-center"><i class="fas fa-users"></i></a>
                 <?php if ($this->session->userdata("status") == "success") { ?>
-                    <div class="btn-group dropright">
+                    <!-- <div class="btn-group dropright">
                         <button type="button" class="list-group-item list-group-item-action bg-dark text-warning text-center dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-user-edit"></i>
                         </button>
-                        <div class="dropdown-menu bg-dark btn-dark" style="margin-left: 5rem;">
+                        <div class="dropdown-menu bg-dark btn-dark" style="margin-left: 5rem;"> -->
                             <a href="<?= base_url('content/game') ?>" class="dropdown-item text-warning bg-dark">Game</a>
                             <a href="<?= base_url('content/team') ?>" class="dropdown-item text-warning bg-dark">Team</a>
                             <a href="<?= base_url('content/turnamen') ?>" class="dropdown-item text-warning bg-dark">Turnamen</a>
                             <a href="<?= base_url('content/pemain') ?>" class="dropdown-item text-warning bg-dark">Pemain</a>
-                        </div>
-                    </div>
+                        <!-- </div>
+                    </div> -->
                     <a href="<?= base_url('content/logOut') ?>" class="list-group-item list-group-item-action bg-dark text-warning text-center">Logout</a>
                     <?php } else { ?>
                         <a href="<?= base_url('content/login') ?>" class="list-group-item list-group-item-action bg-dark text-warning text-center">Login</a>
