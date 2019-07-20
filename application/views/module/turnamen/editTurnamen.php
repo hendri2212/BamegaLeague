@@ -1,4 +1,4 @@
-<h3 class="pb-3 text-light border-bottom border-warning col-12">Edit Data Turnamen</h3>
+<h3 class="mt-3 pb-3 text-light border-bottom border-warning col-12">Edit Data Turnamen</h3>
 <div class="card bg-dark text-light">
     <div class="card-body">
         <?php echo form_open("content/updateTurnamen/".$editTurnamen->id_turnamen, array('enctype'=>'multipart/form-data')); ?>
