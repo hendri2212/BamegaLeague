@@ -99,13 +99,16 @@ class Content extends MY_Controller {
 		$data['dataAllTurnamen']= $this->model->dataAllTurnamen();
 		$this->page('module/turnamen/turnamen', $data);
 	}
+
 	public function inputTurnamen() {
 		$this->page('module/turnamen/inputTurnamen');
 	}
+
 	public function detailOneTurnamen($id_turnamen) {
 		$data['detailOneTurnamen']= $this->model->detailOneTurnamen($id_turnamen);
 		$this->page('module/detail/detail',$data);
 	}
+
 	public function saveTurnamen() {
 		$config['upload_path']   = './assets/gambar/turnamen/';
 		$config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
@@ -126,10 +129,12 @@ class Content extends MY_Controller {
 			$this->model->saveTurnamen($gambar);
 		}
 	}
+
 	public function editTurnamen($id_turnamen) {
 		$data['editTurnamen'] = $this->model->editTurnamen($id_turnamen);
 		$this->page('module/turnamen/editTurnamen', $data);
 	}
+
 	public function updateTurnamen($id_turnamen) {
 		$config['upload_path']   = './assets/gambar/turnamen/';
 		$config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
@@ -165,8 +170,10 @@ class Content extends MY_Controller {
 	}
 
 	public function inputTeam() {
-		$this->page('module/team/inputTeam');
+		$data['dataAllGame'] = $this->model->dataAllGame();
+		$this->page('module/team/inputTeam', $data);
 	}
+
 	public function saveTeam() {
 		$config['upload_path']   = './assets/gambar/team/';
 		$config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
@@ -187,10 +194,12 @@ class Content extends MY_Controller {
 			$this->model->saveTeam($gambar);
 		}
 	}
+
 	public function editTeam($id_team) {
 		$data['editTeam'] = $this->model->editTeam($id_team);
 		$this->page('module/team/editTeam', $data);
 	}
+
 	public function updateTeam($id_team) {
 		$config['upload_path']   = './assets/gambar/team/';
 		$config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
