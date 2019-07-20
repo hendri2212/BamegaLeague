@@ -63,6 +63,12 @@ class Model extends CI_Model {
 		return $this->db->get_where("data_game", array("id_game" => $id_game))->row();
 	}
 
+	public function deleteGame($id_game) {
+		$this->db->where('id_game', $id_game);
+		$this->db->delete('data_game');
+		redirect('content/game');
+	}
+
 	// ----------------
 	// Data Turnamen
 	// ----------------
@@ -108,7 +114,8 @@ class Model extends CI_Model {
 		$data = array(
 			"tanggal_turnamen"	=> $this->input->post('tanggal_turnamen'),
 			"gambar_prize_pool"	=> $gambar,
-			"deskripsi"			=> $this->input->post('deskripsi')
+			"deskripsi"			=> $this->input->post('deskripsi'),
+			"status_turnamen"	=>$this->input->post('status_turnamen')
 		);
 		$this->db->where('id_turnamen', $id_turnamen);
 		$this->db->update('data_turnamen', $data);
@@ -118,6 +125,12 @@ class Model extends CI_Model {
 	public function changeGambarTurnamen($id_turnamen) {
 		$this->db->select("gambar_prize_pool");
 		return $this->db->get_where("data_turnamen", array("id_turnamen" => $id_turnamen))->row();
+	}
+
+	public function deleteTurnamen($id_turnamen) {
+		$this->db->where('id_turnamen', $id_turnamen);
+		$this->db->delete('data_turnamen');
+		redirect('content/turnamen');
 	}
 
 	// ----------------
@@ -159,6 +172,12 @@ class Model extends CI_Model {
 	public function changeGambarTeam($id_team) {
 		$this->db->select("logo_team");
 		return $this->db->get_where("data_team", array("id_team" => $id_team))->row();
+	}
+
+	public function deleteTeam($id_team) {
+		$this->db->where('id_team', $id_team);
+		$this->db->delete('data_team');
+		redirect('content/team');
 	}
 	// ----------------
 	// Data Login

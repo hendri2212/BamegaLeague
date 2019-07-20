@@ -20,6 +20,23 @@
                     <input name="gambar_prize_pool" type="file" class="form-control">
                 </div>
             </div>
+            <div class="form-group row">
+                <label class="col-lg-1">Status Turnamen</label>
+                <div class="col-lg-11">
+                    <select name="status_turnamen" class="form-control">
+                    <?php if($editTurnamen->status_turnamen == 0):?>
+                        <option value="<?= $editTurnamen->status_turnamen ?>">Pending</option>
+                    <?php elseif($editTurnamen->status_turnamen == 1):?>
+                        <option value="<?=$editTurnamen->status_turnamen?>">On Going</option>
+                    <?php else:?>
+                        <option value="<?= $editTurnamen->status_turnamen ?>">Finish</option>
+                    <?php endif ?>
+                    <option value="0">Pending</option>
+                    <option value="1">On Going</option>
+                    <option value="2">Finish</option>
+                    </select>
+                </div>
+            </div>
             <button type="submit" name="submit" class="btn btn-warning float-right">Update</button>
             <input type="button" value="Cancel" class="btn btn-info float-right mr-2" onclick="javascript:window.history.back();">
         <?php echo form_close(); ?>

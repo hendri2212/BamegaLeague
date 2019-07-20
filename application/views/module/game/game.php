@@ -36,7 +36,7 @@
                                         <?php else: ?>
                                             <a href="<?= base_url('content/disableGame/'.$game->id_game) ?>" class="btn btn-sm bg-success text-white">Aktif</a>
                                         <?php endif ?>
-                                        <label class="btn btn-sm btn-danger">Delete</label>
+                                        <a href="<?= base_url('content/deleteGame/'.$game->id_game) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Hapus Data?');">Delete</a>
                                     </div>
                                 </td>
                             </tr>

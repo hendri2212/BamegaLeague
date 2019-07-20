@@ -35,7 +35,7 @@
                                 <td>
                                     <div class="btn-group btn-group-toggle">
                                         <a href="<?= base_url('content/editTeam/'.$team->id_team) ?>" class="btn btn-sm bg-info text-white">Edit</a>
-                                        <label class="btn btn-sm btn-danger">Delete</label>
+                                        <a href="<?= base_url('content/deleteTeam/'.$team->id_team) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Hapus Data?');">Delete</a>
                                     </div>
                                 </td>
                             </tr>
