@@ -14,25 +14,25 @@
 <body class="bg-mblack">
     <div class="d-flex" id="wrapper">
         <div class="bg-dark" id="sidebar-wrapper">
-            <div class="list-group list-group-flush">
-                <a href="<?= base_url() ?>" class="list-group-item list-group-item-action bg-dark text-warning text-center"><i class="fas fa-desktop"></i></a>
-                <a href="<?= base_url('content/communities') ?>" class="list-group-item list-group-item-action bg-dark text-warning text-center"><i class="fas fa-users"></i></a>
+            <div class="list-group list-group-flush text-center">
+                <a href="<?= base_url() ?>" class="list-group-item list-group-item-action bg-dark text-warning"><i class="fas fa-desktop"></i></a>
+                <a href="<?= base_url('content/communities') ?>" class="list-group-item list-group-item-action bg-dark text-warning"><i class="fas fa-users"></i></a>
                 <?php if ($this->session->userdata("status") == "success") { ?>
                     <!-- <div class="btn-group dropright">
-                        <button type="button" class="list-group-item list-group-item-action bg-dark text-warning text-center dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="list-group-item list-group-item-action bg-dark text-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-user-edit"></i>
                         </button>
                         <div class="dropdown-menu bg-dark btn-dark" style="margin-left: 5rem;"> -->
-                            <a href="<?= base_url('content/game') ?>" class="dropdown-item text-warning bg-dark">Game</a>
-                            <a href="<?= base_url('content/team') ?>" class="dropdown-item text-warning bg-dark">Team</a>
-                            <a href="<?= base_url('content/turnamen') ?>" class="dropdown-item text-warning bg-dark">Turnamen</a>
-                            <a href="<?= base_url('content/pemain') ?>" class="dropdown-item text-warning bg-dark">Pemain</a>
-                            <a href="<?= base_url('content/nilai') ?>" class="dropdown-item text-warning bg-dark">Nilai</a>
+                            <a href="<?= base_url('content/game') ?>" class="list-group-item list-group-item-action bg-dark text-warning"><i class="fas fa-gamepad"></i></a>
+                            <a href="<?= base_url('content/turnamen') ?>" class="list-group-item list-group-item-action bg-dark text-warning"><i class="fas fa-trophy"></i></a>
+                            <a href="<?= base_url('content/team') ?>" class="list-group-item list-group-item-action bg-dark text-warning"><i class="fas fa-users-cog"></i></a>
+                            <a href="<?= base_url('content/pemain') ?>" class="list-group-item list-group-item-action bg-dark text-warning"><i class="fas fa-user-cog"></i></a>
+                            <a href="<?= base_url('content/nilai') ?>" class="list-group-item list-group-item-action bg-dark text-warning"><i class="far fa-chart-bar"></i></a>
                         <!-- </div>
                     </div> -->
-                    <a href="<?= base_url('content/logOut') ?>" class="list-group-item list-group-item-action bg-dark text-warning text-center">Logout</a>
+                    <a href="<?= base_url('content/logOut') ?>" class="list-group-item list-group-item-action bg-dark text-danger"><i class="fas fa-sign-out-alt"></i></a>
                     <?php } else { ?>
-                        <a href="<?= base_url('content/login') ?>" class="list-group-item list-group-item-action bg-dark text-warning text-center">Login</a>
+                        <a href="<?= base_url('content/login') ?>" class="list-group-item list-group-item-action bg-dark text-info"><i class="fas fa-sign-in-alt"></i></a>
                     <?php } ?>
             </div>
         </div>

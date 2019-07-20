@@ -25,6 +25,10 @@ Googel Fonts  */
   /* height: 10rem; */
   height: 54px;
 }
+#profile{
+  width: 180px;
+  height: auto;
+}
 #form{
   width: 550px;
   margin: auto;
@@ -48,6 +52,9 @@ Googel Fonts  */
   #img{
     width: 9rem;
     height: 6rem;
+  }
+  #profile{
+    margin : auto;
   }
 }
 .trophy{
@@ -94,10 +101,10 @@ body {
 }
 
 #sidebar-wrapper {
-  height: 90vh;
+  height: 90%;
   position: fixed;
-  bottom: 0;
   margin-left: -15rem;
+  top: 4rem;
   z-index: 15;
   -webkit-transition: margin .25s ease-out;
   -moz-transition: margin .25s ease-out;
