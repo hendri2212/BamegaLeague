@@ -137,7 +137,7 @@ class Model extends CI_Model {
 	// Data Team
 	// ----------------
 	public function dataAllTeam() {
-		$this->db->select('data_team.id_game, id_team, nama_team, logo_team, deskripsi_team, tanggal_daftar');
+		$this->db->select('data_team.id_game, id_team, nama_game, nama_team, logo_team, deskripsi_team, tanggal_daftar');
 		$this->db->from('data_game');
 		$this->db->join('data_team', 'data_game.id_game = data_team.id_game');
 		return $this->db->get()->result();
@@ -206,7 +206,7 @@ class Model extends CI_Model {
 	// Data Komunitas
 	// ----------------
 	public function dataAllCommunities() {
-		$this->db->select('data_pemain.id_team, id_pemain, kode_pemain, nama_pemain, foto_pemain, no_handphone, alamat');
+		$this->db->select('data_pemain.id_team, id_pemain, nama_team, kode_pemain, nama_pemain, foto_pemain, no_handphone, alamat');
 		$this->db->from('data_team');
 		$this->db->join('data_pemain', 'data_team.id_team = data_pemain.id_team');
 		return $this->db->get()->result();
@@ -258,6 +258,17 @@ class Model extends CI_Model {
 		$this->db->where('id_pemain', $id_pemain);
 		$this->db->delete('data_pemain');
 		redirect('content/pemain');
+	}
+	// ----------------
+	// Data Nilai
+	// ----------------
+	public function dataNilai() {
+		$this->db->select('data_nilai.id_team, id_nilai, nama_team, nama_group, nama_match, nilai_rank, nilai_kill, nilai_point');
+		$this->db->from('data_team');
+		$this->db->from('data_group');
+		$this->db->from('data_match');
+		$this->db->join('data_nilai', 'data_team.id_team = data_nilai.id_team');
+		return $this->db->get()->result();
 	}
 }
 ?>

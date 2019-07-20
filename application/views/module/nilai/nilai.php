@@ -16,27 +16,27 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nama Team</th>
-                        <th scope="col">Kode Pemain</th>
-                        <th scope="col">Nama Pemain</th>
-                        <th scope="col">Foto Pemain</th>
-                        <th scope="col">No Handphone</th>
-                        <th scope="col" colspan="2">Alamat</th>
+                        <th scope="col">Nama Group</th>
+                        <th scope="col">Nama Match</th>
+                        <th scope="col">Nilai Rank</th>
+                        <th scope="col">Nilai Kill</th>
+                        <th scope="col" colspan="2">Nilai Point</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $no=1; foreach ($dataAllCommunities as $pemain) { ?>
+                    <?php $no=1; foreach ($dataNilai as $nilai) { ?>
                         <tr>
                             <th scope="row"><?= $no++ ?></th>
-                            <td><?= $pemain->nama_team ?></td>
-                            <td><?= $pemain->kode_pemain ?></td>
-                            <td><?= $pemain->nama_pemain ?></td>
-                            <td><?= $pemain->foto_pemain ?></td>
-                            <td><?= $pemain->no_handphone ?></td>
-                            <td><?= $pemain->alamat ?></td>
+                            <td><?= $nilai->nama_team ?></td>
+                            <td><?= $nilai->nama_group ?></td>
+                            <td><?= $nilai->nama_match ?></td>
+                            <td><?= $nilai->nilai_rank ?></td>
+                            <td><?= $nilai->nilai_kill ?></td>
+                            <td><?= $nilai->nilai_point ?></td>
                             <td>
                                 <div class="btn-group btn-group-toggle">
-                                    <a href="<?= base_url('content/editPemain/'.$pemain->id_pemain) ?>" class="btn btn-sm bg-info text-white">Edit</a>
-                                    <a href="<?= base_url('content/deletePemain/'.$pemain->id_pemain) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Hapus Data?');">Delete</a>
+                                    <a href="<?= base_url('content/editPemain/'.$nilai->id_nilai) ?>" class="btn btn-sm bg-info text-white">Edit</a>
+                                    <a href="<?= base_url('content/deletePemain/'.$nilai->id_nilai) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Hapus Data?');">Delete</a>
                                 </div>
                             </td>
                         </tr>

@@ -107,7 +107,8 @@ class Content extends MY_Controller {
 	}
 
 	public function inputTurnamen() {
-		$this->page('module/turnamen/inputTurnamen');
+		$data['dataAllGame'] = $this->model->dataAllGame();
+		$this->page('module/turnamen/inputTurnamen', $data);
 	}
 
 	public function detailOneTurnamen($id_turnamen) {
@@ -283,7 +284,8 @@ class Content extends MY_Controller {
 	}
 
 	public function inputPemain() {
-		$this->page('module/pemain/inputPemain');
+		$data['dataAllGame'] = $this->model->dataAllGame();
+		$this->page('module/pemain/inputPemain', $data);
 	}
 
 	public function savePemain() {
@@ -343,5 +345,14 @@ class Content extends MY_Controller {
 		$remove_image = "./assets/gambar/pemain/".$cek->foto_pemain;
 		unlink($remove_image);
 		$this->model->deletePemain($id_pemain);
+	}
+
+	// ----------------
+	// Data Nilai
+	// ----------------
+
+	public function nilai(){
+		$data['dataNilai'] = $this->model->dataNilai();
+		$this->page('module/nilai/nilai', $data);
 	}
 }

@@ -6,8 +6,8 @@
                 <label class="col-lg-1">Nama Game</label>
                 <div class="col-lg-11">
                     <select name="id_game" class="form-control">
-                        <?php foreach ($dataAllGame as $key) { ?>
-                            <option value="<?php echo $key->id_game ?>"><?= $key->nama_game ?></option>
+                        <?php foreach ($dataAllGame as $game) { ?>
+                            <option value="<?php echo $game->id_game ?>"><?= $game->nama_game ?></option>
                         <?php } ?>
                     </select>
                 </div>

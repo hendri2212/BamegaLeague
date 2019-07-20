@@ -27,7 +27,7 @@
                         <?php $no = 1; foreach ($dataAllTeam as $team) { ?>
                             <tr>
                                 <th scope="row"><?= $no++ ?></th>
-                                <td><?= $team->id_game ?></td>
+                                <td><?= $team->nama_game ?></td>
                                 <td><?= $team->nama_team ?></td>
                                 <td><?= $team->logo_team ?></td>
                                 <td><?= $team->deskripsi_team?></td>

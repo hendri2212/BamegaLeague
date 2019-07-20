@@ -3,11 +3,12 @@
     <div class="card-body">
         <?php echo form_open("content/saveTurnamen", array('enctype'=>'multipart/form-data')); ?>
             <div class="form-group row">
-                <label class="col-lg-1">Nama Turnamen</label>
+                <label class="col-lg-1">Nama Game</label>
                 <div class="col-lg-11">
                     <select name="id_game" class="form-control">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
+                        <?php foreach ($dataAllGame as $key) { ?>
+                            <option value="<?php echo $key->id_game ?>"><?= $key->nama_game ?></option>
+                        <?php } ?>
                     </select>
                 </div>
             </div>
