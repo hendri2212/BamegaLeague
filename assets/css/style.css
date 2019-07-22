@@ -19,6 +19,7 @@ Googel Fonts  */
 
 */
 /* custom */
+
 #img{
   /* width: 15rem; */
   width: 100px;
@@ -58,7 +59,8 @@ Googel Fonts  */
   }
 }
 .trophy{
-  height: 120px;
+  width: 120px;
+  height: 130px;
   margin-bottom: 50px;
 }
 .trophy-icon{
@@ -95,9 +97,6 @@ Googel Fonts  */
 }
 .bg-mblack{
   background: rgb(45, 45, 45);
-}
-body {  
-  overflow-x: hidden;
 }
 
 #sidebar-wrapper {
