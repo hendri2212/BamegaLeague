@@ -107,15 +107,18 @@ class Model extends CI_Model {
 	}
 
 	public function editTurnamen($id_turnamen) {
+		$this->db->select('data_turnamen.id_game, id_turnamen, nama_game, tanggal_turnamen, deskripsi, gambar_prize_pool, status_turnamen');
+		$this->db->join('data_game', 'data_game.id_game = data_turnamen.id_game');
         return $this->db->get_where("data_turnamen", array('id_turnamen' => $id_turnamen))->row();
 	}
 	
 	public function updateTurnamen($id_turnamen, $gambar) {
 		$data = array(
+			"id_game"			=> $this->input->post('id_game'),
 			"tanggal_turnamen"	=> $this->input->post('tanggal_turnamen'),
 			"gambar_prize_pool"	=> $gambar,
 			"deskripsi"			=> $this->input->post('deskripsi'),
-			"status_turnamen"	=>$this->input->post('status_turnamen')
+			"status_turnamen"	=> $this->input->post('status_turnamen')
 		);
 		$this->db->where('id_turnamen', $id_turnamen);
 		$this->db->update('data_turnamen', $data);
@@ -155,11 +158,14 @@ class Model extends CI_Model {
 	}
 
 	public function editTeam($id_team) {
+		$this->db->select('data_team.id_game, id_team, nama_game, nama_team, logo_team, deskripsi_team, tanggal_daftar');
+		$this->db->join('data_game', 'data_game.id_game = data_team.id_game');
 		return $this->db->get_where("data_team", array('id_team' => $id_team))->row();
 	}
 
 	public function updateTeam($id_team, $gambar) {
 		$data = array(
+			"id_game"			=> $this->input->post('id_game'),
 			"nama_team"			=> $this->input->post('nama_team'),
 			"deskripsi_team"	=> $this->input->post('deskripsi_team'),
 			"logo_team"			=> $gambar
@@ -213,7 +219,9 @@ class Model extends CI_Model {
 	}
 
 	public function detailCommunities($id_pemain) {
-        return $this->db->get_where("data_pemain", array('id_pemain' => $id_pemain))->row();
+		$this->db->select('data_pemain.id_team, id_pemain, nama_team, logo_team, tanggal_daftar, kode_pemain, nama_pemain, foto_pemain, no_handphone, alamat');
+		$this->db->join('data_team', 'data_team.id_team = data_pemain.id_team');
+		return $this->db->get_where("data_pemain", array('id_pemain' => $id_pemain))->row();
 	}
 	// ----------------
 	// Data Pemain
@@ -232,6 +240,8 @@ class Model extends CI_Model {
 	}
 
 	public function editPemain($id_pemain) {
+		$this->db->select('data_pemain.id_team, id_pemain, nama_team, kode_pemain, nama_pemain, foto_pemain, no_handphone, alamat');
+		$this->db->join('data_team', 'data_team.id_team = data_pemain.id_team');
 		return $this->db->get_where("data_pemain", array('id_pemain' => $id_pemain))->row();
 	}
 
@@ -262,6 +272,7 @@ class Model extends CI_Model {
 	// ----------------
 	// Data Nilai
 	// ----------------
+
 	public function dataNilai() {
 		$this->db->select('data_nilai.id_team, id_nilai, nama_team, nama_group, nama_match, nilai_rank, nilai_kill, nilai_point');
 		$this->db->from('data_team');
@@ -270,5 +281,58 @@ class Model extends CI_Model {
 		$this->db->join('data_nilai', 'data_team.id_team = data_nilai.id_team');
 		return $this->db->get()->result();
 	}
+
+	public function saveNilai() {
+		$data = array(
+			"id_team"		=> $this->input->post('id_team'),
+			"id_group"		=> $this->input->post('id_group'),
+			"id_match"		=> $this->input->post('id_match'),
+			"nilai_rank"	=> $this->input->post('nilai_rank'),
+			"nilai_kill"	=> $this->input->post('nilai_kill'),
+			"nilai_point"	=> $this->input->post('nilai_point'),
+		);
+		$this->db->insert('data_nilai', $data);
+		redirect('content/nilai');
+	}
+
+	public function editNilai($id_nilai) {
+		$this->db->select('data_nilai.id_team, id_nilai, data_nilai.id_group, data_nilai.id_match, nama_team, nama_group, nama_match, nilai_rank, nilai_kill, nilai_point');
+		$this->db->from('data_group');
+		$this->db->from('data_match');
+		$this->db->join('data_nilai', 'data_team.id_team = data_nilai.id_team' , 'data_nilai.id_group = data_group.id_group' , 'data_nilai.id_match = data_match.id_match');
+		return $this->db->get_where("data_team", array('id_nilai' => $id_nilai))->row();
+	}
+
+	public function updateNilai($id_nilai) {
+		$data = array(
+			"id_team"		=> $this->input->post('id_team'),
+			"id_group"		=> $this->input->post('id_group'),
+			"id_match"		=> $this->input->post('id_match'),
+			"nilai_rank"	=> $this->input->post('nilai_rank'),
+			"nilai_kill"	=> $this->input->post('nilai_kill'),
+			"nilai_point"	=> $this->input->post('nilai_point'),
+		);
+		$this->db->where('id_nilai', $id_nilai);
+		$this->db->update('data_nilai', $data);
+		redirect('content/nilai');
+	}
+
+	public function deleteNilai($id_nilai) {
+		$this->db->where('id_nilai', $id_nilai);
+		$this->db->delete('data_nilai');
+		redirect('content/nilai');
+	}
+	// ----------------
+	// Data Group
+	// ----------------
+	public function dataAllGroup() {
+        return $this->db->get("data_group")->result();
+    }
+	// ----------------
+	// Data Match
+	// ----------------
+	public function dataAllMatch() {
+        return $this->db->get("data_match")->result();
+    }
 }
 ?>

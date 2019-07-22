@@ -139,6 +139,7 @@ class Content extends MY_Controller {
 
 	public function editTurnamen($id_turnamen) {
 		$data['editTurnamen'] = $this->model->editTurnamen($id_turnamen);
+		$data['dataAllGame'] = $this->model->dataAllGame();
 		$this->page('module/turnamen/editTurnamen', $data);
 	}
 
@@ -211,6 +212,7 @@ class Content extends MY_Controller {
 
 	public function editTeam($id_team) {
 		$data['editTeam'] = $this->model->editTeam($id_team);
+		$data['dataAllGame'] = $this->model->dataAllGame();
 		$this->page('module/team/editTeam', $data);
 	}
 
@@ -284,7 +286,7 @@ class Content extends MY_Controller {
 	}
 
 	public function inputPemain() {
-		$data['dataAllGame'] = $this->model->dataAllGame();
+		$data['dataAllTeam'] = $this->model->dataAllTeam();
 		$this->page('module/pemain/inputPemain', $data);
 	}
 
@@ -311,6 +313,7 @@ class Content extends MY_Controller {
 
 	public function editPemain($id_pemain) {
 		$data['editPemain'] = $this->model->editPemain($id_pemain);
+		$data['dataAllTeam'] = $this->model->dataAllTeam();
 		$this->page('module/pemain/editPemain', $data);
 	}
 
@@ -355,4 +358,31 @@ class Content extends MY_Controller {
 		$data['dataNilai'] = $this->model->dataNilai();
 		$this->page('module/nilai/nilai', $data);
 	}
+
+	public function inputNilai() {
+		$data['dataAllTeam']  = $this->model->dataAllTeam();
+		$data['dataAllGroup'] = $this->model->dataAllGroup();
+		$data['dataAllMatch'] = $this->model->dataAllMatch();
+		$this->page('module/nilai/inputNilai', $data);
+	}
+
+	public function saveNilai(){
+		$this->model->saveNilai();
+	}
+	public function editNilai($id_nilai) {
+		$data['editNilai'] = $this->model->editNilai($id_nilai);
+		$data['dataAllTeam']  = $this->model->dataAllTeam();
+		$data['dataAllGroup'] = $this->model->dataAllGroup();
+		$data['dataAllMatch'] = $this->model->dataAllMatch();
+		$this->page('module/nilai/editNilai', $data);
+	}
+
+	public function updateNilai($id_nilai){
+		$this->model->updateNilai($id_nilai);
+	}
+
+	public function deleteNilai($id_nilai){
+		$this->model->deleteNilai($id_nilai);
+	}
+
 }

@@ -4,21 +4,21 @@
     <div class="col-sm-12 col-md-8">
         <div class="d-flex flex-md-row card bg-dark p-2">
             <div id="profile">
-                <img src="<?=base_url('images/admin.jpg')?>" alt="foto pemain" class="img w-100 h-auto"> 
+                <img src="<?= base_url('./assets/gambar/pemain/').$detailCommunities->foto_pemain ?>"  alt="" class="img w-100 h-auto"> 
             </div>
             <div class="d-flex flex-column ml-2">
                 <h3>Nama Pemain</h3>
-                <h5>123213435</h5>
+                <h5><?= $detailCommunities->nama_pemain ?></h5>
             </div>
             
         </div>
     </div>
     <div class="col-sm-12 col-md-4">
         <div class="d-flex flex-row card bg-dark p-2">
-            <img src="<?=base_url('images/admin.jpg')?>" alt="logo team" class="img w-25 h-25"> 
-            <div class="d-flex flex-column ml-2">
-                <h6>Nama Team</h6>
-                <h6>Tanggal Daftar</h6>
+            <img src="<?= base_url('./assets/gambar/team/').$detailCommunities->logo_team ?>"  alt="" class="img w-25 h-25"> 
+            <div class="d-flex flex-column">
+                <h6><?= $detailCommunities->nama_team ?></h6>
+                <h6><?= $detailCommunities->tanggal_daftar ?></h6>
             </div>
         </div>
     </div>
@@ -29,8 +29,8 @@
                 <h5>Alamat</h5>
             </div>
             <div class="d-flex flex-column mr-auto">
-                <h5>: 081231232435</h5>
-                <h5>: Jalan jalanan</h5>
+                <h5>: <?= $detailCommunities->no_handphone ?></h5>
+                <h5>: <?= $detailCommunities->alamat ?></h5>
             </div>
         </div>
     </div>

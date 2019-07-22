@@ -1,7 +1,7 @@
 <div class="col-12">
     <div class="row mt-3 border-bottom border-warning">
         <div class="col-6">
-            <h3 class="pb-3 text-light">Data_Pemain</h3>
+            <h3 class="pb-3 text-light">Data Pemain</h3>
         </div>
         <div class="col-6">
             <a href="<?= base_url('content/inputPemain') ?>" class="btn btn-dark border-warning text-warning float-right">Tambah Data</a>

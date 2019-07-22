@@ -1,7 +1,7 @@
 <div class="col-12">
     <div class="row mt-3 border-bottom border-warning">
         <div class="col-6">
-            <h3 class="pb-3 text-light">Data_Team</h3>
+            <h3 class="pb-3 text-light">Data Team</h3>
         </div>
         <div class="col-6">
             <a href="<?= base_url('content/inputTeam') ?>" class="btn btn-dark border-warning text-warning float-right">Tambah Data</a>

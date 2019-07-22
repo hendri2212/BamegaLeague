@@ -3,41 +3,41 @@
     <div class="card-body">
         <?php echo form_open("content/savePemain", array('enctype'=>'multipart/form-data')); ?>
             <div class="form-group row">
-                <label class="col-lg-1">Nama Game</label>
+                <label class="col-lg-1">Nama Team</label>
                 <div class="col-lg-11">
-                    <select name="id_game" class="form-control">
-                        <?php foreach ($dataAllGame as $key) { ?>
-                            <option value="<?php echo $key->id_game ?>"><?= $key->nama_game ?></option>
+                    <select name="id_team" class="form-control">
+                        <?php foreach ($dataAllTeam as $key) { ?>
+                            <option value="<?php echo $key->id_team ?>"><?= $key->nama_team ?></option>
                         <?php } ?>
                     </select>
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-lg-1"><i class="fas fa-gamepad"></i></label>
+                <label class="col-lg-1">Kode Pemain</label>
                 <div class="col-lg-11">
                     <input type="number" name="kode_pemain" class="form-control">
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-lg-1"><i class="fas fa-gamepad"></i></label>
+                <label class="col-lg-1">Nama Pemain</label>
                 <div class="col-lg-11">
                     <input type="text" name="nama_pemain" class="form-control">
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-lg-1"><i class="fas fa-gamepad"></i></label>
+                <label class="col-lg-1">No Handphone</label>
                 <div class="col-lg-11">
                     <input type="number" name="no_handphone" class="form-control">
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-lg-1"><i class="fas fa-gamepad"></i></label>
+                <label class="col-lg-1">Alamat</label>
                 <div class="col-lg-11">
                     <input type="text" name="alamat" class="form-control">
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-lg-1"><i class="fas fa-gamepad"></i></label>
+                <label class="col-lg-1">Foto Pemain</label>
                 <div class="col-lg-11">
                     <input type="file" name="foto_pemain" class="form-control">
                 </div>

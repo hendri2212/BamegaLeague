@@ -3,6 +3,17 @@
     <div class="card-body">
         <?php echo form_open("content/updateTeam/".$editTeam->id_team, array('enctype'=>'multipart/form-data')); ?>
             <div class="form-group row">
+                <label class="col-lg-1">Nama Game</label>
+                <div class="col-lg-11">
+                    <select name="id_game" class="form-control">
+                        <option value="<?php echo $editTeam->id_game ?>"><?= $editTeam->nama_game ?></option>
+                        <?php foreach ($dataAllGame as $key) { ?>
+                            <option value="<?php echo $key->id_game ?>"><?= $key->nama_game ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
                 <label class="col-lg-1"><i class="fas fa-gamepad"></i></label>
                 <div class="col-lg-11">
                     <input type="text" name="nama_team" class="form-control" value="<?= $editTeam->nama_team ?>">

@@ -3,40 +3,42 @@
     <div class="card-body">
         <?php echo form_open("content/updatePemain/".$editPemain->id_pemain, array('enctype'=>'multipart/form-data')); ?>
             <div class="form-group row">
-                <label class="col-lg-1">Nama Game</label>
+                <label class="col-lg-1">Nama Team</label>
                 <div class="col-lg-11">
                     <select name="id_team" class="form-control">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
+                        <option value="<?php echo $editPemain->id_team ?>"><?= $editPemain->nama_team ?></option>
+                        <?php foreach ($dataAllTeam as $key) { ?>
+                            <option value="<?php echo $key->id_team ?>"><?= $key->nama_team ?></option>
+                        <?php } ?>
                     </select>
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-lg-1"><i class="fas fa-gamepad"></i></label>
+                <label class="col-lg-1">Kode Pemain</label>
                 <div class="col-lg-11">
                     <input type="number" name="kode_pemain" class="form-control" value="<?= $editPemain->kode_pemain ?>">
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-lg-1"><i class="fas fa-gamepad"></i></label>
+                <label class="col-lg-1">Kode Pemain</label>
                 <div class="col-lg-11">
                     <input type="text" name="nama_pemain" class="form-control" value="<?= $editPemain->nama_pemain ?>">
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-lg-1"><i class="fas fa-gamepad"></i></label>
+                <label class="col-lg-1">No Handphone</label>
                 <div class="col-lg-11">
                     <input type="number" name="no_handphone" class="form-control" value="<?= $editPemain->no_handphone ?>">
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-lg-1"><i class="fas fa-gamepad"></i></label>
+                <label class="col-lg-1">alamat</label>
                 <div class="col-lg-11">
                     <input type="text" name="alamat" class="form-control" value="<?= $editPemain->alamat ?>">
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-lg-1"><i class="fas fa-gamepad"></i></label>
+                <label class="col-lg-1">Foto Pemain</label>
                 <div class="col-lg-11">
                     <input type="file" name="foto_pemain" class="form-control" value="<?= $editPemain->foto_pemain ?>">
                 </div>

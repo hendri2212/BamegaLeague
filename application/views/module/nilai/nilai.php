@@ -1,10 +1,10 @@
 <div class="col-12">
     <div class="row mt-3 border-bottom border-warning">
         <div class="col-6">
-            <h3 class="pb-3 text-light">Data_Pemain</h3>
+            <h3 class="pb-3 text-light">Data Nilai</h3>
         </div>
         <div class="col-6">
-            <a href="<?= base_url('content/inputPemain') ?>" class="btn btn-dark border-warning text-warning float-right">Tambah Data</a>
+            <a href="<?= base_url('content/inputNilai') ?>" class="btn btn-dark border-warning text-warning float-right">Tambah Data</a>
         </div>
     </div>
 </div>
@@ -35,8 +35,8 @@
                             <td><?= $nilai->nilai_point ?></td>
                             <td>
                                 <div class="btn-group btn-group-toggle">
-                                    <a href="<?= base_url('content/editPemain/'.$nilai->id_nilai) ?>" class="btn btn-sm bg-info text-white">Edit</a>
-                                    <a href="<?= base_url('content/deletePemain/'.$nilai->id_nilai) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Hapus Data?');">Delete</a>
+                                    <a href="<?= base_url('content/editNilai/'.$nilai->id_nilai) ?>" class="btn btn-sm bg-info text-white">Edit</a>
+                                    <a href="<?= base_url('content/deleteNilai/'.$nilai->id_nilai) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Hapus Data?');">Delete</a>
                                 </div>
                             </td>
                         </tr>
