@@ -112,6 +112,7 @@ class Content extends MY_Controller {
 	}
 
 	public function detailOneTurnamen($id_turnamen) {
+		$data['detailOneTurnamenLimit']= $this->model->detailOneTurnamenLimit($id_turnamen);
 		$data['detailOneTurnamen']= $this->model->detailOneTurnamen($id_turnamen);
 		$this->page('module/detail/detail',$data);
 	}

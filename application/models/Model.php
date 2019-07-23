@@ -92,9 +92,17 @@ class Model extends CI_Model {
 	}
 
 	public function detailOneTurnamen($id_turnamen) {
-		return $this->db->get_where("data_turnamen", array('id_turnamen' => $id_turnamen))->result();
+		return $this->db->get_where("data_turnamen", array('data_turnamen.id_turnamen' => $id_turnamen))->result();
 	}
 
+	public function detailOneTurnamenLimit($id_turnamen){
+		$this->db->select('data_nilai.id_turnamen, id_nilai, nama_team, nilai_rank, nilai_kill, nilai_point, tanggal_turnamen, deskripsi, gambar_prize_pool');
+		$this->db->from('data_team');
+		$this->db->join('data_nilai', 'data_turnamen.id_turnamen = data_nilai.id_turnamen');
+		$this->db->order_by('nilai_point' , 'DESC');
+		$this->db->limit(3);
+		return $this->db->get_where("data_turnamen", array('data_turnamen.id_turnamen' => $id_turnamen))->result();
+	}
 	public function saveTurnamen($gambar) {
 		$data = array(
 			"id_game"			=> $this->input->post('id_game'),
