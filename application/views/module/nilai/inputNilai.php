@@ -5,6 +5,16 @@
             <div class="form-group row">
                 <label class="col-lg-1">Nama Team</label>
                 <div class="col-lg-11">
+                    <select name="id_turnamen" class="form-control">
+                        <?php foreach ($dataAllTurnamen as $turnamen) { ?>
+                            <option value="<?php echo $turnamen->id_turnamen ?>"><?= $turnamen->nama_game ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-lg-1">Nama Team</label>
+                <div class="col-lg-11">
                     <select name="id_team" class="form-control">
                         <?php foreach ($dataAllTeam as $team) { ?>
                             <option value="<?php echo $team->id_team ?>"><?= $team->nama_team ?></option>

@@ -361,9 +361,10 @@ class Content extends MY_Controller {
 	}
 
 	public function inputNilai() {
-		$data['dataAllTeam']  = $this->model->dataAllTeam();
-		$data['dataAllGroup'] = $this->model->dataAllGroup();
-		$data['dataAllMatch'] = $this->model->dataAllMatch();
+		$data['dataAllTurnamen']  	= $this->model->dataAllTurnamen();
+		$data['dataAllMatch'] 		= $this->model->dataAllMatch();
+		$data['dataAllGroup'] 		= $this->model->dataAllGroup();
+		$data['dataAllTeam']  		= $this->model->dataAllTeam();
 		$this->page('module/nilai/inputNilai', $data);
 	}
 

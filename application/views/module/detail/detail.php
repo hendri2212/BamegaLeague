@@ -13,15 +13,25 @@
                 </div>
             </div>
         </div>
+        <?php }?>
         <div class="col-lg-4">
             <div class="d-flex flex-row justify-content-center">
             <?php foreach($detailOneTurnamenLimit as $key) {?>
-                <div class="card trophy bg-dark m-1">
-                    <i class="fas fa-trophy trophy-icon" style="color: #ffd700;"></i>
-                    <img src="<?=base_url('images/admin.jpg')?>" alt="1st place" class="img-fluid rounded h-100">
-                    <small class="flat-color-1 text-light block pl-1"><?= $key->nama_team?></small>
-                </div>
-                <?php }?>
+                <?php if($key->total == null) :?>
+                    <div class="card trophy bg-dark m-1">
+                        <i class="fas fa-trophy trophy-icon" style="color: #dedede;"></i>
+                        <img src="<?=base_url('images/admin.jpg')?>" alt="2nd place" class="img-fluid rounded h-100">
+                        <small class="flat-color-1 text-light block pl-1">dfdf</small>
+                    </div>
+                <?php  else :?>
+                    <div class="card trophy bg-dark m-1">
+                        <i class="fas fa-trophy trophy-icon" style="color: #ffd700;"></i>
+                        <img src="<?=base_url('images/admin.jpg')?>" alt="1st place" class="img-fluid rounded h-100">
+                        <small class="flat-color-1 text-light block pl-1"><?= $key->nama_team?></small>
+                        <small class="flat-color-1 text-light block pl-1"><?= $key->total?></small>
+                    </div>
+                <?php endif; ?>
+            <?php } ?>
                 <!-- <div class="card trophy bg-dark m-1">
                     <i class="fas fa-trophy trophy-icon" style="color: #dedede;"></i>
                     <img src="<?=base_url('images/admin.jpg')?>" alt="2nd place" class="img-fluid rounded h-100">
@@ -51,6 +61,5 @@
                 </div>
             </div>
         </div>
-    <?php }?>
     </div>
 </div>

@@ -96,12 +96,13 @@ class Model extends CI_Model {
 	}
 
 	public function detailOneTurnamenLimit($id_turnamen){
-		$this->db->select('data_nilai.id_turnamen, id_nilai, nama_team, nilai_rank, nilai_kill, nilai_point, tanggal_turnamen, deskripsi, gambar_prize_pool');
+		$this->db->select('*, SUM(nilai_rank + nilai_kill + nilai_point) as total');
 		$this->db->from('data_team');
-		$this->db->join('data_nilai', 'data_turnamen.id_turnamen = data_nilai.id_turnamen');
-		$this->db->order_by('nilai_point' , 'DESC');
+		$this->db->join('data_turnamen', 'data_turnamen.id_turnamen = data_nilai.id_turnamen' , 'data_team.id_team = data_nilai.id_team');
+		$this->db->group_by('data_nilai.id_team');
+		$this->db->order_by('total' , 'DESC');
 		$this->db->limit(3);
-		return $this->db->get_where("data_turnamen", array('data_turnamen.id_turnamen' => $id_turnamen))->result();
+		return $this->db->get_where("data_nilai", array('data_turnamen.id_turnamen' => $id_turnamen))->result();
 	}
 	public function saveTurnamen($gambar) {
 		$data = array(
@@ -292,6 +293,7 @@ class Model extends CI_Model {
 
 	public function saveNilai() {
 		$data = array(
+			"id_turnamen"	=> $this->input->post('id_turnamen'),
 			"id_team"		=> $this->input->post('id_team'),
 			"id_group"		=> $this->input->post('id_group'),
 			"id_match"		=> $this->input->post('id_match'),
