@@ -18,29 +18,33 @@
                         <th scope="col">Nama_Game</th>
                         <th scope="col">Tanggal_Mulai</th>
                         <th scope="col">Deskripsi</th>
-                        <th scope="col" colspan="2">Gambar</th>
+                        <th scope="col">Gambar</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Edit</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php $no=1; foreach ($dataAllTurnamen as $AllTurnamen) { ?>
                         <tr>
                             <th scope="row"><?= $no++ ?></th>
-                            <td><?= $AllTurnamen->nama_game ?></td>
-                            <td><?= $AllTurnamen->tanggal_turnamen ?></td>
-                            <td><?= $AllTurnamen->deskripsi ?></td>
-                            <td><?= $AllTurnamen->gambar_prize_pool ?></td>
-                            <td>
-                                <div class="btn-group btn-group-toggle">
-                                    <a href="<?= base_url('content/editTurnamen/'.$AllTurnamen->id_turnamen) ?>" class="btn btn-sm bg-info text-white">Edit</a>
-                                    <a href="<?= base_url('content/deleteTurnamen/'.$AllTurnamen->id_turnamen) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Hapus Data?');">Delete</a>
-                                </div>
+                            <td scope="row"><?= $AllTurnamen->nama_game ?></td>
+                            <td scope="row"><?= $AllTurnamen->tanggal_turnamen ?></td>
+                            <td scope="row"><?= $AllTurnamen->deskripsi ?></td>
+                            <td scope="row"><?= $AllTurnamen->gambar_prize_pool ?></td>
+                            <td scope="row">
                                 <?php if ($AllTurnamen->status_turnamen == 0): ?>
-                                    <span class="btn bg-warning btn-sm text-white">Pending</span>
+                                    <span class="btn bg-warning btn-sm btn-block text-white">Pending</span>
                                 <?php elseif($AllTurnamen->status_turnamen == 1): ?>
-                                    <span class="btn bg-success btn-sm text-white">On Going</span>
+                                    <span class="btn bg-success btn-sm btn-block text-white">On Going</span>
                                 <?php else: ?>
-                                    <span class="btn bg-primary btn-sm text-white">Finish</span>
+                                    <span class="btn bg-primary btn-sm btn-block text-white">Finish</span>
                                 <?php endif ?>
+                            </td>
+                            <td scope="row">
+                                <div class="btn-group btn-group-toggle">
+                                    <a href="<?= base_url('content/editTurnamen/'.$AllTurnamen->id_turnamen) ?>" class="btn btn-sm btn-info mr-1"><i class="fas fa-pencil-alt"></i></a>
+                                    <a href="<?= base_url('content/deleteTurnamen/'.$AllTurnamen->id_turnamen) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Hapus Data?');"><i class="fas fa-trash-alt"></i></a>
+                                </div>
                             </td>
                         </tr>
                     <?php } ?>

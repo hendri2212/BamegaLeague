@@ -1,48 +1,59 @@
-<h3 class="pb-3 text-light border-bottom border-warning col-12">Input Data Pemain</h3>
-<div class="card bg-dark text-light">
-    <div class="card-body">
-        <?php echo form_open("content/savePemain", array('enctype'=>'multipart/form-data')); ?>
-            <div class="form-group row">
-                <label class="col-lg-1">Nama Team</label>
-                <div class="col-lg-11">
-                    <select name="id_team" class="form-control">
-                        <?php foreach ($dataAllTeam as $key) { ?>
-                            <option value="<?php echo $key->id_team ?>"><?= $key->nama_team ?></option>
-                        <?php } ?>
-                    </select>
+<h3 class="pb-3 text-light border-bottom border-warning d-block">Input Data Pemain</h3>
+<div class="row justify-content-center">
+    <div class="card bg-dark text-light p-1 col-md-9">
+        <div class="card-body">
+            <?php echo form_open("content/savePemain", array('enctype'=>'multipart/form-data')); ?>
+                <div class="form-group">
+                    <label>Nama Team</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="n-team"><i class="fas fa-users"></i></span>
+                        </div>
+                        <select name="id_team" class="form-control" aria-label="n-team">
+                            <?php foreach ($dataAllTeam as $key) { ?>
+                                <option value="<?php echo $key->id_team ?>"><?= $key->nama_team ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <label>Kode Pemain</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="k-pemain"><i class="fas fa-id-badge"></i></span>
+                        </div>
+                        <input type="number" name="kode_pemain" class="form-control" aria-label="k-pemain">
+                    </div>
+                    <label>Nama Pemain</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">  
+                            <span class="input-group-text" id="n-pemain"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" name="nama_pemain" class="form-control" aria-label="n-pemain">
+                    </div>
+                    <label>No Handphone</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="no-phone"><i class="fas fa-phone"></i></span>
+                        </div>
+                        <input type="number" name="no_handphone" class="form-control" aria-label="no-phone">
+                    </div>
+                    <label>Alamat</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="alamat"><i class="fas fa-map-marked-alt"></i></span>
+                        </div>
+                        <input type="text" name="alamat" class="form-control" aria-label="alamat">
+                    </div>
+                    <label>Foto Pemain</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="foto-pemain"><i class="fas fa-file-image"></i></span>
+                        </div>
+                        <input type="file" name="foto_pemain" class="form-control" aria-label="foto-pemain">
+                    </div>
+                    <button type="submit" name="submit" class="btn btn-warning text-light float-right">Save</button>
+                    <input type="button" value="Cancel" class="btn btn-danger float-right mr-2" onclick="javascript:window.history.back();">            
                 </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-lg-1">Kode Pemain</label>
-                <div class="col-lg-11">
-                    <input type="number" name="kode_pemain" class="form-control">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-lg-1">Nama Pemain</label>
-                <div class="col-lg-11">
-                    <input type="text" name="nama_pemain" class="form-control">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-lg-1">No Handphone</label>
-                <div class="col-lg-11">
-                    <input type="number" name="no_handphone" class="form-control">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-lg-1">Alamat</label>
-                <div class="col-lg-11">
-                    <input type="text" name="alamat" class="form-control">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-lg-1">Foto Pemain</label>
-                <div class="col-lg-11">
-                    <input type="file" name="foto_pemain" class="form-control">
-                </div>
-            </div>
-            <button type="submit" name="submit" class="btn btn-warning float-right">Save</button>
-        <?php echo form_close(); ?>
+            <?php echo form_close(); ?>
+        </div>
     </div>
 </div>

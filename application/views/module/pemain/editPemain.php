@@ -1,50 +1,60 @@
-<h3 class="pb-3 text-light border-bottom border-warning col-12">Data Pemain</h3>
-<div class="card bg-dark text-light">
-    <div class="card-body">
-        <?php echo form_open("content/updatePemain/".$editPemain->id_pemain, array('enctype'=>'multipart/form-data')); ?>
-            <div class="form-group row">
-                <label class="col-lg-1">Nama Team</label>
-                <div class="col-lg-11">
-                    <select name="id_team" class="form-control">
-                        <option value="<?php echo $editPemain->id_team ?>"><?= $editPemain->nama_team ?></option>
-                        <?php foreach ($dataAllTeam as $key) { ?>
-                            <option value="<?php echo $key->id_team ?>"><?= $key->nama_team ?></option>
-                        <?php } ?>
-                    </select>
+<h3 class="pb-3 text-light border-bottom border-warning d-block">Edit Data Pemain</h3>
+<div class="row justify-content-center">
+    <div class="card bg-dark text-light p-1 col-md-9">
+        <div class="card-body">
+            <?php echo form_open("content/savePemain", array('enctype'=>'multipart/form-data')); ?>
+                <div class="form-group">
+                    <label>Nama Team</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="n-team"><i class="fas fa-users"></i></span>
+                        </div>
+                        <select name="id_team" class="form-control" aria-label="n-team">
+                            <option value="<?php echo $editPemain->id_team ?>"><?= $editPemain->nama_team ?></option>
+                            <?php foreach ($dataAllTeam as $key) { ?>
+                                <option value="<?php echo $key->id_team ?>"><?= $key->nama_team ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <label>Kode Pemain</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="k-pemain"><i class="fas fa-id-badge"></i></span>
+                        </div>
+                        <input type="number" name="kode_pemain" class="form-control" aria-label="k-pemain" value="<?= $editPemain->kode_pemain ?>">
+                    </div>
+                    <label>Nama Pemain</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">  
+                            <span class="input-group-text" id="n-pemain"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" name="nama_pemain" class="form-control" aria-label="n-pemain" value="<?= $editPemain->nama_pemain ?>">
+                    </div>
+                    <label>No Handphone</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="no-phone"><i class="fas fa-phone"></i></span>
+                        </div>
+                        <input type="number" name="no_handphone" class="form-control" aria-label="no-phone" value="<?= $editPemain->no_handphone ?>">
+                    </div>
+                    <label>Alamat</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="alamat"><i class="fas fa-map-marked-alt"></i></span>
+                        </div>
+                        <input type="text" name="alamat" class="form-control" aria-label="alamat" value="<?= $editPemain->alamat ?>">
+                    </div>
+                    <label>Foto Pemain</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="foto-pemain"><i class="fas fa-file-image"></i></span>
+                        </div>
+                        <input type="file" name="foto_pemain" class="form-control" aria-label="foto-pemain">
+                    </div>
+                    <button type="submit" name="submit" class="btn btn-warning text-light float-right">Update</button>
+                    <input type="button" value="Cancel" class="btn btn-danger float-right mr-2" onclick="javascript:window.history.back();">            
                 </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-lg-1">Kode Pemain</label>
-                <div class="col-lg-11">
-                    <input type="number" name="kode_pemain" class="form-control" value="<?= $editPemain->kode_pemain ?>">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-lg-1">Kode Pemain</label>
-                <div class="col-lg-11">
-                    <input type="text" name="nama_pemain" class="form-control" value="<?= $editPemain->nama_pemain ?>">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-lg-1">No Handphone</label>
-                <div class="col-lg-11">
-                    <input type="number" name="no_handphone" class="form-control" value="<?= $editPemain->no_handphone ?>">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-lg-1">alamat</label>
-                <div class="col-lg-11">
-                    <input type="text" name="alamat" class="form-control" value="<?= $editPemain->alamat ?>">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-lg-1">Foto Pemain</label>
-                <div class="col-lg-11">
-                    <input type="file" name="foto_pemain" class="form-control" value="<?= $editPemain->foto_pemain ?>">
-                </div>
-            </div>
-            <button type="submit" name="submit" class="btn btn-warning float-right">Update</button>
-            <input type="button" value="Cancel" class="btn btn-info float-right mr-2" onclick="javascript:window.history.back();">
-        <?php echo form_close(); ?>
+            <?php echo form_close(); ?>
+        </div>
     </div>
 </div>

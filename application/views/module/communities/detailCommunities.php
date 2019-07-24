@@ -7,8 +7,8 @@
                 <img src="<?= base_url('./assets/gambar/pemain/').$detailCommunities->foto_pemain ?>"  alt="" class="img w-100 h-auto"> 
             </div>
             <div class="d-flex flex-column ml-2">
-                <h3>Nama Pemain</h3>
-                <h5><?= $detailCommunities->nama_pemain ?></h5>
+                <h3><?= $detailCommunities->nama_pemain ?></h3>
+                <h5><?= $detailCommunities->kode_pemain ?></h5>
             </div>
             
         </div>

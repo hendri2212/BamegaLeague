@@ -20,22 +20,23 @@
                         <th scope="col">Nama Team</th>
                         <th scope="col">Logo Team</th>
                         <th scope="col">Deskripsi Team</th>
-                        <th scope="col" colspan="2">Tanggal Daftar</th>
+                        <th scope="col">Tanggal Daftar</th>
+                        <th scope="col">Edit</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $no = 1; foreach ($dataAllTeam as $team) { ?>
                             <tr>
                                 <th scope="row"><?= $no++ ?></th>
-                                <td><?= $team->nama_game ?></td>
-                                <td><?= $team->nama_team ?></td>
-                                <td><?= $team->logo_team ?></td>
-                                <td><?= $team->deskripsi_team?></td>
-                                <td><?= $team->tanggal_daftar?></td>
-                                <td>
-                                    <div class="btn-group btn-group-toggle">
-                                        <a href="<?= base_url('content/editTeam/'.$team->id_team) ?>" class="btn btn-sm bg-info text-white">Edit</a>
-                                        <a href="<?= base_url('content/deleteTeam/'.$team->id_team) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Hapus Data?');">Delete</a>
+                                <td scope="row"><?= $team->nama_game ?></td>
+                                <td scope="row"><?= $team->nama_team ?></td>
+                                <td scope="row"><?= $team->logo_team ?></td>
+                                <td scope="row"><?= $team->deskripsi_team?></td>
+                                <td scope="row"><?= $team->tanggal_daftar?></td>
+                                <td scope="row">
+                                    <div class="btn-group">
+                                        <a href="<?= base_url('content/editTeam/'.$team->id_team) ?>" class="btn btn-sm btn-info mr-1"><i class="fas fa-pencil-alt"></i></a>
+                                        <a href="<?= base_url('content/deleteTeam/'.$team->id_team) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Hapus Data?');"><i class="fas fa-trash-alt"></i></a>
                                     </div>
                                 </td>
                             </tr>

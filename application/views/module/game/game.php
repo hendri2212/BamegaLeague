@@ -15,28 +15,32 @@
                 <table class="table table-striped table-sm table-hover table-dark">
                     <thead class="bg-mblack">
                         <tr>
-                            <th scope="col">#</th>
+                            <th scope="col"></th>
                             <th scope="col">Nama_Game</th>
                             <th scope="col">Deskripsi</th>
-                            <th scope="col" colspan="2">Gambar</th>
+                            <th scope="col">Gambar</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Edit</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $no = 1; foreach ($dataAllGame as $game) { ?>
                             <tr>
                                 <th scope="row"><?= $no++ ?></th>
-                                <td><?= $game->nama_game ?></td>
-                                <td><?= $game->deskripsi_game ?></td>
-                                <td><?= $game->gambar_game ?></td>
-                                <td>
-                                    <div class="btn-group btn-group-toggle">
-                                        <a href="<?= base_url('content/editGame/'.$game->id_game) ?>" class="btn btn-sm bg-info text-white">Edit</a>
-                                        <?php if ($game->status_game == 0): ?>
-                                            <a href="<?= base_url('content/enableGame/'.$game->id_game) ?>" class="btn btn-sm bg-warning text-white">Non Aktif</a>
-                                        <?php else: ?>
-                                            <a href="<?= base_url('content/disableGame/'.$game->id_game) ?>" class="btn btn-sm bg-success text-white">Aktif</a>
-                                        <?php endif ?>
-                                        <a href="<?= base_url('content/deleteGame/'.$game->id_game) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Hapus Data?');">Delete</a>
+                                <td scope="row"><?= $game->nama_game ?></td>
+                                <td scope="row"><?= $game->deskripsi_game ?></td>
+                                <td scope="row"><?= $game->gambar_game ?></td>
+                                <td scope="row">
+                                    <?php if ($game->status_game == 0): ?>
+                                        <a href="<?= base_url('content/enableGame/'.$game->id_game) ?>" class="btn btn-sm btn-warning btn-block text-white">Non Aktif</a>
+                                    <?php else: ?>
+                                        <a href="<?= base_url('content/disableGame/'.$game->id_game) ?>" class="btn btn-sm btn-success btn-block text-white">Aktif</a>
+                                    <?php endif ?>
+                                </td>
+                                <td scope="row">
+                                    <div class="btn-group">
+                                        <a href="<?= base_url('content/editGame/'.$game->id_game) ?>" class="btn btn-sm btn-info mr-1"><i class="fas fa-pencil-alt"></i></a>
+                                        <a href="<?= base_url('content/deleteGame/'.$game->id_game) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Hapus Data?');"><i class="fas fa-trash-alt"></i></a>
                                     </div>
                                 </td>
                             </tr>
