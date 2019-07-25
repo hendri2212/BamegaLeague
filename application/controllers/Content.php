@@ -118,7 +118,7 @@ class Content extends MY_Controller {
 	}
 
 	public function saveTurnamen() {
-		$config['upload_path']   = './assets/gambar/turnamen/';
+		$config['upload_path']   = './assets/gambar/prize/';
 		$config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
 		$config['encrypt_name']  = TRUE; //Enkripsi nama yang terupload
 		$config['max_size']		= '1000000';
@@ -145,7 +145,7 @@ class Content extends MY_Controller {
 	}
 
 	public function updateTurnamen($id_turnamen) {
-		$config['upload_path']   = './assets/gambar/turnamen/';
+		$config['upload_path']   = './assets/gambar/prize/';
 		$config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
 		$config['encrypt_name']  = TRUE; //Enkripsi nama yang terupload
 		$config['max_size']		= '1000000';
@@ -163,7 +163,7 @@ class Content extends MY_Controller {
 		} else {
 			$cek = $this->model->changeGambarTurnamen($id_turnamen);
 
-			$remove_image = "./assets/gambar/turnamen/".$cek->gambar_prize_pool;
+			$remove_image = "./assets/gambar/prize/".$cek->gambar_prize_pool;
 			unlink($remove_image);
 			
 			$this->model->updateTurnamen($id_turnamen, $gambar);
@@ -172,7 +172,7 @@ class Content extends MY_Controller {
 
 	public function deleteTurnamen($id_turnamen){
 		$cek = $this->model->changeGambarTurnamen($id_turnamen);
-		$remove_image = "./assets/gambar/turnamen/".$cek->gambar_prize_pool;
+		$remove_image = "./assets/gambar/prize/".$cek->gambar_prize_pool;
 		unlink($remove_image);
 		$this->model->deleteTurnamen($id_turnamen);
 	}
@@ -372,10 +372,11 @@ class Content extends MY_Controller {
 		$this->model->saveNilai();
 	}
 	public function editNilai($id_nilai) {
-		$data['editNilai'] = $this->model->editNilai($id_nilai);
-		$data['dataAllTeam']  = $this->model->dataAllTeam();
-		$data['dataAllGroup'] = $this->model->dataAllGroup();
-		$data['dataAllMatch'] = $this->model->dataAllMatch();
+		$data['editNilai'] 			= $this->model->editNilai($id_nilai);
+		$data['dataAllTurnamen']	= $this->model->dataAllTurnamen();
+		$data['dataAllTeam']  		= $this->model->dataAllTeam();
+		$data['dataAllGroup'] 		= $this->model->dataAllGroup();
+		$data['dataAllMatch'] 		= $this->model->dataAllMatch();
 		$this->page('module/nilai/editNilai', $data);
 	}
 

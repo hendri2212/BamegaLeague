@@ -3,11 +3,11 @@
     <div class="card-body">
         <?php echo form_open("content/saveNilai", array('enctype'=>'multipart/form-data')); ?>
             <div class="form-group row">
-                <label class="col-lg-1">Nama Team</label>
+                <label class="col-lg-1">Nama Turnamen</label>
                 <div class="col-lg-11">
                     <select name="id_turnamen" class="form-control">
                         <?php foreach ($dataAllTurnamen as $turnamen) { ?>
-                            <option value="<?php echo $turnamen->id_turnamen ?>"><?= $turnamen->nama_game ?></option>
+                            <option value="<?php echo $turnamen->id_turnamen ?>"><?= $turnamen->nama_turnamen ?></option>
                         <?php } ?>
                     </select>
                 </div>

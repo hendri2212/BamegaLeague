@@ -21,7 +21,7 @@
                             <div class="card thumbnail">
                                 <a href="<?= base_url("content/detailOneTurnamen/$row->id_turnamen")?>">
                                     <img src="<?= base_url("./assets/gambar/prize/".$row->gambar_prize_pool) ?>" class="img-fluid">
-                                    <div class="caption"><?= $row->deskripsi ?></div>  
+                                    <div class="caption"><?= $row->nama_turnamen ?></div>  
                                 </a>
                             </div>
                         </div>

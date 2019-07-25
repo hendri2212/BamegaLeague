@@ -15,6 +15,7 @@
                 <thead class="bg-mblack">
                     <tr>
                         <th scope="col">#</th>
+                        <th scope="col">Nama Turnamen</th>
                         <th scope="col">Nama Team</th>
                         <th scope="col">Nama Group</th>
                         <th scope="col">Nama Match</th>
@@ -27,6 +28,7 @@
                     <?php $no=1; foreach ($dataNilai as $nilai) { ?>
                         <tr>
                             <th scope="row"><?= $no++ ?></th>
+                            <td><?= $nilai->nama_turnamen ?></td>
                             <td><?= $nilai->nama_team ?></td>
                             <td><?= $nilai->nama_group ?></td>
                             <td><?= $nilai->nama_match ?></td>

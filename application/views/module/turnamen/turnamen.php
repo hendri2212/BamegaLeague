@@ -15,8 +15,9 @@
                 <thead class="bg-mblack">
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Nama_Game</th>
-                        <th scope="col">Tanggal_Mulai</th>
+                        <th scope="col">Nama Game</th>
+                        <th scope="col">Nama Turnamen</th>
+                        <th scope="col">Tanggal Mulai</th>
                         <th scope="col">Deskripsi</th>
                         <th scope="col" colspan="2">Gambar</th>
                     </tr>
@@ -26,6 +27,7 @@
                         <tr>
                             <th scope="row"><?= $no++ ?></th>
                             <td><?= $AllTurnamen->nama_game ?></td>
+                            <td><?= $AllTurnamen->nama_turnamen ?></td>
                             <td><?= $AllTurnamen->tanggal_turnamen ?></td>
                             <td><?= $AllTurnamen->deskripsi ?></td>
                             <td><?= $AllTurnamen->gambar_prize_pool ?></td>

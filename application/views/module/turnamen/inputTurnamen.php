@@ -13,6 +13,12 @@
                 </div>
             </div>
             <div class="form-group row">
+                <label class="col-lg-1">nama Turnamen</label>
+                <div class="col-lg-11">
+                    <input type="text" name="nama_turnamen" class="form-control">
+                </div>
+            </div>
+            <div class="form-group row">
                 <label class="col-lg-1"><i class="fas fa-calendar-alt"></i></label>
                 <div class="col-lg-11">
                     <input type="date" name="tanggal_turnamen" class="form-control">

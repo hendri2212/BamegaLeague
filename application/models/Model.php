@@ -73,14 +73,14 @@ class Model extends CI_Model {
 	// Data Turnamen
 	// ----------------
     public function dataAllTurnamen() {
-		$this->db->select('data_turnamen.id_game, id_turnamen, nama_game, tanggal_turnamen, deskripsi, gambar_prize_pool, status_turnamen');
-		$this->db->from('data_game');
-		$this->db->join('data_turnamen', 'data_game.id_game = data_turnamen.id_game');
+		$this->db->select('data_turnamen.id_game, id_turnamen, nama_game, nama_turnamen, tanggal_turnamen, deskripsi, gambar_prize_pool, status_turnamen');
+		$this->db->from('data_turnamen');
+		$this->db->join('data_game', 'data_game.id_game = data_turnamen.id_game');
 		return $this->db->get()->result();
 	}
 	
 	public function AllTurnamenAktif() {
-		return $this->db->get_where("data_turnamen", array('status_turnamen' => '1'))->result();
+		return $this->db->get_where("data_turnamen", array('status_turnamen >' => '0'))->result();
 	}
 
 	public function AllTurnamenDetail($id_game) {
@@ -97,8 +97,8 @@ class Model extends CI_Model {
 
 	public function detailOneTurnamenLimit($id_turnamen){
 		$this->db->select('*, SUM(nilai_rank + nilai_kill + nilai_point) as total');
-		$this->db->from('data_team');
-		$this->db->join('data_turnamen', 'data_turnamen.id_turnamen = data_nilai.id_turnamen' , 'data_team.id_team = data_nilai.id_team');
+		$this->db->join('data_team', 'data_team.id_team = data_nilai.id_team');
+		$this->db->join('data_turnamen', 'data_turnamen.id_turnamen = data_nilai.id_turnamen');
 		$this->db->group_by('data_nilai.id_team');
 		$this->db->order_by('total' , 'DESC');
 		$this->db->limit(3);
@@ -107,6 +107,7 @@ class Model extends CI_Model {
 	public function saveTurnamen($gambar) {
 		$data = array(
 			"id_game"			=> $this->input->post('id_game'),
+			"nama_turnamen"		=> $this->input->post('nama_turnamen'),
 			"tanggal_turnamen"	=> $this->input->post('tanggal_turnamen'),
 			"gambar_prize_pool"	=> $gambar,
 			"deskripsi"			=> $this->input->post('deskripsi')
@@ -116,7 +117,7 @@ class Model extends CI_Model {
 	}
 
 	public function editTurnamen($id_turnamen) {
-		$this->db->select('data_turnamen.id_game, id_turnamen, nama_game, tanggal_turnamen, deskripsi, gambar_prize_pool, status_turnamen');
+		$this->db->select('data_turnamen.id_game, id_turnamen, nama_game, nama_turnamen, tanggal_turnamen, deskripsi, gambar_prize_pool, status_turnamen');
 		$this->db->join('data_game', 'data_game.id_game = data_turnamen.id_game');
         return $this->db->get_where("data_turnamen", array('id_turnamen' => $id_turnamen))->row();
 	}
@@ -124,6 +125,7 @@ class Model extends CI_Model {
 	public function updateTurnamen($id_turnamen, $gambar) {
 		$data = array(
 			"id_game"			=> $this->input->post('id_game'),
+			"nama_turnamen"		=> $this->input->post('nama_turnamen'),
 			"tanggal_turnamen"	=> $this->input->post('tanggal_turnamen'),
 			"gambar_prize_pool"	=> $gambar,
 			"deskripsi"			=> $this->input->post('deskripsi'),
@@ -283,11 +285,13 @@ class Model extends CI_Model {
 	// ----------------
 
 	public function dataNilai() {
-		$this->db->select('data_nilai.id_team, id_nilai, nama_team, nama_group, nama_match, nilai_rank, nilai_kill, nilai_point');
-		$this->db->from('data_team');
-		$this->db->from('data_group');
-		$this->db->from('data_match');
-		$this->db->join('data_nilai', 'data_team.id_team = data_nilai.id_team');
+		$this->db->select('data_nilai.id_team, id_nilai, data_group.id_group, data_nilai.id_match, data_nilai.id_turnamen, nama_team, nama_turnamen, nama_group, nama_match, nilai_rank, nilai_kill, nilai_point');
+		$this->db->from('data_nilai');
+		$this->db->join('data_team', 'data_team.id_team = data_nilai.id_team');
+		$this->db->join('data_group', 'data_group.id_group = data_nilai.id_group');
+		$this->db->join('data_match', 'data_match.id_match = data_nilai.id_match');
+		$this->db->join('data_turnamen', 'data_turnamen.id_turnamen = data_nilai.id_turnamen');
+		$this->db->group_by('id_nilai', 'id_team');
 		return $this->db->get()->result();
 	}
 
@@ -306,15 +310,17 @@ class Model extends CI_Model {
 	}
 
 	public function editNilai($id_nilai) {
-		$this->db->select('data_nilai.id_team, id_nilai, data_nilai.id_group, data_nilai.id_match, nama_team, nama_group, nama_match, nilai_rank, nilai_kill, nilai_point');
-		$this->db->from('data_group');
-		$this->db->from('data_match');
-		$this->db->join('data_nilai', 'data_team.id_team = data_nilai.id_team' , 'data_nilai.id_group = data_group.id_group' , 'data_nilai.id_match = data_match.id_match');
-		return $this->db->get_where("data_team", array('id_nilai' => $id_nilai))->row();
+		$this->db->select('data_nilai.id_team, id_nilai, data_nilai.id_group, data_nilai.id_match, data_nilai.id_turnamen, nama_team, nama_turnamen, nama_group, nama_match, nilai_rank, nilai_kill, nilai_point');
+		$this->db->join('data_team', 'data_team.id_team = data_nilai.id_team');
+		$this->db->join('data_group', 'data_group.id_group = data_nilai.id_group');
+		$this->db->join('data_match', 'data_match.id_match = data_nilai.id_match');
+		$this->db->join('data_turnamen', 'data_turnamen.id_turnamen = data_nilai.id_turnamen');
+		return $this->db->get_where("data_nilai", array('id_nilai' => $id_nilai))->row();
 	}
 
 	public function updateNilai($id_nilai) {
 		$data = array(
+			"id_turnamen"	=> $this->input->post('id_turnamen'),
 			"id_team"		=> $this->input->post('id_team'),
 			"id_group"		=> $this->input->post('id_group'),
 			"id_match"		=> $this->input->post('id_match'),
