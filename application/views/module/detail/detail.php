@@ -46,21 +46,18 @@
             <div class="card bg-dark">
                 <div class="card-header bg-warning">
                     <strong>PESERTA</strong>
-                </div> 
+                </div>
                 <div class="card-body">
-                    <?php $no=1; foreach($detailOneTurnamenTeam as $peserta){?>
-                    <table>
-                        <tr>
-                            <td><?= $no ++?></td>
-                            <td>
-                                <img src="<?=base_url('./assets/gambar/team/').$peserta->logo_team?>" alt="1st place" class="img-fluid rounded h-100">
-                            </td>
-                            <td>
-                                <small class="flat-color-1 text-light d-block pl-1"><?= $peserta->nama_team?></small>
-                            </td>
-                        </tr>
-                    </table>
-                    <?php }?>
+                    <div class="row">
+                        <?php foreach($detailOneTurnamenTeam as $peserta){?>
+                            <div class="col-6 mb-2 align-self-center">
+                                <div class="h-50 text-center">
+                                    <img src="<?=base_url('./assets/gambar/team/').$peserta->logo_team?>" alt="1st place" class="img-fluidrounded">
+                                    <small class="text-light d-block pl-1"><?= $peserta->nama_team?></small>
+                                </div>
+                            </div>
+                        <?php }?>
+                    </div>
                 </div>
             </div>
         </div>
