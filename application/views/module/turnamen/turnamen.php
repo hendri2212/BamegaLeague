@@ -28,16 +28,12 @@
                     <?php $no=1; foreach ($dataAllTurnamen as $AllTurnamen) { ?>
                         <tr>
                             <th scope="row"><?= $no++ ?></th>
-                            <td><?= $AllTurnamen->nama_game ?></td>
-                            <td><?= $AllTurnamen->nama_turnamen ?></td>
-                            <td><?= $AllTurnamen->tanggal_turnamen ?></td>
-                            <td><?= $AllTurnamen->deskripsi ?></td>
-                            <td><?= $AllTurnamen->gambar_prize_pool ?></td>
-                            <td>
-                                <div class="btn-group btn-group-toggle">
-                                    <a href="<?= base_url('content/editTurnamen/'.$AllTurnamen->id_turnamen) ?>" class="btn btn-sm bg-info text-white">Edit</a>
-                                    <a href="<?= base_url('content/deleteTurnamen/'.$AllTurnamen->id_turnamen) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Hapus Data?');">Delete</a>
-                                </div>
+                            <td scope="row"><?= $AllTurnamen->nama_game ?></td>
+                            <td scope="row"><?= $AllTurnamen->nama_turnamen ?></td>
+                            <td scope="row"><?= $AllTurnamen->tanggal_turnamen ?></td>
+                            <td scope="row"><?= $AllTurnamen->deskripsi ?></td>
+                            <td scope="row"><?= $AllTurnamen->gambar_prize_pool ?></td>
+                            <td scope="row">
                                 <?php if ($AllTurnamen->status_turnamen == 0): ?>
                                     <span class="btn bg-warning btn-sm btn-block text-white">Pending</span>
                                 <?php elseif($AllTurnamen->status_turnamen == 1): ?>

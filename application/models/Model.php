@@ -92,6 +92,8 @@ class Model extends CI_Model {
 	}
 
 	public function detailOneTurnamen($id_turnamen) {
+		$this->db->select('*,SUM(nilai_rank + nilai_kill + nilai_point) as total');
+		$this->db->join('data_team', 'data_turnamen.id_turnamen = data_turnamen.id_team');
 		return $this->db->get_where("data_turnamen", array('data_turnamen.id_turnamen' => $id_turnamen))->result();
 	}
 
@@ -104,11 +106,19 @@ class Model extends CI_Model {
 		$this->db->limit(3);
 		return $this->db->get_where("data_nilai", array('data_turnamen.id_turnamen' => $id_turnamen))->result();
 	}
-	public function saveTurnamen($gambar) {
+
+	public function detailOneTurnamenTeam($id_turnamen) {
+		$this->db->select('*, data_team.id_turnamen');
+		$this->db->join('data_team', 'data_turnamen.id_turnamen = data_team.id_turnamen');
+		return $this->db->get_where("data_turnamen", array('data_turnamen.id_turnamen' => $id_turnamen))->result();
+	}
+
+	public function saveTurnamen($gambar, $gambar1) {
 		$data = array(
 			"id_game"			=> $this->input->post('id_game'),
 			"nama_turnamen"		=> $this->input->post('nama_turnamen'),
 			"tanggal_turnamen"	=> $this->input->post('tanggal_turnamen'),
+			"gambar_turnamen"	=> $gambar1,
 			"gambar_prize_pool"	=> $gambar,
 			"deskripsi"			=> $this->input->post('deskripsi')
 		);
@@ -122,11 +132,12 @@ class Model extends CI_Model {
         return $this->db->get_where("data_turnamen", array('id_turnamen' => $id_turnamen))->row();
 	}
 	
-	public function updateTurnamen($id_turnamen, $gambar) {
+	public function updateTurnamen($id_turnamen, $gambar, $gambar1) {
 		$data = array(
 			"id_game"			=> $this->input->post('id_game'),
 			"nama_turnamen"		=> $this->input->post('nama_turnamen'),
 			"tanggal_turnamen"	=> $this->input->post('tanggal_turnamen'),
+			"gambar_turnamen"	=> $gambar1,
 			"gambar_prize_pool"	=> $gambar,
 			"deskripsi"			=> $this->input->post('deskripsi'),
 			"status_turnamen"	=> $this->input->post('status_turnamen')
@@ -137,7 +148,7 @@ class Model extends CI_Model {
 	}
 
 	public function changeGambarTurnamen($id_turnamen) {
-		$this->db->select("gambar_prize_pool");
+		$this->db->select("gambar_prize_pool, gambar_turnamen");
 		return $this->db->get_where("data_turnamen", array("id_turnamen" => $id_turnamen))->row();
 	}
 

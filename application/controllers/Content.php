@@ -112,8 +112,10 @@ class Content extends MY_Controller {
 	}
 
 	public function detailOneTurnamen($id_turnamen) {
+		$data['detailOneTurnamenTeam']= $this->model->detailOneTurnamenTeam($id_turnamen);
 		$data['detailOneTurnamenLimit']= $this->model->detailOneTurnamenLimit($id_turnamen);
 		$data['detailOneTurnamen']= $this->model->detailOneTurnamen($id_turnamen);
+		$data['dataAllTeam'] = $this->model->dataAllTeam();
 		$this->page('module/detail/detail',$data);
 	}
 
@@ -124,17 +126,20 @@ class Content extends MY_Controller {
 		$config['max_size']		= '1000000';
 		$config['max_width']	= '1024000';
 		$config['max_height']	= '768000';
-
 		$this->load->library('upload', $config);
+
 		$this->upload->do_upload('gambar_prize_pool');
 		$gbr = $this->upload->data();
-
 		$gambar = $gbr['file_name'];
 
-		if (empty($gambar)) {
+		$this->upload->do_upload('gambar_turnamen');
+		$gbr1 = $this->upload->data();
+		$gambar1 = $gbr1['file_name'];
+
+		if (empty($gambar) AND empty($gambar1)) {
 			$this->model->saveTurnamen();
 		} else {
-			$this->model->saveTurnamen($gambar);
+			$this->model->saveTurnamen($gambar, $gambar1);
 		}
 	}
 
@@ -158,15 +163,21 @@ class Content extends MY_Controller {
 
 		$gambar = $gbr['file_name'];
 
-		if (empty($gambar)) {
+		$this->upload->do_upload('gambar_turnamen');
+		$gbr1 = $this->upload->data();
+
+		$gambar1 = $gbr1['file_name'];
+		if (empty($gambar) AND empty($gambar1)) {
 			$this->model->updateturnamen($id_turnamen);
 		} else {
 			$cek = $this->model->changeGambarTurnamen($id_turnamen);
 
 			$remove_image = "./assets/gambar/prize/".$cek->gambar_prize_pool;
 			unlink($remove_image);
+			$remove_image1 = "./assets/gambar/prize/".$cek->gambar_turnamen;
+			unlink($remove_image1);
 			
-			$this->model->updateTurnamen($id_turnamen, $gambar);
+			$this->model->updateTurnamen($id_turnamen, $gambar, $gambar1);
 		}
 	}
 
@@ -174,6 +185,8 @@ class Content extends MY_Controller {
 		$cek = $this->model->changeGambarTurnamen($id_turnamen);
 		$remove_image = "./assets/gambar/prize/".$cek->gambar_prize_pool;
 		unlink($remove_image);
+		$remove_image1 = "./assets/gambar/prize/".$cek->gambar_turnamen;
+		unlink($remove_image1);
 		$this->model->deleteTurnamen($id_turnamen);
 	}
 

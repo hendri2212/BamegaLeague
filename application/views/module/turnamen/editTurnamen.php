@@ -16,6 +16,13 @@
                             <?php } ?>
                         </select>
                     </div>
+                    <label>Nama Turnamen</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="des-turnamen"><i class="fas fa-pencil-alt"></i></span>
+                        </div>
+                        <input type="text" name="nama_turnamen" class="form-control" aria-label="nama-turnamen" value="<?= $editTurnamen->nama_turnamen?>">
+                    </div>
                     <label>Tanggal Turnamen</label>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -29,6 +36,13 @@
                             <span class="input-group-text" id="des-turnamen"><i class="fas fa-pencil-alt"></i></span>
                         </div>
                         <textarea name="deskripsi" class="form-control" aria-label="des-turnamen"><?= $editTurnamen->deskripsi ?></textarea>
+                    </div>
+                    <label>Gambar Turnamen</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="g-prize"><i class="fas fa-file-image"></i></span>
+                        </div>
+                        <input name="gambar_turnamen" type="file" class="form-control" aria-label="g-turnamen">
                     </div>
                     <label>Gambar Prize Pool</label>
                     <div class="input-group mb-3">
