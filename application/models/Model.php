@@ -93,7 +93,7 @@ class Model extends CI_Model {
 
 	public function detailOneTurnamen($id_turnamen) {
 		$this->db->select('*,SUM(nilai_rank + nilai_kill + nilai_point) as total');
-		$this->db->join('data_team', 'data_turnamen.id_turnamen = data_turnamen.id_team');
+		$this->db->join('data_nilai', 'data_turnamen.id_turnamen = data_nilai.id_turnamen');
 		return $this->db->get_where("data_turnamen", array('data_turnamen.id_turnamen' => $id_turnamen))->result();
 	}
 
