@@ -21,7 +21,8 @@
                         <th scope="col">Nama Match</th>
                         <th scope="col">Nilai Rank</th>
                         <th scope="col">Nilai Kill</th>
-                        <th scope="col" colspan="2">Nilai Point</th>
+                        <th scope="col">Nilai Point</th>
+                        <th scope="col">Edit</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -37,8 +38,8 @@
                             <td><?= $nilai->nilai_point ?></td>
                             <td>
                                 <div class="btn-group btn-group-toggle">
-                                    <a href="<?= base_url('content/editNilai/'.$nilai->id_nilai) ?>" class="btn btn-sm bg-info text-white">Edit</a>
-                                    <a href="<?= base_url('content/deleteNilai/'.$nilai->id_nilai) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Hapus Data?');">Delete</a>
+                                    <a href="<?= base_url('content/editNilai/'.$nilai->id_nilai) ?>" class="btn btn-sm btn-info mr-1"><i class="fas fa-pencil-alt"></i></a>
+                                    <a href="<?= base_url('content/deleteNilai/'.$nilai->id_nilai) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Hapus Data?');"><i class="fas fa-trash-alt"></i></a>
                                 </div>
                             </td>
                         </tr>

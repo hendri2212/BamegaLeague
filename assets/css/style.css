@@ -22,9 +22,9 @@ Googel Fonts  */
 
 #img{
   /* width: 15rem; */
-  width: 100px;
+  width: 6rem;
   /* height: 10rem; */
-  height: 54px;
+  height: 4rem;
 }
 #profile{
   width: 180px;
@@ -37,7 +37,7 @@ Googel Fonts  */
 .content{
   width: 95vw;
   height: 100%;
-  margin-top: 61px;
+  margin-top: 10vh;
   bottom: 0;
   right: 0;
   float: right;
@@ -49,10 +49,6 @@ Googel Fonts  */
   }
   #form{
     width: 90%;
-  }
-  #img{
-    width: 9rem;
-    height: 6rem;
   }
   #profile{
     margin : auto;
@@ -68,6 +64,15 @@ Googel Fonts  */
   font-size: 24px;
   position: absolute;
   z-index: 5;
+}
+.status{
+  background: rgba(0, 0, 0, 0.6);
+  padding: 1px 3px 1px 3px;
+  border-radius: 4px;
+  font-size: 12px;
+  margin: 3px 0 0 3px;
+  position: absolute;
+  z-index: 1;
 }
 .nav-bar{
   background: rgb(5, 5, 5);
@@ -103,7 +108,7 @@ Googel Fonts  */
   height: 90%;
   position: fixed;
   margin-left: -15rem;
-  top: 4rem;
+  top: 10vh;
   z-index: 15;
   -webkit-transition: margin .25s ease-out;
   -moz-transition: margin .25s ease-out;
