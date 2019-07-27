@@ -4,7 +4,7 @@
         <div class="d-flex flex-row">
             <?php foreach ($dataGame as $game) { ?>
                 <div class="btn btn-dark p-2 m-2" id="img">
-                    <a href="<?= base_url("content/group/$game->id_game") ?>"><img src="<?= base_url('./assets/gambar/game/'.$game->gambar_game) ?>" alt="<?= $game->nama_game ?>" class="img-fluid"></a>
+                    <a href="<?= base_url("content/group/$game->id_game") ?>"><img src="<?= base_url('./assets/gambar/game/'.$game->gambar_game) ?>" alt="<?= $game->nama_game ?>" class="img w-100 h-100"></a>
                 </div>
             <?php } ?>
         </div>
@@ -19,6 +19,13 @@
                     <?php foreach($AllTurnamenAktif as $row) {?>
                         <div class="col-12 col-md-6 col-lg-4 col-xl-4">
                             <div class="card thumbnail">
+                                <div class="status">
+                                    <?php if($row->status_turnamen == 1):?>
+                                        <span><i class="fas fa-circle text-success"></i>Ongoing</span>
+                                    <?php else: ?>
+                                        <span><i class="fas fa-circle text-info"></i>Finished</span>
+                                    <?php endif ?>
+                                </div>
                                 <a href="<?= base_url("content/detailOneTurnamen/$row->id_turnamen")?>">
                                     <img src="<?= base_url("./assets/gambar/prize/".$row->gambar_turnamen) ?>" class="img-fluid">
                                     <div class="caption"><?= $row->nama_turnamen ?></div>  
