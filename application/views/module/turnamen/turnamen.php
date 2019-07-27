@@ -29,7 +29,7 @@
                         <tr>
                             <th scope="row"><?= $no++ ?></th>
                             <td scope="row"><?= $AllTurnamen->nama_game ?></td>
-                            <td scope="row"><?= $AllTurnamen->nama_turnamen ?></td>
+                            <td scope="row"><a href="<?= base_url('content/detailTurnamen/'.$AllTurnamen->id_turnamen)?>"><?= $AllTurnamen->nama_turnamen ?></a></td>
                             <td scope="row"><?= $AllTurnamen->tanggal_turnamen ?></td>
                             <td scope="row"><?= $AllTurnamen->deskripsi ?></td>
                             <td scope="row"><?= $AllTurnamen->gambar_prize_pool ?></td>

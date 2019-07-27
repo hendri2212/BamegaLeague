@@ -108,9 +108,10 @@ class Model extends CI_Model {
 	}
 
 	public function detailOneTurnamenTeam($id_turnamen) {
-		$this->db->select('*, data_team.id_turnamen');
-		$this->db->join('data_team', 'data_turnamen.id_turnamen = data_team.id_turnamen');
-		return $this->db->get_where("data_turnamen", array('data_turnamen.id_turnamen' => $id_turnamen))->result();
+		$this->db->select('id_team');
+		$id_team=$this->db->get_where("data_turnamen", array('data_turnamen.id_turnamen' => $id_turnamen))->row();
+		$this->db->where_in(explode(",",$id_team->id_team));
+		return $this->db->get_where("data_team")->result();
 	}
 
 	public function saveTurnamen($gambar, $gambar1) {
