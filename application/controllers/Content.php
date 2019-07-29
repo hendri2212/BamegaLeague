@@ -111,6 +111,15 @@ class Content extends MY_Controller {
 		$this->page('module/turnamen/inputTurnamen', $data);
 	}
 
+	public function detailTurnamen($id_turnamen) {
+		$data['dataAllTeam'] = $this->model->dataAllTeam();
+		$this->page('module/turnamen/detailTurnamen', $data);
+	}
+
+	public function ikutiTurnamen($id_team,$id_turnamen){
+		$data = $this->model->ikutiTurnamen($id_team,$id_turnamen);
+	}
+
 	public function detailOneTurnamen($id_turnamen) {
 		$data['detailOneTurnamenTeam']= $this->model->detailOneTurnamenTeam($id_turnamen);
 		$data['detailOneTurnamenLimit']= $this->model->detailOneTurnamenLimit($id_turnamen);
