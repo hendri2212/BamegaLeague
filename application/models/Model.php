@@ -161,12 +161,12 @@ class Model extends CI_Model {
 
 	public function ikutiTurnamen($id_team,$id_turnamen){
 		$this->db->select('id_team');
-		$id_team1=$this->db->get_where("data_turnamen", array('data_turnamen.id_turnamen' => $id_turnamen))->row();
-		$this->db->where_in(explode(",",$id_team1->id_team));
+		$id_team1 = $this->db->get_where("data_turnamen", array('data_turnamen.id_turnamen' => $id_turnamen))->row();
+		$id_team_old =$this->db->where_in(explode(",",$id_team1->id_team));
 		$data = array(
-			"id_team" => $id_team1.','.$id_team
+			"id_team" => $id_team_old.','.$id_team
 		);
-		$data1 = $this->db->where_in(implode(" ",$data));
+		$this->db->where_in(implode(",",$data));
 		$this->db->where('id_turnamen', $id_turnamen);
 		$this->db->update('data_turnamen', $data);
 		redirect('content/detailTurnamen/'.$id_turnamen);
