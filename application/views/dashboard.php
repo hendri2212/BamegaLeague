@@ -10,29 +10,30 @@
     <link rel="stylesheet" href="<?= base_url().'assets/css/bootstrap.min.css' ?>">
     <link rel="stylesheet" href="<?= base_url().'assets/css/cs-skin-elastic.css' ?>">
     <link rel="stylesheet" href="<?= base_url().'assets/css/all.min.css' ?>">
+
 </head>
 <body class="bg-mblack">
     <div class="d-flex" id="wrapper">
         <div class="bg-dark" id="sidebar-wrapper">
             <div class="list-group list-group-flush text-center">
-                <a href="<?= base_url() ?>" class="list-group-item list-group-item-action bg-dark text-warning"><i class="fas fa-desktop"></i></a>
-                <a href="<?= base_url('content/communities') ?>" class="list-group-item list-group-item-action bg-dark text-warning"><i class="fas fa-users"></i></a>
+                <a href="<?= base_url() ?>" class="list-group-item list-group-item-action bg-dark text-warning" data-toggle="tooltip" data-placement="bottom" title="Home"><i class="fas fa-desktop"></i></a>
+                <a href="<?= base_url('content/communities') ?>" class="list-group-item list-group-item-action bg-dark text-warning" data-toggle="tooltip" data-placement="bottom" title="Pemain"><i class="fas fa-users"></i></a>
                 <?php if ($this->session->userdata("status") == "success") { ?>
                     <!-- <div class="btn-group dropright">
                         <button type="button" class="list-group-item list-group-item-action bg-dark text-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-user-edit"></i>
                         </button>
                         <div class="dropdown-menu bg-dark btn-dark" style="margin-left: 5rem;"> -->
-                            <a href="<?= base_url('content/game') ?>" class="list-group-item list-group-item-action bg-dark text-warning"><i class="fas fa-gamepad"></i></a>
-                            <a href="<?= base_url('content/turnamen') ?>" class="list-group-item list-group-item-action bg-dark text-warning"><i class="fas fa-trophy"></i></a>
-                            <a href="<?= base_url('content/team') ?>" class="list-group-item list-group-item-action bg-dark text-warning"><i class="fas fa-users-cog"></i></a>
-                            <a href="<?= base_url('content/pemain') ?>" class="list-group-item list-group-item-action bg-dark text-warning"><i class="fas fa-user-cog"></i></a>
-                            <a href="<?= base_url('content/nilai') ?>" class="list-group-item list-group-item-action bg-dark text-warning"><i class="far fa-chart-bar"></i></a>
+                            <a href="<?= base_url('content/game') ?>" class="list-group-item list-group-item-action bg-dark text-warning" data-toggle="tooltip" data-placement="bottom" title="Data Game"><i class="fas fa-gamepad"></i></a>
+                            <a href="<?= base_url('content/turnamen') ?>" class="list-group-item list-group-item-action bg-dark text-warning" data-toggle="tooltip" data-placement="bottom" title="Data Turnamen"><i class="fas fa-trophy"></i></a>
+                            <a href="<?= base_url('content/team') ?>" class="list-group-item list-group-item-action bg-dark text-warning" data-toggle="tooltip" data-placement="bottom" title="Data Team"><i class="fas fa-users-cog"></i></a>
+                            <a href="<?= base_url('content/pemain') ?>" class="list-group-item list-group-item-action bg-dark text-warning" data-toggle="tooltip" data-placement="bottom" title="Data Pemain"><i class="fas fa-user-cog"></i></a>
+                            <a href="<?= base_url('content/nilai') ?>" class="list-group-item list-group-item-action bg-dark text-warning" data-toggle="tooltip" data-placement="bottom" title="Data Nilai"><i class="far fa-chart-bar"></i></a>
                         <!-- </div>
                     </div> -->
-                    <a href="<?= base_url('content/logOut') ?>" class="list-group-item list-group-item-action bg-dark text-danger"><i class="fas fa-sign-out-alt"></i></a>
+                    <a href="<?= base_url('content/logOut') ?>" class="list-group-item list-group-item-action bg-dark text-danger" data-toggle="tooltip" data-placement="bottom" title="Logout"><i class="fas fa-sign-out-alt"></i></a>
                     <?php } else { ?>
-                        <a href="<?= base_url('content/login') ?>" class="list-group-item list-group-item-action bg-dark text-info"><i class="fas fa-sign-in-alt"></i></a>
+                        <a href="<?= base_url('content/login') ?>" class="list-group-item list-group-item-action bg-dark text-info" data-toggle="tooltip" data-placement="bottom" title="Login"><i class="fas fa-sign-in-alt"></i></a>
                     <?php } ?>
             </div>
         </div>
@@ -76,6 +77,10 @@
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
         });
+
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
     </script>
 </body>
 </html>
