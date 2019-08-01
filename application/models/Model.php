@@ -108,10 +108,10 @@ class Model extends CI_Model {
 	}
 
 	public function detailOneTurnamenTeam($id_turnamen) {
-		$this->db->select('id_team');
-		$id_team=$this->db->get_where("data_turnamen", array('data_turnamen.id_turnamen' => $id_turnamen))->row();
-		$this->db->where_in(explode(",",$id_team->id_team));
-		return $this->db->get_where("data_team")->result();
+		$this->db->select('*');
+		$this->db->from('data_team');
+		$this->db->join('data_team_turnamen', 'data_team_turnamen.id_team = data_team.id_team');
+		return $this->db->get()->result();
 	}
 
 	public function saveTurnamen($gambar, $gambar1) {
@@ -158,25 +158,36 @@ class Model extends CI_Model {
 		$this->db->delete('data_turnamen');
 		redirect('content/turnamen');
 	}
-
-	public function ikutiTurnamen($id_team,$id_turnamen){
-		$this->db->select('id_team');
-		$id_team1 = $this->db->get_where("data_turnamen", array('data_turnamen.id_turnamen' => $id_turnamen))->row();
-		$id_team_old =$this->db->where_in(explode(",",$id_team1->id_team));
-		$data = array(
-			"id_team" => $id_team_old.','.$id_team
-		);
-		$this->db->where_in(implode(",",$data));
-		$this->db->where('id_turnamen', $id_turnamen);
-		$this->db->update('data_turnamen', $data);
-		redirect('content/detailTurnamen/'.$id_turnamen);
+	
+	public function dataAllTeamTurnamen($id_game) {
+		$this->db->select('*');
+		$this->db->from('data_team');
+		$this->db->where('id_game', $id_game);
+		return $this->db->get()->result();
 	}
 
-	public function dataAllTeam1() {
-		$this->db->select('*,data_turnamen.id_team');
-		$this->db->from('data_team');
-		$this->db->join('data_turnamen', 'data_team.id_team = data_turnamen.id_team');
-		return $this->db->get()->result();
+	public function cekDataTeamTurnamen(){
+		$this->db->select('id_team');
+		return $data = $this->db->get("data_team_turnamen")->row();
+	}
+	
+	public function ikutiTurnamen($id_turnamen, $id_team, $id_game){
+		$data_old = $this->db->get('data_team_turnamen');
+		$data = array(
+			"id_turnamen"		=> $id_turnamen,
+			"id_team"			=> $id_team
+		);
+		if($data_old->id_turnamen != $id_turnamen AND $data_old->id_team != $id_team){
+			$this->db->insert('data_team_turnamen', $data);
+		}
+		redirect('content/detailTurnamen/'.$id_turnamen.'/'.$id_game);
+	}
+
+	public function tidakIkutiTurnamen($id_turnamen, $id_team, $id_game){
+		$this->db->where('id_turnamen', $id_turnamen);
+		$this->db->where('id_team', $id_team);
+		$this->db->delete('data_team_turnamen');
+		redirect('content/detailTurnamen/'.$id_turnamen.'/'.$id_game);
 	}
 	// ----------------
 	// Data Team

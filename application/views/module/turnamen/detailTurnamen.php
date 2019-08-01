@@ -5,6 +5,7 @@
         </div>
     </div>
 </div>
+
 <div class="d-flex flex-column justify-content-center mt-3">
     <div class="row">
         <div class="col-12">
@@ -20,8 +21,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $no = 1; foreach ($dataAllTeam as $team) { 
-                            $id_turnamen=$this->uri->segment('3'); ?>
+                        <?php $no = 1; foreach ($dataAllTeamTurnamen as $team) { 
+                            $id_turnamen=$this->uri->segment('3');
+                            $id_game=$this->uri->segment('4'); ?>
                             <tr>
                                 <th scope="row"><?= $no++ ?></th>
                                 <td scope="row"><?= $team->nama_team ?></td>
@@ -29,7 +31,11 @@
                                 <td scope="row"><?= $team->deskripsi_team?></td>
                                 <td scope="row">
                                     <div class="btn-group">
-                                        <a href="<?= base_url('content/ikutiTurnamen/'.$team->id_team.'/'.$id_turnamen) ?>" class="btn btn-sm btn-success btn-block text-white">Mengikuti</a>
+                                        <?php if(empty($data->id_team)){?>
+                                            <a href="<?= base_url('content/tidakIkutiTurnamen/'.$id_turnamen.'/'.$team->id_team.'/'.$id_game) ?>" class="btn btn-sm btn-success btn-block text-white">Mengikuti</a>
+                                        <?php }else{ ?>
+                                            <a href="<?= base_url('content/ikutiTurnamen/'.$id_turnamen.'/'.$team->id_team.'/'.$id_game) ?>" class="btn btn-sm btn-warning btn-block text-white">Tidak Mengikuti</a>
+                                        <?php } ?>
                                     </div>
                                 </td>
                             </tr>
