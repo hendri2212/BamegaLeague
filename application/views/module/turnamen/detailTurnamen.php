@@ -3,6 +3,19 @@
         <div class="col-6">
             <h3 class="pb-3 text-light">Detail Turnamen</h3>
         </div>
+        <div class="col-6">
+            <?php $id_turnamen = $this->uri->segment('3'); $id_game = $this->uri->segment('4');
+                echo form_open("content/ikutiTurnamen/".$id_turnamen.'/'.$id_game) ?>
+                <div class="form-inline float-right">
+                    <select name="id_team" class="form-control">
+                        <?php foreach ($dataTeam as $key) { ?>
+                            <option value="<?= $key->id_team ?>"><?= $key->nama_team ?></option>
+                        <?php } ?>
+                    </select>
+                    <input type="submit" name="SaveDTeam" value="Add" class="btn btn-primary ml-2">
+                </div>
+            <?php echo form_close(); ?>
+        </div>
     </div>
 </div>
 
@@ -13,29 +26,24 @@
                 <table class="table table-striped table-sm table-hover table-dark">
                     <thead class="bg-mblack">
                         <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nama Team</th>
-                        <th scope="col">Logo Team</th>
-                        <th scope="col">Deskripsi Team</th>
-                        <th scope="col">Edit</th>
+                            <th>#</th>
+                            <th>Nama Team</th>
+                            <th>Logo Team</th>
+                            <th colspan="2">Deskripsi Team</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $no = 1; foreach ($dataAllTeamTurnamen as $team) { 
-                            $id_turnamen=$this->uri->segment('3');
-                            $id_game=$this->uri->segment('4'); ?>
+                        <?php $no = 1; foreach ($dataAllTeamTurnamen as $team) {
+                            $id_turnamen= $this->uri->segment('3');
+                            $id_game    = $this->uri->segment('4'); ?>
                             <tr>
-                                <th scope="row"><?= $no++ ?></th>
-                                <td scope="row"><?= $team->nama_team ?></td>
-                                <td scope="row"><?= $team->logo_team ?></td>
-                                <td scope="row"><?= $team->deskripsi_team?></td>
-                                <td scope="row">
+                                <td><?= $no++ ?></td>
+                                <td><?= $team->nama_team ?></td>
+                                <td><?= $team->logo_team ?></td>
+                                <td><?= $team->deskripsi_team?></td>
+                                <td>
                                     <div class="btn-group">
-                                        <?php if($cekDataTeamTurnamen == '1'){?>
-                                            <a href="<?= base_url('content/tidakIkutiTurnamen/'.$id_turnamen.'/'.$team->id_team.'/'.$id_game) ?>" class="btn btn-sm btn-success btn-block text-white">Mengikuti</a>
-                                        <?php }else{ ?>
-                                            <a href="<?= base_url('content/ikutiTurnamen/'.$id_turnamen.'/'.$team->id_team.'/'.$id_game) ?>" class="btn btn-sm btn-warning btn-block text-white">Tidak Mengikuti</a>
-                                        <?php } ?>
+                                        <a href="<?= base_url('content/tidakIkutiTurnamen/'.$id_turnamen.'/'.$team->id_team.'/'.$id_game) ?>" class="btn btn-sm btn-danger btn-block text-white" onclick="return confirm('Hapus Data?')"><i class="fas fa-trash-alt"></i></a>
                                     </div>
                                 </td>
                             </tr>

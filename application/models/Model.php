@@ -160,46 +160,43 @@ class Model extends CI_Model {
 	}
 	
 	public function dataAllTeamTurnamen($id_game) {
-		$this->db->select('*');
-		$this->db->from('data_team');
-		$this->db->where('id_game', $id_game);
-		return $this->db->get()->result();
+		$this->db->join('data_team', 'data_team.id_team = data_team_turnamen.id_team');
+		return $this->db->get_where('data_team_turnamen', array('data_team_turnamen.id_game' => $id_game))->result();
 	}
 
 	public function cekDataTeamTurnamen($id_turnamen){
 		$data = array(
-			"id_turnamen" => '1'
+			"id_turnamen" => $id_turnamen
 		);
-		$akses	= $this->db->get_where("data_team_turnamen", $data)->row();
-		// $cek	= $this->db->get_where("data_team_turnamen", $data)->num_rows();
-		// if($cek > 0) {
-		// 	$data = array(
-		// 		'id_turnamen'	=> $akses->id_turnamen,
-		// 		'id_team'		=> $akses->id_team,
-		// 	);
-			
-		// }
-
+		return $this->db->get_where("data_team_turnamen", $data)->row();
 	}
 	
-	public function ikutiTurnamen($id_turnamen, $id_team, $id_game){
+	public function ikutiTurnamen($id_turnamen, $id_game){
 		$data = array(
-			"id_turnamen"		=> $id_turnamen,
-			"id_team"			=> $id_team
+			"id_turnamen"	=> $id_turnamen,
+			"id_team"		=> $this->input->post('id_team'),
+			"id_game"		=> $id_game,
 		);
-			$this->db->insert('data_team_turnamen', $data);
+		$this->db->insert('data_team_turnamen', $data);
 		redirect('content/detailTurnamen/'.$id_turnamen.'/'.$id_game);
 	}
 
 	public function tidakIkutiTurnamen($id_turnamen, $id_team, $id_game){
 		$this->db->where('id_turnamen', $id_turnamen);
 		$this->db->where('id_team', $id_team);
+		$this->db->where('id_game', $id_game);
 		$this->db->delete('data_team_turnamen');
 		redirect('content/detailTurnamen/'.$id_turnamen.'/'.$id_game);
 	}
+	
 	// ----------------
 	// Data Team
 	// ----------------
+
+	public function dataTeam() {
+		return $this->db->get('data_team')->result();
+	}
+
 	public function dataAllTeam() {
 		$this->db->select('data_team.id_game, id_team, nama_game, nama_team, logo_team, deskripsi_team, tanggal_daftar');
 		$this->db->from('data_game');
@@ -253,6 +250,7 @@ class Model extends CI_Model {
 		$this->db->delete('data_team');
 		redirect('content/team');
 	}
+
 	// ----------------
 	// Data Login
 	// ----------------

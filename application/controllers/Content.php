@@ -112,13 +112,14 @@ class Content extends MY_Controller {
 	}
 
 	public function detailTurnamen($id_turnamen, $id_game) {
-		$data['dataAllTeamTurnamen'] = $this->model->dataAllTeamTurnamen($id_game);
-		$data['cekDataTeamTurnamen'] = $this->model->cekDataTeamTurnamen($id_turnamen);
+		$data['dataTeam']				= $this->model->dataTeam();
+		$data['dataAllTeamTurnamen'] 	= $this->model->dataAllTeamTurnamen($id_game);
+		$data['cekDataTeamTurnamen'] 	= $this->model->cekDataTeamTurnamen($id_turnamen);
 		$this->page('module/turnamen/detailTurnamen', $data);
 	}
 
-	public function ikutiTurnamen($id_turnamen, $id_team, $id_game){
-		$this->model->ikutiTurnamen($id_turnamen, $id_team, $id_game);
+	public function ikutiTurnamen($id_turnamen, $id_game) {
+		$this->model->ikutiTurnamen($id_turnamen, $id_game);
 	}
 
 	public function tidakIkutiTurnamen($id_turnamen, $id_team, $id_game){
