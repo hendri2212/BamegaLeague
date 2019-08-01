@@ -113,7 +113,7 @@ class Content extends MY_Controller {
 
 	public function detailTurnamen($id_turnamen, $id_game) {
 		$data['dataAllTeamTurnamen'] = $this->model->dataAllTeamTurnamen($id_game);
-		$this->model->cekDataTeamTurnamen();
+		$data['cekDataTeamTurnamen'] = $this->model->cekDataTeamTurnamen($id_turnamen);
 		$this->page('module/turnamen/detailTurnamen', $data);
 	}
 
@@ -210,6 +210,11 @@ class Content extends MY_Controller {
 	public function team() {
 		$data['dataAllTeam'] = $this->model->dataAllTeam();
 		$this->page('module/team/team', $data);
+	}
+
+	public function detailTeam($id_team) {
+		$data['detailTeam'] = $this->model->detailTeam($id_team);
+		$this->page('module/team/detailTeam', $data);
 	}
 
 	public function inputTeam() {

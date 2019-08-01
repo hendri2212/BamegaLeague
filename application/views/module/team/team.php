@@ -29,7 +29,7 @@
                             <tr>
                                 <th scope="row"><?= $no++ ?></th>
                                 <td scope="row"><?= $team->nama_game ?></td>
-                                <td scope="row"><?= $team->nama_team ?></td>
+                                <td scope="row"><a href="<?= base_url('content/detailTeam/'.$team->id_team)?>"><?= $team->nama_team ?></a></td>
                                 <td scope="row"><?= $team->logo_team ?></td>
                                 <td scope="row"><?= $team->deskripsi_team?></td>
                                 <td scope="row"><?= $team->tanggal_daftar?></td>

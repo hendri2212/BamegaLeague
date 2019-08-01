@@ -166,20 +166,28 @@ class Model extends CI_Model {
 		return $this->db->get()->result();
 	}
 
-	public function cekDataTeamTurnamen(){
-		$this->db->select('id_team');
-		return $data = $this->db->get("data_team_turnamen")->row();
+	public function cekDataTeamTurnamen($id_turnamen){
+		$data = array(
+			"id_turnamen" => '1'
+		);
+		$akses	= $this->db->get_where("data_team_turnamen", $data)->row();
+		// $cek	= $this->db->get_where("data_team_turnamen", $data)->num_rows();
+		// if($cek > 0) {
+		// 	$data = array(
+		// 		'id_turnamen'	=> $akses->id_turnamen,
+		// 		'id_team'		=> $akses->id_team,
+		// 	);
+			
+		// }
+
 	}
 	
 	public function ikutiTurnamen($id_turnamen, $id_team, $id_game){
-		$data_old = $this->db->get('data_team_turnamen');
 		$data = array(
 			"id_turnamen"		=> $id_turnamen,
 			"id_team"			=> $id_team
 		);
-		if($data_old->id_turnamen != $id_turnamen AND $data_old->id_team != $id_team){
 			$this->db->insert('data_team_turnamen', $data);
-		}
 		redirect('content/detailTurnamen/'.$id_turnamen.'/'.$id_game);
 	}
 
@@ -196,6 +204,13 @@ class Model extends CI_Model {
 		$this->db->select('data_team.id_game, id_team, nama_game, nama_team, logo_team, deskripsi_team, tanggal_daftar');
 		$this->db->from('data_game');
 		$this->db->join('data_team', 'data_game.id_game = data_team.id_game');
+		return $this->db->get()->result();
+	}
+
+	public function detailTeam($id_team){
+		$this->db->select('*');
+		$this->db->from('data_pemain');
+		$this->db->where('id_team', $id_team);
 		return $this->db->get()->result();
 	}
 
@@ -268,6 +283,7 @@ class Model extends CI_Model {
 		$this->db->select('data_pemain.id_team, id_pemain, nama_team, kode_pemain, nama_pemain, foto_pemain, no_handphone, alamat');
 		$this->db->from('data_team');
 		$this->db->join('data_pemain', 'data_team.id_team = data_pemain.id_team');
+		$this->db->order_by('id_team', 'ASC');
 		return $this->db->get()->result();
 	}
 

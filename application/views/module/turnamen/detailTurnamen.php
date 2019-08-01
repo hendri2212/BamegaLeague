@@ -1,7 +1,7 @@
 <div class="col-12">
     <div class="row mt-3 border-bottom border-warning">
         <div class="col-6">
-            <h3 class="pb-3 text-light">Data Team</h3>
+            <h3 class="pb-3 text-light">Detail Turnamen</h3>
         </div>
     </div>
 </div>
@@ -31,7 +31,7 @@
                                 <td scope="row"><?= $team->deskripsi_team?></td>
                                 <td scope="row">
                                     <div class="btn-group">
-                                        <?php if(empty($data->id_team)){?>
+                                        <?php if($cekDataTeamTurnamen == '1'){?>
                                             <a href="<?= base_url('content/tidakIkutiTurnamen/'.$id_turnamen.'/'.$team->id_team.'/'.$id_game) ?>" class="btn btn-sm btn-success btn-block text-white">Mengikuti</a>
                                         <?php }else{ ?>
                                             <a href="<?= base_url('content/ikutiTurnamen/'.$id_turnamen.'/'.$team->id_team.'/'.$id_game) ?>" class="btn btn-sm btn-warning btn-block text-white">Tidak Mengikuti</a>
