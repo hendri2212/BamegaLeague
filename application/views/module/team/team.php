@@ -31,9 +31,9 @@
                                 <td scope="row"><?= $team->nama_game ?></td>
                                 <td scope="row"><a href="<?= base_url('content/detailTeam/'.$team->id_team)?>"><?= $team->nama_team ?></a></td>
                                 <td scope="row">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal<?=$team->id_team?>">
-                                        <img src="<?= base_url("./assets/gambar/team/".$team->logo_team) ?>" class="img-fluid rounded h-25">
-                                    </button>
+                                    <div class="btn btn-dark p-0 table-img" data-toggle="modal" data-target="#modal<?=$team->id_team?>">
+                                        <img src="<?= base_url("./assets/gambar/team/".$team->logo_team) ?>" class="img-fluid rounded">
+                                    </div>
                                 </td>
                                 <td scope="row"><?= $team->deskripsi_team?></td>
                                 <td scope="row"><?= $team->tanggal_daftar?></td>

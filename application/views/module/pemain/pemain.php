@@ -31,7 +31,11 @@
                             <td scope="row"><?= $pemain->nama_team ?></td>
                             <td scope="row"><?= $pemain->kode_pemain ?></td>
                             <td scope="row"><?= $pemain->nama_pemain ?></td>
-                            <td scope="row"><?= $pemain->foto_pemain ?></td>
+                            <td scope="row">
+                                <div class="btn btn-dark p-0 table-img" data-toggle="modal" data-target="#modal<?=$pemain->id_pemain?>">
+                                    <img src="<?= base_url("./assets/gambar/pemain/".$pemain->foto_pemain) ?>" class="img-fluid rounded">
+                                </div>
+                            </td>
                             <td scope="row"><?= $pemain->no_handphone ?></td>
                             <td scope="row"><?= $pemain->alamat ?></td>
                             <td scope="row">
@@ -40,6 +44,21 @@
                                     <a href="<?= base_url('content/deletePemain/'.$pemain->id_pemain) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Hapus Data?');"><i class="fas fa-trash-alt"></i></a>
                                 </div>
                             </td>
+
+                            <div class="modal fade" id="modal<?=$pemain->id_pemain?>" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <img src="<?= base_url("./assets/gambar/pemain/".$pemain->foto_pemain) ?>" class="img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </tr>
                     <?php } ?>
                 </tbody>

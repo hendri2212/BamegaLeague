@@ -19,7 +19,9 @@ Googel Fonts  */
 
 */
 /* custom */
-
+.table-img{
+  width: 3rem;
+}
 #img{
   /* width: 15rem; */
   width: 6rem;

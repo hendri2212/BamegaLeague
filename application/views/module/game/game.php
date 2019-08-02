@@ -16,7 +16,7 @@
                     <thead class="bg-mblack">
                         <tr>
                             <th scope="col"></th>
-                            <th scope="col">Nama_Game</th>
+                            <th scope="col">Nama Game</th>
                             <th scope="col">Deskripsi</th>
                             <th scope="col">Status</th>
                             <th scope="col">Edit</th>
@@ -27,9 +27,9 @@
                             <tr>
                                 <th scope="row"><?= $no++ ?></th>
                                 <td scope="row">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal<?=$game->id_game?>">
-                                        <img src="<?= base_url("./assets/gambar/game/".$game->gambar_game) ?>" class="img-fluid rounded h-25">
-                                    </button>
+                                    <div class="btn btn-dark p-0 table-img" data-toggle="modal" data-target="#modal<?=$game->id_game?>">
+                                        <img src="<?= base_url("./assets/gambar/game/".$game->gambar_game) ?>" class="img-fluid rounded">
+                                    </div>
                                     <?= $game->nama_game ?>
                                 </td>
                                 <td scope="row"><?= $game->deskripsi_game ?></td>
