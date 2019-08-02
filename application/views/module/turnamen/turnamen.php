@@ -56,13 +56,15 @@
                             <div class="modal fade" id="modal<?=$AllTurnamen->id_turnamen?>" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <div class="modal-header bg-mblack border-dark">
+                                            <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
-                                        <div class="modal-body">
-                                            <img src="<?= base_url("./assets/gambar/prize/".$AllTurnamen->gambar_prize_pool) ?>" class="img-fluid">
+                                        <div class="modal-body bg-dark">
+                                            <div class="text-center">
+                                                <img src="<?= base_url("./assets/gambar/prize/".$AllTurnamen->gambar_prize_pool) ?>" class="img-fluid">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
