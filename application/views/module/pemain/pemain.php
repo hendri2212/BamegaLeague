@@ -15,7 +15,6 @@
                 <thead class="bg-mblack">
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Nama Team</th>
                         <th scope="col">Kode Pemain</th>
                         <th scope="col">Nama Pemain</th>
                         <th scope="col">Foto Pemain</th>
@@ -28,7 +27,6 @@
                     <?php $no=1; foreach ($dataAllCommunities as $pemain) { ?>
                         <tr>
                             <th scope="row"><?= $no++ ?></th>
-                            <td scope="row"><?= $pemain->nama_team ?></td>
                             <td scope="row"><?= $pemain->kode_pemain ?></td>
                             <td scope="row"><?= $pemain->nama_pemain ?></td>
                             <td scope="row">

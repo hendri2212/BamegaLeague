@@ -4,17 +4,6 @@
         <div class="card-body">
             <?php echo form_open("content/savePemain", array('enctype'=>'multipart/form-data')); ?>
                 <div class="form-group">
-                    <label>Nama Team</label>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="n-team"><i class="fas fa-users"></i></span>
-                        </div>
-                        <select name="id_team" class="form-control" aria-label="n-team">
-                            <?php foreach ($dataAllTeam as $key) { ?>
-                                <option value="<?php echo $key->id_team ?>"><?= $key->nama_team ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
                     <label>Kode Pemain</label>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">

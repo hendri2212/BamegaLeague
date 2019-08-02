@@ -73,7 +73,7 @@ class Model extends CI_Model {
 	// Data Turnamen
 	// ----------------
     public function dataAllTurnamen() {
-		$this->db->select('data_turnamen.id_game, id_turnamen, nama_game, nama_turnamen, tanggal_turnamen, deskripsi, gambar_prize_pool, status_turnamen');
+		$this->db->select('data_turnamen.id_game, id_turnamen, nama_game, nama_turnamen, tanggal_turnamen, deskripsi, gambar_prize_pool, gambar_turnamen, status_turnamen');
 		$this->db->from('data_turnamen');
 		$this->db->join('data_game', 'data_game.id_game = data_turnamen.id_game');
 		return $this->db->get()->result();
@@ -84,7 +84,7 @@ class Model extends CI_Model {
 	}
 
 	public function AllTurnamenDetail($id_game) {
-		return $this->db->get_where("data_turnamen", array('id_game' => $id_game, 'status_turnamen' => '1'))->result();
+		return $this->db->get_where("data_turnamen", array('id_game' => $id_game, 'status_turnamen >' => '0'))->result();
 	}
 	
 	public function group() {
@@ -110,6 +110,7 @@ class Model extends CI_Model {
 	public function detailOneTurnamenTeam($id_turnamen) {
 		$this->db->select('*');
 		$this->db->from('data_team');
+		$this->db->where('id_turnamen', $id_turnamen);
 		$this->db->join('data_team_turnamen', 'data_team_turnamen.id_team = data_team.id_team');
 		return $this->db->get()->result();
 	}
@@ -193,7 +194,8 @@ class Model extends CI_Model {
 	// Data Team
 	// ----------------
 
-	public function dataTeam() {
+	public function dataTeam($id_game) {
+		$this->db->where('id_game', $id_game);
 		return $this->db->get('data_team')->result();
 	}
 
@@ -204,11 +206,35 @@ class Model extends CI_Model {
 		return $this->db->get()->result();
 	}
 
-	public function detailTeam($id_team){
+	public function detailOneTeamPemain($id_team) {
 		$this->db->select('*');
 		$this->db->from('data_pemain');
 		$this->db->where('id_team', $id_team);
+		$this->db->join('data_team_pemain', 'data_team_pemain.id_pemain = data_pemain.id_pemain');
 		return $this->db->get()->result();
+	}
+
+	public function cekDataTeamPemain($id_team){
+		$data = array(
+			"id_team" => $id_team
+		);
+		return $this->db->get_where("data_team_pemain", $data)->row();
+	}
+
+	public function ikutiTeam($id_team){
+		$data = array(
+			"id_team"		=> $id_team,
+			"id_pemain"		=> $this->input->post('id_pemain'),
+		);
+		$this->db->insert('data_team_pemain', $data);
+		redirect('content/detailTeam/'.$id_team);
+	}
+
+	public function tidakIkutiTeam($id_team, $id_pemain){
+		$this->db->where('id_team', $id_team);
+		$this->db->where('id_pemain', $id_pemain);
+		$this->db->delete('data_team_pemain');
+		redirect('content/detailTeam/'.$id_team);
 	}
 
 	public function saveTeam($gambar) {
@@ -278,11 +304,10 @@ class Model extends CI_Model {
 	// Data Komunitas
 	// ----------------
 	public function dataAllCommunities() {
-		$this->db->select('data_pemain.id_team, id_pemain, nama_team, kode_pemain, nama_pemain, foto_pemain, no_handphone, alamat');
-		$this->db->from('data_team');
-		$this->db->join('data_pemain', 'data_team.id_team = data_pemain.id_team');
-		$this->db->order_by('id_team', 'ASC');
-		return $this->db->get()->result();
+		$json = [];
+		$this->db->select('id_pemain, kode_pemain, nama_pemain, foto_pemain, no_handphone, alamat');
+		$this->db->from('data_pemain');
+		return $json = $this->db->get()->result();
 	}
 
 	public function detailCommunities($id_pemain) {
@@ -295,7 +320,6 @@ class Model extends CI_Model {
 	// ----------------
 	public function savePemain($gambar) {
 		$data = array(
-			"id_team"		=> $this->input->post('id_team'),
 			"kode_pemain"	=> $this->input->post('kode_pemain'),
 			"nama_pemain"	=> $this->input->post('nama_pemain'),
 			"no_handphone"	=> $this->input->post('no_handphone'),
@@ -307,14 +331,12 @@ class Model extends CI_Model {
 	}
 
 	public function editPemain($id_pemain) {
-		$this->db->select('data_pemain.id_team, id_pemain, nama_team, kode_pemain, nama_pemain, foto_pemain, no_handphone, alamat');
-		$this->db->join('data_team', 'data_team.id_team = data_pemain.id_team');
+		$this->db->select('id_pemain, kode_pemain, nama_pemain, foto_pemain, no_handphone, alamat');
 		return $this->db->get_where("data_pemain", array('id_pemain' => $id_pemain))->row();
 	}
 
 	public function updatePemain($id_pemain, $gambar) {
 		$data = array(
-			"id_team"		=> $this->input->post('id_team'),
 			"kode_pemain"	=> $this->input->post('kode_pemain'),
 			"nama_pemain"	=> $this->input->post('nama_pemain'),
 			"no_handphone"	=> $this->input->post('no_handphone'),

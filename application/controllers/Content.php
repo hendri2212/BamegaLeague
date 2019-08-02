@@ -112,7 +112,7 @@ class Content extends MY_Controller {
 	}
 
 	public function detailTurnamen($id_turnamen, $id_game) {
-		$data['dataTeam']				= $this->model->dataTeam();
+		$data['dataTeam']				= $this->model->dataTeam($id_game);
 		$data['dataAllTeamTurnamen'] 	= $this->model->dataAllTeamTurnamen($id_game);
 		$data['cekDataTeamTurnamen'] 	= $this->model->cekDataTeamTurnamen($id_turnamen);
 		$this->page('module/turnamen/detailTurnamen', $data);
@@ -214,8 +214,18 @@ class Content extends MY_Controller {
 	}
 
 	public function detailTeam($id_team) {
-		$data['detailTeam'] = $this->model->detailTeam($id_team);
+		$data['dataAllCommunities'] 	= $this->model->dataAllCommunities();
+		$data['detailOneTeamPemain'] 	= $this->model->detailOneTeamPemain($id_team);
+		$data['cekDataTeamPemain'] 		= $this->model->cekDataTeamPemain($id_team);
 		$this->page('module/team/detailTeam', $data);
+	}
+
+	public function ikutiTeam($id_team) {
+		$this->model->ikutiTeam($id_team);
+	}
+
+	public function tidakIkutiTeam($id_team, $id_pemain){
+		$this->model->tidakIkutiTeam($id_team, $id_pemain);
 	}
 
 	public function inputTeam() {
@@ -320,7 +330,6 @@ class Content extends MY_Controller {
 	}
 
 	public function inputPemain() {
-		$data['dataAllTeam'] = $this->model->dataAllTeam();
 		$this->page('module/pemain/inputPemain', $data);
 	}
 
@@ -347,7 +356,6 @@ class Content extends MY_Controller {
 
 	public function editPemain($id_pemain) {
 		$data['editPemain'] = $this->model->editPemain($id_pemain);
-		$data['dataAllTeam'] = $this->model->dataAllTeam();
 		$this->page('module/pemain/editPemain', $data);
 	}
 

@@ -3,35 +3,59 @@
         <div class="col-6">
             <h3 class="pb-3 text-light">Detail Team</h3>
         </div>
-    </div>
-</div>
-<div class="d-flex flex-column mt-3">
-    <div class="col-12">
-        <div class="table-responsive">
-            <table class="table table-striped table-sm table-hover table-dark">
-                <thead class="bg-mblack">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Kode Pemain</th>
-                        <th scope="col">Nama Pemain</th>
-                        <th scope="col">Foto Pemain</th>
-                        <th scope="col">No Handphone</th>
-                        <th scope="col"">Alamat</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $no=1; foreach ($detailTeam as $pemain) { ?>
-                        <tr>
-                            <th scope="row"><?= $no++ ?></th>
-                            <td scope="row"><?= $pemain->kode_pemain ?></td>
-                            <td scope="row"><?= $pemain->nama_pemain ?></td>
-                            <td scope="row"><?= $pemain->foto_pemain ?></td>
-                            <td scope="row"><?= $pemain->no_handphone ?></td>
-                            <td scope="row"><?= $pemain->alamat ?></td>
-                        </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
+        <div class="col-6">
+            <?php $id_team = $this->uri->segment('3');
+                echo form_open("content/ikutiTeam/".$id_team) ?>
+                <div class="form-inline float-right">
+                    <select name="id_pemain" class="js-example-basic-single" name="state">
+                        <?php foreach ($dataAllCommunities as $key) { ?>
+                            <option value="<?= $key->id_pemain ?>"><?= $key->nama_pemain ?></option>
+                        <?php } ?>
+                    </select>
+                    <input type="submit" name="SaveDPemain" value="Add" class="btn btn-primary ml-2">
+                </div>
+            <?php echo form_close(); ?>
         </div>
     </div>
 </div>
+
+<div class="d-flex flex-column justify-content-center mt-3">
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive mt-3">
+                <table class="table table-striped table-sm table-hover table-dark">
+                    <thead class="bg-mblack">
+                        <tr>
+                            <th>#</th>
+                            <th>Kode Pemain</th>
+                            <th>Nama Pemain</th>
+                            <th>No Handphone</th>
+                            <th colspan="2">Alamat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $no = 1; foreach ($detailOneTeamPemain as $pemain) { ?>
+                            <tr>
+                                <td><?= $no++ ?></td>
+                                <td><?= $pemain->kode_pemain ?></td>
+                                <td><?= $pemain->nama_pemain ?></td>
+                                <td><?= $pemain->no_handphone?></td>
+                                <td><?= $pemain->alamat?></td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a href="<?= base_url('content/tidakIkutiTeam/'.$id_team.'/'.$pemain->id_pemain) ?>" class="btn btn-sm btn-danger btn-block text-white" onclick="return confirm('Hapus Data?')"><i class="fas fa-trash-alt"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.js-example-basic-single').select2();
+});
+</script>
