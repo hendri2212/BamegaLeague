@@ -21,6 +21,8 @@ Googel Fonts  */
 /* custom */
 .table-img{
   width: 3rem;
+  max-height: 3rem;
+  overflow: hidden;
 }
 #img{
   /* width: 15rem; */
@@ -28,9 +30,11 @@ Googel Fonts  */
   /* height: 10rem; */
   height: 4rem;
 }
-#profile{
-  width: 180px;
-  height: auto;
+.profile{
+  width: 6rem;
+  height: 6rem;
+  overflow: hidden;
+  object-fit: contain;
 }
 #form{
   width: 550px;
