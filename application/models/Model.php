@@ -209,7 +209,7 @@ class Model extends CI_Model {
 	public function detailOneTeamPemain($id_team) {
 		$this->db->select('*');
 		$this->db->from('data_pemain');
-		$this->db->where('id_team', $id_team);
+		$this->db->where('data_team_pemain.id_team', $id_team);
 		$this->db->join('data_team_pemain', 'data_team_pemain.id_pemain = data_pemain.id_pemain');
 		return $this->db->get()->result();
 	}
