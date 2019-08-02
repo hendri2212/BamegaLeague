@@ -18,7 +18,6 @@
                             <th scope="col"></th>
                             <th scope="col">Nama_Game</th>
                             <th scope="col">Deskripsi</th>
-                            <th scope="col">Gambar</th>
                             <th scope="col">Status</th>
                             <th scope="col">Edit</th>
                         </tr>
@@ -27,9 +26,13 @@
                         <?php $no = 1; foreach ($dataAllGame as $game) { ?>
                             <tr>
                                 <th scope="row"><?= $no++ ?></th>
-                                <td scope="row"><?= $game->nama_game ?></td>
+                                <td scope="row">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal<?=$game->id_game?>">
+                                        <img src="<?= base_url("./assets/gambar/game/".$game->gambar_game) ?>" class="img-fluid rounded h-25">
+                                    </button>
+                                    <?= $game->nama_game ?>
+                                </td>
                                 <td scope="row"><?= $game->deskripsi_game ?></td>
-                                <td scope="row"><?= $game->gambar_game ?></td>
                                 <td scope="row">
                                     <?php if ($game->status_game == 0): ?>
                                         <a href="<?= base_url('content/enableGame/'.$game->id_game) ?>" class="btn btn-sm btn-warning btn-block text-white">Non Aktif</a>
@@ -44,6 +47,20 @@
                                     </div>
                                 </td>
                             </tr>
+                                <div class="modal fade" id="modal<?=$game->id_game?>" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <img src="<?= base_url("./assets/gambar/game/".$game->gambar_game) ?>" class="img-fluid">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                         <?php } ?>
                     </tbody>
                 </table>

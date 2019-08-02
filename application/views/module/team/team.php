@@ -30,7 +30,11 @@
                                 <th scope="row"><?= $no++ ?></th>
                                 <td scope="row"><?= $team->nama_game ?></td>
                                 <td scope="row"><a href="<?= base_url('content/detailTeam/'.$team->id_team)?>"><?= $team->nama_team ?></a></td>
-                                <td scope="row"><?= $team->logo_team ?></td>
+                                <td scope="row">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal<?=$team->id_team?>">
+                                        <img src="<?= base_url("./assets/gambar/team/".$team->logo_team) ?>" class="img-fluid rounded h-25">
+                                    </button>
+                                </td>
                                 <td scope="row"><?= $team->deskripsi_team?></td>
                                 <td scope="row"><?= $team->tanggal_daftar?></td>
                                 <td scope="row">
@@ -40,6 +44,20 @@
                                     </div>
                                 </td>
                             </tr>
+                                <div class="modal fade" id="modal<?=$team->id_team?>" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <img src="<?= base_url("./assets/gambar/team/".$team->logo_team) ?>" class="img-fluid">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                         <?php } ?>
                     </tbody>
                 </table>
