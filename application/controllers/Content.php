@@ -53,7 +53,7 @@ class Content extends MY_Controller {
 			$remove_image = "./assets/gambar/game/".$cek->gambar_game;
 			unlink($remove_image);
 			
-			$this->model->updateGame($id_game, $gambar);
+			$this->model->updateGame1($id_game, $gambar);
 		}
 	}
 
@@ -78,7 +78,7 @@ class Content extends MY_Controller {
 		$gambar = $gbr['file_name'];
 
 		if (empty($gambar)) {
-			$this->model->saveGame();
+			echo "<script>alert('gambar wajib ada'); window.location.href='./inputGames'</script>";
 		} else {
 			$this->model->saveGame($gambar);
 		}
@@ -151,8 +151,8 @@ class Content extends MY_Controller {
 		$gbr1 = $this->upload->data();
 		$gambar1 = $gbr1['file_name'];
 
-		if (empty($gambar) AND empty($gambar1)) {
-			$this->model->saveTurnamen();
+		if (empty($gambar) OR empty($gambar1)) {
+			echo "<script>alert('gambar wajib ada'); window.location.href='./inputTurnamen'</script>";
 		} else {
 			$this->model->saveTurnamen($gambar, $gambar1);
 		}
@@ -182,8 +182,23 @@ class Content extends MY_Controller {
 		$gbr1 = $this->upload->data();
 
 		$gambar1 = $gbr1['file_name'];
+
 		if (empty($gambar) AND empty($gambar1)) {
-			$this->model->updateturnamen($id_turnamen);
+			$this->model->updateTurnamen($id_turnamen);
+		} elseif (empty($gambar1)) {
+			$cek = $this->model->changeGambarTurnamen1($id_turnamen);
+
+			$remove_image = "./assets/gambar/prize/".$cek->gambar_prize_pool;
+			unlink($remove_image);
+
+			$this->model->updateTurnamen1($id_turnamen, $gambar);
+		} elseif (empty($gambar)) {
+			$cek = $this->model->changeGambarTurnamen2($id_turnamen);
+
+			$remove_image1 = "./assets/gambar/prize/".$cek->gambar_turnamen;
+			unlink($remove_image1);
+
+			$this->model->updateTurnamen2($id_turnamen, $gambar1);
 		} else {
 			$cek = $this->model->changeGambarTurnamen($id_turnamen);
 
@@ -192,7 +207,7 @@ class Content extends MY_Controller {
 			$remove_image1 = "./assets/gambar/prize/".$cek->gambar_turnamen;
 			unlink($remove_image1);
 			
-			$this->model->updateTurnamen($id_turnamen, $gambar, $gambar1);
+			$this->model->updateTurnamen3($id_turnamen, $gambar, $gambar1);
 		}
 	}
 
@@ -248,7 +263,7 @@ class Content extends MY_Controller {
 		$gambar = $gbr['file_name'];
 
 		if (empty($gambar)) {
-			$this->model->saveTeam();
+			echo "<script>alert('gambar wajib ada'); window.location.href='./inputTeam'</script>";
 		} else {
 			$this->model->saveTeam($gambar);
 		}
@@ -282,7 +297,7 @@ class Content extends MY_Controller {
 			$remove_image = "./assets/gambar/team/".$cek->logo_team;
 			unlink($remove_image);
 			
-			$this->model->updateTeam($id_team, $gambar);
+			$this->model->updateTeam1($id_team, $gambar);
 		}
 	}
 
@@ -348,7 +363,7 @@ class Content extends MY_Controller {
 		$gambar = $gbr['file_name'];
 
 		if (empty($gambar)) {
-			$this->model->savePemain();
+			echo "<script>alert('gambar wajib ada'); window.location.href='./inputPemain'</script>";
 		} else {
 			$this->model->savePemain($gambar);
 		}
@@ -381,7 +396,7 @@ class Content extends MY_Controller {
 			$remove_image = "./assets/gambar/pemain/".$cek->foto_pemain;
 			unlink($remove_image);
 			
-			$this->model->updatePemain($id_pemain, $gambar);
+			$this->model->updatePemain1($id_pemain, $gambar);
 		}
 	}
 

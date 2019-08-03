@@ -42,14 +42,14 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="g-prize"><i class="fas fa-file-image"></i></span>
                         </div>
-                        <input name="gambar_turnamen" type="file" class="form-control" aria-label="g-turnamen">
+                        <input name="gambar_turnamen" type="file" class="form-control" aria-label="g-turnamen" value="<?= $editTurnamen->gambar_turnamen?>">
                     </div>
                     <label>Gambar Prize Pool</label>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="g-prize"><i class="fas fa-file-image"></i></span>
                         </div>
-                        <input name="gambar_prize_pool" type="file" class="form-control" aria-label="g-prize">
+                        <input name="gambar_prize_pool" type="file" class="form-control" aria-label="g-prize" value="<?= $editTurnamen->gambar_prize_pool?>">
                     </div>
                     <label>Status Turnamen</label>
                     <div class="input-group mb-3">

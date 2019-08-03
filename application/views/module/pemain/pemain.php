@@ -17,7 +17,6 @@
                         <th scope="col">#</th>
                         <th scope="col">Kode Pemain</th>
                         <th scope="col">Nama Pemain</th>
-                        <th scope="col">Foto Pemain</th>
                         <th scope="col">No Handphone</th>
                         <th scope="col"">Alamat</th>
                         <th scope="col">Edit</th>
@@ -28,11 +27,11 @@
                         <tr>
                             <th scope="row"><?= $no++ ?></th>
                             <td scope="row"><?= $pemain->kode_pemain ?></td>
-                            <td scope="row"><?= $pemain->nama_pemain ?></td>
                             <td scope="row">
                                 <div class="btn btn-dark p-0 table-img" data-toggle="modal" data-target="#modal<?=$pemain->id_pemain?>">
                                     <img src="<?= base_url("./assets/gambar/pemain/".$pemain->foto_pemain) ?>" class="img-fluid rounded">
                                 </div>
+                                <?= $pemain->nama_pemain ?>
                             </td>
                             <td scope="row"><?= $pemain->no_handphone ?></td>
                             <td scope="row"><?= $pemain->alamat ?></td>

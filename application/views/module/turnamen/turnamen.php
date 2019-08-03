@@ -19,7 +19,6 @@
                         <th scope="col">Nama Turnamen</th>
                         <th scope="col">Tanggal Mulai</th>
                         <th scope="col">Deskripsi</th>
-                        <th scope="col">Gambar</th>
                         <th scope="col">Status</th>
                         <th scope="col">Edit</th>
                     </tr>
@@ -29,14 +28,17 @@
                         <tr>
                             <th scope="row"><?= $no++ ?></th>
                             <td scope="row"><?= $AllTurnamen->nama_game ?></td>
-                            <td scope="row"><a href="<?= base_url('content/detailTurnamen/'.$AllTurnamen->id_turnamen.'/'.$AllTurnamen->id_game)?>"><?= $AllTurnamen->nama_turnamen ?></a></td>
+                            <td scope="row">
+                                    <div class="btn btn-dark p-0 table-img" data-toggle="modal" data-target="#modal<?=$AllTurnamen->id_turnamen?>">
+                                        <img src="<?= base_url("./assets/gambar/prize/".$AllTurnamen->gambar_turnamen) ?>" class="img-fluid rounded">
+                                    </div>
+                                    <div class="btn btn-dark p-0 table-img" data-toggle="modal" data-target="#modal<?=$AllTurnamen->id_turnamen?>">
+                                        <img src="<?= base_url("./assets/gambar/prize/".$AllTurnamen->gambar_prize_pool) ?>" class="img-fluid rounded">
+                                    </div>
+                                    <a href="<?= base_url('content/detailTurnamen/'.$AllTurnamen->id_turnamen.'/'.$AllTurnamen->id_game)?>"><?= $AllTurnamen->nama_turnamen ?></a>
+                                </td>
                             <td scope="row"><?= $AllTurnamen->tanggal_turnamen ?></td>
                             <td scope="row"><?= $AllTurnamen->deskripsi ?></td>
-                            <td scope="row">
-                                <div class="btn btn-dark p-0 table-img" data-toggle="modal" data-target="#modal<?=$AllTurnamen->id_turnamen?>">
-                                    <img src="<?= base_url("./assets/gambar/prize/".$AllTurnamen->gambar_prize_pool) ?>" class="img-fluid rounded">
-                                </div>
-                            </td>
                             <td scope="row">
                                 <?php if ($AllTurnamen->status_turnamen == 0): ?>
                                     <span class="btn bg-warning btn-sm btn-block text-white">Pending</span>
@@ -63,7 +65,7 @@
                                         </div>
                                         <div class="modal-body bg-dark">
                                             <div class="text-center">
-                                                <img src="<?= base_url("./assets/gambar/prize/".$AllTurnamen->gambar_prize_pool) ?>" class="img-fluid">
+                                                <img src="<?= base_url("./assets/gambar/prize/".$AllTurnamen->gambar_turnamen) ?>" class="img-fluid">
                                             </div>
                                         </div>
                                     </div>

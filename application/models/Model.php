@@ -44,9 +44,20 @@ class Model extends CI_Model {
 
     public function editGame($id_game) {
         return $this->db->get_where("data_game", array('id_game' => $id_game))->row();
-    }
+	}
+	
+	public function updateGame($id_game) {
+		$data = array(
+			"nama_game"		=> $this->input->post('nama_game'),
+			"deskripsi_game"=> $this->input->post('deskripsi_game'),
+			"status_game"	=> "1"
+		);
+		$this->db->where('id_game', $id_game);
+		$this->db->update('data_game', $data);
+		redirect('content/game');
+	}
 
-	public function updateGame($id_game, $gambar) {
+	public function updateGame1($id_game, $gambar) {
 		$data = array(
 			"nama_game"		=> $this->input->post('nama_game'),
 			"gambar_game"	=> $gambar,
@@ -129,12 +140,53 @@ class Model extends CI_Model {
 	}
 
 	public function editTurnamen($id_turnamen) {
-		$this->db->select('data_turnamen.id_game, id_turnamen, nama_game, nama_turnamen, tanggal_turnamen, deskripsi, gambar_prize_pool, status_turnamen');
+		$this->db->select('data_turnamen.id_game, id_turnamen, nama_game, nama_turnamen, tanggal_turnamen, deskripsi, gambar_turnamen, gambar_prize_pool, status_turnamen');
 		$this->db->join('data_game', 'data_game.id_game = data_turnamen.id_game');
         return $this->db->get_where("data_turnamen", array('id_turnamen' => $id_turnamen))->row();
 	}
 	
-	public function updateTurnamen($id_turnamen, $gambar, $gambar1) {
+	public function updateTurnamen($id_turnamen) {
+		$data = array(
+			"id_game"			=> $this->input->post('id_game'),
+			"nama_turnamen"		=> $this->input->post('nama_turnamen'),
+			"tanggal_turnamen"	=> $this->input->post('tanggal_turnamen'),
+			"deskripsi"			=> $this->input->post('deskripsi'),
+			"status_turnamen"	=> $this->input->post('status_turnamen')
+		);
+		$this->db->where('id_turnamen', $id_turnamen);
+		$this->db->update('data_turnamen', $data);
+		redirect('content/turnamen');
+	}
+
+	public function updateTurnamen1($id_turnamen, $gambar) {
+		$data = array(
+			"id_game"			=> $this->input->post('id_game'),
+			"nama_turnamen"		=> $this->input->post('nama_turnamen'),
+			"tanggal_turnamen"	=> $this->input->post('tanggal_turnamen'),
+			"gambar_prize_pool"	=> $gambar,
+			"deskripsi"			=> $this->input->post('deskripsi'),
+			"status_turnamen"	=> $this->input->post('status_turnamen')
+		);
+		$this->db->where('id_turnamen', $id_turnamen);
+		$this->db->update('data_turnamen', $data);
+		redirect('content/turnamen');
+	}
+
+	public function updateTurnamen2($id_turnamen, $gambar1) {
+		$data = array(
+			"id_game"			=> $this->input->post('id_game'),
+			"nama_turnamen"		=> $this->input->post('nama_turnamen'),
+			"tanggal_turnamen"	=> $this->input->post('tanggal_turnamen'),
+			"gambar_turnamen"	=> $gambar1,
+			"deskripsi"			=> $this->input->post('deskripsi'),
+			"status_turnamen"	=> $this->input->post('status_turnamen')
+		);
+		$this->db->where('id_turnamen', $id_turnamen);
+		$this->db->update('data_turnamen', $data);
+		redirect('content/turnamen');
+	}
+
+	public function updateTurnamen3($id_turnamen, $gambar, $gambar1) {
 		$data = array(
 			"id_game"			=> $this->input->post('id_game'),
 			"nama_turnamen"		=> $this->input->post('nama_turnamen'),
@@ -151,6 +203,16 @@ class Model extends CI_Model {
 
 	public function changeGambarTurnamen($id_turnamen) {
 		$this->db->select("gambar_prize_pool, gambar_turnamen");
+		return $this->db->get_where("data_turnamen", array("id_turnamen" => $id_turnamen))->row();
+	}
+
+	public function changeGambarTurnamen1($id_turnamen) {
+		$this->db->select("gambar_prize_pool");
+		return $this->db->get_where("data_turnamen", array("id_turnamen" => $id_turnamen))->row();
+	}
+
+	public function changeGambarTurnamen2($id_turnamen) {
+		$this->db->select("gambar_turnamen");
 		return $this->db->get_where("data_turnamen", array("id_turnamen" => $id_turnamen))->row();
 	}
 
@@ -254,7 +316,18 @@ class Model extends CI_Model {
 		return $this->db->get_where("data_team", array('id_team' => $id_team))->row();
 	}
 
-	public function updateTeam($id_team, $gambar) {
+	public function updateTeam($id_team) {
+		$data = array(
+			"id_game"			=> $this->input->post('id_game'),
+			"nama_team"			=> $this->input->post('nama_team'),
+			"deskripsi_team"	=> $this->input->post('deskripsi_team')
+		);
+		$this->db->where('id_team', $id_team);
+		$this->db->update('data_team', $data);
+		redirect('content/team');
+	}
+
+	public function updateTeam1($id_team, $gambar) {
 		$data = array(
 			"id_game"			=> $this->input->post('id_game'),
 			"nama_team"			=> $this->input->post('nama_team'),
@@ -335,7 +408,19 @@ class Model extends CI_Model {
 		return $this->db->get_where("data_pemain", array('id_pemain' => $id_pemain))->row();
 	}
 
-	public function updatePemain($id_pemain, $gambar) {
+	public function updatePemain($id_pemain) {
+		$data = array(
+			"kode_pemain"	=> $this->input->post('kode_pemain'),
+			"nama_pemain"	=> $this->input->post('nama_pemain'),
+			"no_handphone"	=> $this->input->post('no_handphone'),
+			"alamat"		=> $this->input->post('alamat')
+		);
+		$this->db->where('id_pemain', $id_pemain);
+		$this->db->update('data_pemain', $data);
+		redirect('content/pemain');
+	}
+
+	public function updatePemain1($id_pemain, $gambar) {
 		$data = array(
 			"kode_pemain"	=> $this->input->post('kode_pemain'),
 			"nama_pemain"	=> $this->input->post('nama_pemain'),
