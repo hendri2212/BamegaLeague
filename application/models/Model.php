@@ -158,12 +158,12 @@ class Model extends CI_Model {
 		redirect('content/turnamen');
 	}
 
-	public function updateTurnamen1($id_turnamen, $gambar) {
+	public function updateTurnamen1($id_turnamen, $gambar_prize_pool) {
 		$data = array(
 			"id_game"			=> $this->input->post('id_game'),
 			"nama_turnamen"		=> $this->input->post('nama_turnamen'),
 			"tanggal_turnamen"	=> $this->input->post('tanggal_turnamen'),
-			"gambar_prize_pool"	=> $gambar,
+			"gambar_prize_pool"	=> $gambar_prize_pool,
 			"deskripsi"			=> $this->input->post('deskripsi'),
 			"status_turnamen"	=> $this->input->post('status_turnamen')
 		);
@@ -172,12 +172,12 @@ class Model extends CI_Model {
 		redirect('content/turnamen');
 	}
 
-	public function updateTurnamen2($id_turnamen, $gambar1) {
+	public function updateTurnamen2($id_turnamen, $gambar_turnamen) {
 		$data = array(
 			"id_game"			=> $this->input->post('id_game'),
 			"nama_turnamen"		=> $this->input->post('nama_turnamen'),
 			"tanggal_turnamen"	=> $this->input->post('tanggal_turnamen'),
-			"gambar_turnamen"	=> $gambar1,
+			"gambar_turnamen"	=> $gambar_turnamen,
 			"deskripsi"			=> $this->input->post('deskripsi'),
 			"status_turnamen"	=> $this->input->post('status_turnamen')
 		);
@@ -186,13 +186,13 @@ class Model extends CI_Model {
 		redirect('content/turnamen');
 	}
 
-	public function updateTurnamen3($id_turnamen, $gambar, $gambar1) {
+	public function updateTurnamen3($id_turnamen, $gambar_prize_pool, $gambar_turnamen) {
 		$data = array(
 			"id_game"			=> $this->input->post('id_game'),
 			"nama_turnamen"		=> $this->input->post('nama_turnamen'),
 			"tanggal_turnamen"	=> $this->input->post('tanggal_turnamen'),
-			"gambar_turnamen"	=> $gambar1,
-			"gambar_prize_pool"	=> $gambar,
+			"gambar_turnamen"	=> $gambar_turnamen,
+			"gambar_prize_pool"	=> $gambar_prize_pool,
 			"deskripsi"			=> $this->input->post('deskripsi'),
 			"status_turnamen"	=> $this->input->post('status_turnamen')
 		);
@@ -201,17 +201,17 @@ class Model extends CI_Model {
 		redirect('content/turnamen');
 	}
 
-	public function changeGambarTurnamen($id_turnamen) {
+	public function changeAllGambarTurnamen($id_turnamen) {
 		$this->db->select("gambar_prize_pool, gambar_turnamen");
 		return $this->db->get_where("data_turnamen", array("id_turnamen" => $id_turnamen))->row();
 	}
 
-	public function changeGambarTurnamen1($id_turnamen) {
+	public function changeGambarPrizePoolTurnamen($id_turnamen) {
 		$this->db->select("gambar_prize_pool");
 		return $this->db->get_where("data_turnamen", array("id_turnamen" => $id_turnamen))->row();
 	}
 
-	public function changeGambarTurnamen2($id_turnamen) {
+	public function changeGambarTurnamen($id_turnamen) {
 		$this->db->select("gambar_turnamen");
 		return $this->db->get_where("data_turnamen", array("id_turnamen" => $id_turnamen))->row();
 	}
@@ -388,6 +388,14 @@ class Model extends CI_Model {
 		$this->db->join('data_team', 'data_team.id_team = data_pemain.id_team');
 		return $this->db->get_where("data_pemain", array('id_pemain' => $id_pemain))->row();
 	}
+
+	public function search(){
+		$keyword = $this->input->post('keyword');
+		$this->db->select('*');
+		$this->db->from('data_pemain');
+		$this->db->like('nama_pemain', $keyword);
+		return $this->db->get()->result();
+	}
 	// ----------------
 	// Data Pemain
 	// ----------------
@@ -512,6 +520,53 @@ class Model extends CI_Model {
 	// ----------------
 	public function dataAllMatch() {
         return $this->db->get("data_match")->result();
-    }
+	}
+	// ----------------
+	// Data Admin
+	// ----------------
+
+	public function dataAllLogin(){
+		$this->db->select('*');
+		$this->db->from('data_login');
+		$this->db->where('level', '2');
+		return $this->db->get()->result();
+	}
+
+	public function inputAdmin(){
+		$this->page('module/admin/inputAdmin');
+	}
+
+	public function saveAdmin(){
+		$data= array(
+			"nama_lengkap"	=> $this->input->post('nama_lengkap'),
+			"username"		=> $this->input->post('username'),
+			"password"		=> md5($this->input->post('password')),
+			"level"			=> '2'
+		);
+
+		$this->db->insert('data_login', $data);
+		redirect('content/admin');
+	}
+
+	public function editAdmin($id_user) {
+		return $this->db->get_where("data_login", array('id_user' => $id_user))->row();
+	}
+
+	public function updateAdmin($id_user) {
+		$data = array(
+			"nama_lengkap" => $this->input->post('nama_lengkap'),
+			"username"		=> $this->input->post('username'),
+			"password"		=> md5($this->input->post('password'))
+		);
+		$this->db->where('id_user', $id_user);
+		$this->db->update('data_login', $data);
+		redirect('content/admin');
+	}
+
+	public function deleteAdmin($id_user) {
+		$this->db->where('id_user', $id_user);
+		$this->db->delete('data_login');
+		redirect('content/admin');
+	}
 }
 ?>

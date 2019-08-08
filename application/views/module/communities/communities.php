@@ -2,10 +2,10 @@
     <div class="col-lg-12">
         <div class="d-flex flex-row-reverse mb-3 ">
             <div class="p-2">
-                <form action="#" class="input-group">
-                    <input type="text" placeholder="Cari" class="form-control bg-dark border border-warning">
-                    <a href="#" class="btn btn-warning"><i class="fas fa-search"></i></a>                 
-                </form>
+                <?php echo form_open('content/search')?>
+                    <input type="text" name="keyword" placeholder="Cari" class="form-control bg-dark border border-warning">
+                    <input type="submit" class="btn btn-warning" value="search">               
+                <?php echo form_close(); ?>
             </div>
             <div class="p-2"><a href="" class="btn border-warning text-warning"><b>Daftarkan Komunitas</b></a></div>
         </div>

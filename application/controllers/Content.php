@@ -173,42 +173,57 @@ class Content extends MY_Controller {
 		$config['max_height']	= '768000';
 
 		$this->load->library('upload', $config);
-		$this->upload->do_upload('gambar_prize_pool');
-		$gbr = $this->upload->data();
+		if(!$this->upload->do_upload('gambar_prize_pool')){
+			$this->upload->do_upload('gambar_turnamen');
 
-		$gambar = $gbr['file_name'];
+			$gbr1 = $this->upload->data();
+			$gambar_turnamen = $gbr1['file_name'];
+		}elseif(!$this->upload->do_upload('gambar_turnamen')){
+			$this->upload->do_upload('gambar_prize_pool');
+			$gbr = $this->upload->data();
 
-		$this->upload->do_upload('gambar_turnamen');
-		$gbr1 = $this->upload->data();
+			$gambar_prize_pool = $gbr['file_name'];
+		}else{
+			$this->upload->do_upload('gambar_prize_pool');
+			$gbr = $this->upload->data();
+			
+			$gambar_prize_pool = $gbr['file_name'];
+			
+			$this->upload->do_upload('gambar_turnamen');
+			$gbr1 = $this->upload->data();
+			
+			$gambar_turnamen = $gbr1['file_name'];
+		}
 
-		$gambar1 = $gbr1['file_name'];
-
-		if (empty($gambar) AND empty($gambar1)) {
+		if (empty($gambar_prize_pool) AND empty($gambar_turnamen)) :
 			$this->model->updateTurnamen($id_turnamen);
-		} elseif (empty($gambar1)) {
-			$cek = $this->model->changeGambarTurnamen1($id_turnamen);
+		elseif (empty($gambar_turnamen)) :
+			$gbr = $this->upload->data();
+
+			$gambar_prize_pool = $gbr['file_name'];
+			$cek = $this->model->changeGambarPrizePoolTurnamen($id_turnamen);
 
 			$remove_image = "./assets/gambar/prize/".$cek->gambar_prize_pool;
 			unlink($remove_image);
 
-			$this->model->updateTurnamen1($id_turnamen, $gambar);
-		} elseif (empty($gambar)) {
-			$cek = $this->model->changeGambarTurnamen2($id_turnamen);
+			$this->model->updateTurnamen1($id_turnamen, $gambar_prize_pool);
+		elseif (empty($gambar_prize_pool)) :
+			$cek = $this->model->changeGambarTurnamen($id_turnamen);
 
 			$remove_image1 = "./assets/gambar/prize/".$cek->gambar_turnamen;
 			unlink($remove_image1);
 
-			$this->model->updateTurnamen2($id_turnamen, $gambar1);
-		} else {
-			$cek = $this->model->changeGambarTurnamen($id_turnamen);
+			$this->model->updateTurnamen2($id_turnamen, $gambar_turnamen);
+		else :
+			$cek = $this->model->changeAllGambarTurnamen($id_turnamen);
 
 			$remove_image = "./assets/gambar/prize/".$cek->gambar_prize_pool;
 			unlink($remove_image);
 			$remove_image1 = "./assets/gambar/prize/".$cek->gambar_turnamen;
 			unlink($remove_image1);
 			
-			$this->model->updateTurnamen3($id_turnamen, $gambar, $gambar1);
-		}
+			$this->model->updateTurnamen3($id_turnamen, $gambar_prize_pool, $gambar_turnamen);
+		endif ;
 	}
 
 	public function deleteTurnamen($id_turnamen){
@@ -336,6 +351,10 @@ class Content extends MY_Controller {
 		$this->page('module/communities/detailCommunities', $data);
 	}
 
+	public function search(){
+		$data['dataAllCommunities'] = $this->model->search();
+		$this->page('module/communities/communities', $data);
+	}
 	// ----------------
 	// Data Pemain
 	// ----------------
@@ -345,7 +364,7 @@ class Content extends MY_Controller {
 	}
 
 	public function inputPemain() {
-		$this->page('module/pemain/inputPemain', $data);
+		$this->page('module/pemain/inputPemain');
 	}
 
 	public function savePemain() {
@@ -444,4 +463,34 @@ class Content extends MY_Controller {
 		$this->model->deleteNilai($id_nilai);
 	}
 
+	
+	// ----------------
+	// Data Admin
+	// ----------------
+	
+	public function admin(){
+		$data['dataAllLogin'] = $this->model->dataAllLogin();
+		$this->page('module/admin/admin', $data);
+	}
+
+	public function inputAdmin(){
+		$this->page('module/admin/inputAdmin');
+	}
+
+	public function saveAdmin(){
+		$this->model->saveAdmin();
+	}
+
+	public function editAdmin($id_user) {
+		$data['editAdmin'] = $this->model->editAdmin($id_user);
+		$this->page('module/admin/editAdmin', $data);
+	}
+
+	public function updateAdmin($id_user){
+		$this->model->updateAdmin($id_user);
+	}
+
+	public function deleteAdmin($id_user){
+		$this->model->deleteAdmin($id_user);
+	}
 }

@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="<?= base_url().'assets/css/cs-skin-elastic.css' ?>">
     <link rel="stylesheet" href="<?= base_url().'assets/css/all.min.css' ?>">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
 
 </head>
 <body class="bg-mblack">
@@ -31,6 +30,7 @@
                             <a href="<?= base_url('content/team') ?>" class="list-group-item list-group-item-action bg-dark text-warning" data-toggle="tooltip" data-placement="bottom" title="Data Team"><i class="fas fa-users-cog"></i></a>
                             <a href="<?= base_url('content/pemain') ?>" class="list-group-item list-group-item-action bg-dark text-warning" data-toggle="tooltip" data-placement="bottom" title="Data Pemain"><i class="fas fa-user-cog"></i></a>
                             <a href="<?= base_url('content/nilai') ?>" class="list-group-item list-group-item-action bg-dark text-warning" data-toggle="tooltip" data-placement="bottom" title="Data Nilai"><i class="far fa-chart-bar"></i></a>
+                            <a href="<?= base_url('content/admin') ?>" class="list-group-item list-group-item-action bg-dark text-warning" data-toggle="tooltip" data-placement="bottom" title="Data Admin"><i class="fas fa-user-cog"></i></a>
                         <!-- </div>
                     </div> -->
                     <a href="<?= base_url('content/logOut') ?>" class="list-group-item list-group-item-action bg-dark text-danger" data-toggle="tooltip" data-placement="bottom" title="Logout"><i class="fas fa-sign-out-alt"></i></a>
@@ -57,12 +57,13 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>  
     <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script type="text/javascript" src="<?=base_url('assets/js/bootstrap.min.js')?>"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
     <script type="text/javascript" src="<?=base_url('assets/js/all.min.js')?>"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
     <script>
         $("[rel='tooltip']").tooltip();    
         $('.thumbnail').hover(
@@ -82,7 +83,11 @@
 
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
-        })
-    </script>
+        });
+
+        $(document).ready(function() {
+            $('#e1').select2();
+        });
+</script>
 </body>
 </html>

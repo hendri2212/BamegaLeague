@@ -7,7 +7,7 @@
             <?php $id_team = $this->uri->segment('3');
                 echo form_open("content/ikutiTeam/".$id_team) ?>
                 <div class="form-inline float-right">
-                    <select name="id_pemain" class="js-example-basic-single" name="state">
+                    <select name="id_pemain" class="form-control e1" id="e1" name="state">
                         <?php foreach ($dataAllCommunities as $key) { ?>
                             <option value="<?= $key->id_pemain ?>"><?= $key->nama_pemain ?></option>
                         <?php } ?>
@@ -54,8 +54,3 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-$(document).ready(function() {
-    $('.js-example-basic-single').select2();
-});
-</script>

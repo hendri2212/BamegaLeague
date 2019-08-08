@@ -15,7 +15,7 @@
                 <table class="table table-striped table-sm table-hover table-dark">
                     <thead class="bg-mblack">
                         <tr>
-                            <th scope="col"></th>
+                            <th scope="col">#</th>
                             <th scope="col">Nama Game</th>
                             <th scope="col">Deskripsi</th>
                             <th scope="col">Status</th>
