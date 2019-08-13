@@ -408,7 +408,11 @@ class Model extends CI_Model {
 			"foto_pemain"	=> $gambar
 		);
 		$this->db->insert('data_pemain', $data);
-		redirect('content/pemain');
+		if(empty($this->session->userdata('level'))){
+			redirect('content/communities');
+		}else{
+			redirect('content/pemain');
+		}
 	}
 
 	public function editPemain($id_pemain) {
@@ -526,10 +530,16 @@ class Model extends CI_Model {
 	// ----------------
 
 	public function dataAllLogin(){
-		$this->db->select('*');
-		$this->db->from('data_login');
-		$this->db->where('level', '2');
-		return $this->db->get()->result();
+		if($this->session->userdata('level') == 1){
+			$this->db->select('*');
+			$this->db->from('data_login');
+			return $this->db->get()->result();
+		}else{
+			$this->db->select('*');
+			$this->db->from('data_login');
+			$this->db->where('level','2');
+			return $this->db->get()->result();
+		}
 	}
 
 	public function inputAdmin(){
@@ -554,7 +564,17 @@ class Model extends CI_Model {
 
 	public function updateAdmin($id_user) {
 		$data = array(
-			"nama_lengkap" => $this->input->post('nama_lengkap'),
+			"nama_lengkap"  => $this->input->post('nama_lengkap'),
+			"username"		=> $this->input->post('username')
+		);
+		$this->db->where('id_user', $id_user);
+		$this->db->update('data_login', $data);
+		redirect('content/admin');
+	}
+
+	public function updateAdminPassword($id_user, $password) {
+		$data = array(
+			"nama_lengkap"  => $this->input->post('nama_lengkap'),
 			"username"		=> $this->input->post('username'),
 			"password"		=> md5($this->input->post('password'))
 		);

@@ -23,8 +23,9 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="dgame"><i class="fas fa-pencil-alt"></i></span>
                     </div>
-                    <input type="password" name="password" class="form-control" value="<?= $editAdmin->password?>" aria-label="ngame">
+                    <input type="password" name="password" class="form-control" aria-label="ngame">
                 </div>
+                <span>* Kosongkan jika tidak ingin merubah password</span>
                 <button type="submit" name="submit" class="btn btn-warning text-white float-right">Save</button>
                 <input type="button" value="Cancel" class="btn btn-danger float-right mr-2" onclick="javascript:window.history.back();">            
             </div>

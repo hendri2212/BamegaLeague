@@ -487,7 +487,12 @@ class Content extends MY_Controller {
 	}
 
 	public function updateAdmin($id_user){
-		$this->model->updateAdmin($id_user);
+		$password = $this->input->post('password');
+		if($password == ""){
+			$this->model->updateAdmin($id_user);
+		} else{
+			$this->model->updateAdminPassword($id_user);
+		}
 	}
 
 	public function deleteAdmin($id_user){

@@ -1,13 +1,13 @@
 <div class="row mt-lg-3">
     <div class="col-lg-12">
         <div class="d-flex flex-row-reverse mb-3 ">
-            <div class="p-2">
+            <div class="p-2 btn-group">
                 <?php echo form_open('content/search')?>
                     <input type="text" name="keyword" placeholder="Cari" class="form-control bg-dark border border-warning">
                     <input type="submit" class="btn btn-warning" value="search">               
                 <?php echo form_close(); ?>
             </div>
-            <div class="p-2"><a href="" class="btn border-warning text-warning"><b>Daftarkan Komunitas</b></a></div>
+            <div class="p-2"><a href="<?= base_url('content/inputPemain')?>" class="btn border-warning text-warning"><b>Daftarkan Komunitas</b></a></div>
         </div>
     </div>
     <?php foreach ($dataAllCommunities as $pemain) { ?>
