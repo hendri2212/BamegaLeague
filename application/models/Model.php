@@ -276,13 +276,6 @@ class Model extends CI_Model {
 		return $this->db->get()->result();
 	}
 
-	public function cekDataTeamPemain($id_team){
-		$data = array(
-			"id_team" => $id_team
-		);
-		return $this->db->get_where("data_team_pemain", $data)->row();
-	}
-
 	public function ikutiTeam($id_team){
 		$data = array(
 			"id_team"		=> $id_team,
@@ -383,11 +376,24 @@ class Model extends CI_Model {
 		return $json = $this->db->get()->result();
 	}
 
-	public function detailCommunities($id_pemain) {
-		$this->db->select('data_pemain.id_team, id_pemain, nama_team, logo_team, tanggal_daftar, kode_pemain, nama_pemain, foto_pemain, no_handphone, alamat');
-		$this->db->join('data_team', 'data_team.id_team = data_pemain.id_team');
-		return $this->db->get_where("data_pemain", array('id_pemain' => $id_pemain))->row();
+	public function cekDataTeamPemain($id_pemain){
+		$data = array(
+			"id_pemain" => $id_pemain
+		);
+		return $this->db->get_where("data_team_pemain", $data)->row();
 	}
+
+	public function detailCommunities($id_pemain) {
+			$this->db->select('*');
+			$this->db->join('data_pemain', 'data_team_pemain.id_pemain = data_pemain.id_pemain');
+			$this->db->join('data_team', 'data_team.id_team = data_team.id_team');
+			return $this->db->get_where("data_team_pemain", array('data_team_pemain.id_pemain' => $id_pemain))->row();
+	}
+
+	public function detailCommunitiesNoTeam($id_pemain) {
+		$this->db->select('*');
+		return $this->db->get_where("data_pemain", array('id_pemain' => $id_pemain))->row();
+}
 
 	public function search(){
 		$keyword = $this->input->post('keyword');

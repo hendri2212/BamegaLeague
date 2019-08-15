@@ -246,7 +246,6 @@ class Content extends MY_Controller {
 	public function detailTeam($id_team) {
 		$data['dataAllCommunities'] 	= $this->model->dataAllCommunities();
 		$data['detailOneTeamPemain'] 	= $this->model->detailOneTeamPemain($id_team);
-		$data['cekDataTeamPemain'] 		= $this->model->cekDataTeamPemain($id_team);
 		$this->page('module/team/detailTeam', $data);
 	}
 
@@ -347,7 +346,9 @@ class Content extends MY_Controller {
 	}
 
 	public function detailCommunities($id_pemain) {
+		$data['cekDataTeamPemain'] = $this->model->cekDataTeamPemain($id_pemain);
 		$data['detailCommunities'] = $this->model->detailCommunities($id_pemain);
+		$data['detailCommunitiesNoTeam'] = $this->model->detailCommunitiesNoTeam($id_pemain);
 		$this->page('module/communities/detailCommunities', $data);
 	}
 
